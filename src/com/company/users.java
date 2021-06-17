@@ -2,7 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 
-public class users  {
+public class users implements Serializable  {
     private String username, password;
     private int phone;
 

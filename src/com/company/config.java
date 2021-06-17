@@ -2,7 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 
-public class config implements Serializable{
+public class config implements  Serializable{
     private String name,address,load;
     private int phone;
 

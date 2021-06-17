@@ -1,4 +1,4 @@
-package com.company;
+ package com.company;
 
 
 import java.io.*;
@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import com.google.gson.*;
+
 //CAgadas
 
-public class Main implements Serializable{
+public class Main {
     public  static Gson gson = new Gson();
     public static Scanner u = new Scanner(System.in);
     public static config configuracion;
@@ -18,6 +19,7 @@ public class Main implements Serializable{
 
     public static void main(String[] args) {
         jalada();
+        Users();
     }
     public static void Menu() {
         boolean flag = true;
@@ -88,7 +90,7 @@ public class Main implements Serializable{
 
             System.out.println("Ingrese la dirección de la configuración");
             dir = u.nextLine();
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\config.json";
+            dir = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles\\config.json";
 
             configuracion = gson.fromJson(getContentOfFile(dir), config.class);
             System.out.println("Restaurante:  " + configuracion.getname() + "  Dirección:   " + configuracion.getaddress() + "  Load:  " + configuracion.getLoad() + "  Telefono:  " + configuracion.getPhone());
@@ -128,11 +130,11 @@ public class Main implements Serializable{
         try {
             System.out.println("Ingrese la dirección de los productos");
             dir = u.nextLine();
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\products.json";
+            dir = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles\\products.json";
 
 
             Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),products[].class)));
-            System.out.println(Products.get(2).getIngredients(1).getName());
+
 
             int i=0,j=0;
            /* for (products p: Products) {
@@ -168,7 +170,7 @@ public class Main implements Serializable{
         try {
             System.out.println("Ingrese la dirección de llos usuarios");
             dir = u.nextLine();
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\users.json";
+            dir = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles\\users.json";
 
             Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),users[].class)));
             for (users p:Users)
