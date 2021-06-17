@@ -1,9 +1,13 @@
 package com.company;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import com.google.gson.*;
-
 public class main {
     public  static Gson gson = new Gson();
     public static Scanner u = new Scanner(System.in);
@@ -130,9 +134,12 @@ public class main {
             Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),products[].class)));
             System.out.println(Products.get(2).getIngredients(1).getName());
 
-
+            int i=0,j=0;
            /* for (products p: Products) {
-                System.out.println("   Numero de ID:    " + p.getId() + "    Nombre: " + p.getname() + "    Descripcion:   " + p.getDescription() + "   Costo:     " + p.getCost() + "   Precio:    " + p.getPrice() + "    Ingredientes:   " + "\n"+p.getIngredients(0).getName()+p.getIngredients(0).getQuantity()+p.getIngredients(0).getUnits());
+                i++;
+              //  System.out.println("   Numero de ID:    " + p.getId() + "    Nombre: " + p.getname() + "    Descripcion:   " + p.getDescription() + "   Costo:     " + p.getCost() + "   Precio:    " + p.getPrice() + "    Ingredientes:   " );
+             //   for(ingredients s:Products.get(i).getIngredients())
+                    System.out.println("Nombre:  "+p.getIngredients(i).getName());
 
             }*/
         }
@@ -152,6 +159,7 @@ public class main {
             }
 
         }
+
 
 
     }
