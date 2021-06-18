@@ -172,8 +172,7 @@ public class Main {
             }
 
         }
-        //Serializacion de todos los productos
-        SerializeArrayList("Products.json",Products );
+
 
     }
 
@@ -201,6 +200,9 @@ public class Main {
             }
 
         }
+        users nuevo = new users("UNuevo","126asdf",561326);
+        SerializacionJson("users.json",nuevo);
+
 
     }
 
@@ -240,18 +242,26 @@ public class Main {
     }
 
     //<----------------------------------------------------------------------Serializacion
+    public static String representacionBonita = "";
+    static String add = "";
+
     public static void SerializacionJson(String pathname, Object object) {
 
         final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-        String representacionBonita = prettyGson.toJson(object);
+        representacionBonita += prettyGson.toJson(object);
+        String Datos[] = representacionBonita.split("\n");
         System.out.println(representacionBonita);
 
         try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(pathname));
-            objectOutputStream.writeObject(object);
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            FileWriter archivo = new FileWriter(pathname);
+
+            archivo.write(representacionBonita + "\n");
+
+
+            archivo.close();
+
+        } catch (Exception e) {
+
         }
 
 
@@ -298,5 +308,4 @@ public class Main {
         }
         return null;
     }
-
 }
