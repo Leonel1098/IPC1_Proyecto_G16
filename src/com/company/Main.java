@@ -8,7 +8,6 @@ import java.util.Scanner;
 
 import com.google.gson.*;
 
-//CAgadas Arregladas
 
 public class Main {
     public static Gson gson = new Gson();
@@ -18,22 +17,23 @@ public class Main {
     public static ArrayList<products> Products = new ArrayList<>();
     public static String dir;
     //path lugar donde estan las cargas JSON
-    static String path = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles";
+    static String path = "C:\\Users\\Garcia\\Desktop\\ArchivosJson";
 
     public static void main(String[] args) {
+
         //pathname lugar donde esta el serializado
-        configuracion = (config) deserialize("C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\estessisisisisisis\\config.json");
-        Products = (ArrayList<products>) deserializeArrayList("C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\estessisisisisisis\\Products.json");
+        configuracion = (config) deserialize("config.json");
+        Products = (ArrayList<products>) deserializeArrayList("Products.json");
 
         System.out.println(configuracion.getname() + "||" + configuracion.getaddress() + "||" + configuracion.getLoad()
-                + "||" + configuracion.getPhone());
+               + "||" + configuracion.getPhone());
         jalada();
         productos();
         for (int i = 0; i < Products.size(); i++) {
-            System.out.println(Products.get(i).getname() + "||" + Products.get(i).getDescription());
-            System.out.println(Products.get(i).getPrice() + "||" + Products.get(i).getCost());
-            System.out.println(Products.get(i).getId() + "||" + Products.get(i).getDescription());
-        }
+           System.out.println(Products.get(i).getname() + "||" + Products.get(i).getDescription());
+           System.out.println(Products.get(i).getPrice() + "||" + Products.get(i).getCost());
+           System.out.println(Products.get(i).getId() + "||" + Products.get(i).getDescription());
+    }
 
     }
 
@@ -43,53 +43,237 @@ public class Main {
             //Opciones del Menu
             System.out.println("---Menu----");
             System.out.println("1.Inicio de Sesión ");
-            System.out.println("2.Información del Restaurante");
-            System.out.println("3.Usuarios ");
-            System.out.println("4.Productos");
-            System.out.println("5.Clientes ");
-            System.out.println("6.Facturas");
-            System.out.println("7.Guardar Cambios");
-            System.out.println("8.Cerrar Sesion");
-            System.out.println("9.Salir");
+            System.out.println("Información del Restaurante");
+            System.out.println("2.Usuarios ");
+            System.out.println("3.Productos");
+            System.out.println("4.Clientes ");
+            System.out.println("5.Facturas");
+            System.out.println("6.Guardar Cambios");
+            System.out.println("7.Cerrar Sesion");
+            System.out.println("8.Salir");
             String Op = u.nextLine();
             switch (Op) {
                 case "1":
-                    System.out.println("--Inicio de Sesión");
+                    System.out.println("-----Inicio de Sesión-----");
+                    break;
+                case "2":
+                    System.out.println("-----Usuarios-----");
+                    SubmenuUsuarios();
+                    break;
+                case "3":
+                    System.out.println("-----Productos------ ");
+                    SubmenuProductos();
+                    break;
+                case "4":
+                    System.out.println("-----Clientes-----");
+                    SubmenuClientes();
+                    break;
+                case "5":
+                    System.out.println("-----Facturas-----");
+                    SubmenuFacturas();
+                    break;
+                case "6":
+                    System.out.println("-----Guardar Cambios-----");
+                    SubmenuGuardarCambios();
+                    break;
+                case "7":
+                    System.out.println("-----Cerrar Sesión-----");
+                    break;
+                case "8":
+                    System.out.println("-----Vuelve pronto-----");
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("ERROR: OPCION INVALIDA ");
+                    System.out.println();
+                    break;
+            }
+        } while (flag);
+    }
+
+    public static void SubmenuUsuarios() {
+        boolean flag = true;
+        do {
+            //Opciones del Menu
+            System.out.println("------Usuarios------");
+            System.out.println("1.Listar Usuarios ");
+            System.out.println("2.Eliminar Usuario");
+            System.out.println("3.Ver Usuario ");
+            System.out.println("4.Regresar al Menú Principal");
+            System.out.println("5.Salir");
+            String Op = u.nextLine();
+            switch (Op) {
+                case "1":
+                    System.out.println("-----Listar Usuarios-----");
                     System.out.printf("t----------------------");
                     System.out.println("-------------------------");
                     break;
                 case "2":
-                    System.out.println("--Información del Restaurante---");
+                    System.out.println("------Eliminar Usuario------");
                     System.out.printf("t----------------------");
                     System.out.printf("t----------------------");
                     break;
                 case "3":
-                    System.out.println("**Usuarios--");
-                    System.out.printf("t----------------------");
-                    System.out.printf("t----------------------");
+                    System.out.println("-----Ver Usuario----- ");
                     break;
                 case "4":
-                    System.out.println("--Productos-- ");
+                    System.out.println("-----Regresar al Menú Principal-----");
+                    Menu();
                     break;
                 case "5":
-                    System.out.println("--Clientes--");
+                    System.out.println("Vuelve pronto :)");
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("ERROR: OPCION INVALIDA ");
+                    System.out.println();
+                    break;
+            }
+        } while (flag);
+    }
+    public static void SubmenuProductos() {
+        boolean flag = true;
+        do {
+            //Opciones del Menu
+            System.out.println("------Productos------");
+            System.out.println("1.Listar Productos ");
+            System.out.println("2.Eliminar Producto");
+            System.out.println("3.Ver Producto ");
+            System.out.println("4.Regresar al Menú Principal");
+            System.out.println("5.Salir");
+            String Op = u.nextLine();
+            switch (Op) {
+                case "1":
+                    System.out.println("-----Listar Productos-----");
                     System.out.printf("t----------------------");
-
+                    System.out.println("-------------------------");
                     break;
-                case "6":
-                    System.out.println("--Facturas--");
+                case "2":
+                    System.out.println("------Eliminar Producto------");
                     System.out.printf("t----------------------");
                     System.out.printf("t----------------------");
-
                     break;
-                case "7":
-                    System.out.println("--Guardar Cambios--");
+                case "3":
+                    System.out.println("-----Ver Producto----- ");
                     break;
-                case "8":
-                    System.out.println("--Cerrar Sesión-");
+                case "4":
+                    System.out.println("-----Regresar al Menú Principal-----");
+                    Menu();
                     break;
-                case "9":
-                    System.out.println("Vuelve pronto");
+                case "5":
+                    System.out.println("Vuelve pronto :)");
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("ERROR: OPCION INVALIDA ");
+                    System.out.println();
+                    break;
+            }
+        } while (flag);
+    }
+    public static void SubmenuClientes() {
+        boolean flag = true;
+        do {
+            //Opciones del Menu
+            System.out.println("------Clientes------");
+            System.out.println("1.Listar Clientes ");
+            System.out.println("2.Eliminar Cliente");
+            System.out.println("3.Ver Cliente ");
+            System.out.println("4.Regresar al Menú Principal");
+            System.out.println("5.Salir");
+            String Op = u.nextLine();
+            switch (Op) {
+                case "1":
+                    System.out.println("-----Listar Clientes-----");
+                    System.out.printf("t----------------------");
+                    System.out.println("-------------------------");
+                    break;
+                case "2":
+                    System.out.println("------Eliminar Cliente------");
+                    System.out.printf("t----------------------");
+                    System.out.printf("t----------------------");
+                    break;
+                case "3":
+                    System.out.println("-----Ver Cliente----- ");
+                    break;
+                case "4":
+                    System.out.println("-----Regresar al Menú Principal-----");
+                    Menu();
+                    break;
+                case "5":
+                    System.out.println("Vuelve pronto :)");
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("ERROR: OPCION INVALIDA ");
+                    System.out.println();
+                    break;
+            }
+        } while (flag);
+    }
+    public static void SubmenuFacturas() {
+        boolean flag = true;
+        do {
+            //Opciones del Menu
+            System.out.println("------Facturas------");
+            System.out.println("1.Listar Facturas ");
+            System.out.println("2.Eliminar Factura");
+            System.out.println("3.Ver Factura ");
+            System.out.println("4.Regresar al Menú Principal");
+            System.out.println("5.Salir");
+            String Op = u.nextLine();
+            switch (Op) {
+                case "1":
+                    System.out.println("-----Listar Factura-----");
+                    System.out.printf("t----------------------");
+                    System.out.println("-------------------------");
+                    break;
+                case "2":
+                    System.out.println("------Eliminar Factura------");
+                    System.out.printf("t----------------------");
+                    System.out.printf("t----------------------");
+                    break;
+                case "3":
+                    System.out.println("-----Ver Factura----- ");
+                    break;
+                case "4":
+                    System.out.println("-----Regresar al Menú Principal-----");
+                    Menu();
+                    break;
+                case "5":
+                    System.out.println("Vuelve pronto :)");
+                    flag = false;
+                    break;
+                default:
+                    System.out.println("ERROR: OPCION INVALIDA ");
+                    System.out.println();
+                    break;
+            }
+        } while (flag);
+    }
+    public static void SubmenuGuardarCambios() {
+        boolean flag = true;
+        do {
+            //Opciones del Menu
+            System.out.println("------Serializar------");
+            System.out.println("1.Json ");
+            System.out.println("2.Binario");
+            System.out.println("3.Regresar al Menú Principal");
+            System.out.println("4.Salir");
+            String Op = u.nextLine();
+            switch (Op) {
+                case "1":
+                    System.out.println("-----Json-----");
+                    break;
+                case "2":
+                    System.out.println("------Bin------");
+                    break;
+                case "4":
+                    System.out.println("-----Regresar al Menú Principal-----");
+                    Menu();
+                    break;
+                case "5":
+                    System.out.println("Vuelve pronto :)");
                     flag = false;
                     break;
                 default:
@@ -106,7 +290,7 @@ public class Main {
 
             System.out.println("Ingrese la dirección de la configuración");
             dir = u.nextLine();
-            dir = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles\\config.json";
+            dir = path+ "\\config.json";
 
             configuracion = gson.fromJson(getContentOfFile(dir), config.class);
             System.out.println("Restaurante:  " + configuracion.getname() + "  Dirección:   " + configuracion.getaddress() + "  Load:  " + configuracion.getLoad() + "  Telefono:  " + configuracion.getPhone());
@@ -144,7 +328,7 @@ public class Main {
         try {
             System.out.println("Ingrese la dirección de los productos");
             dir = u.nextLine();
-            dir = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles\\products.json";
+            dir = path+"\\products.json";
 
 
             Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), products[].class)));
@@ -180,7 +364,7 @@ public class Main {
         try {
             System.out.println("Ingrese la dirección de llos usuarios");
             dir = u.nextLine();
-            dir = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles\\users.json";
+            dir = path + "\\users.json";
 
             Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), users[].class)));
             for (users p : Users)
@@ -278,6 +462,13 @@ public class Main {
             e.printStackTrace();
         }
         return null;
+    }
+    //----------------------------Mostrar Datos-----------------------------------
+    public static void  MostrarProductos (){
+        for (int i=0;i<Products.size();i++) {
+
+            System.out.println(Products.get(i));
+        }
     }
 
     public static void SerializeArrayList(String pathname, Object object) {
