@@ -1,10 +1,16 @@
 package com.company;
 
+
+import com.google.gson.*;
+
+
 import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import com.google.gson.*;
 
 
 public class Main {
@@ -18,18 +24,9 @@ public class Main {
     static String path = "C:\\Users\\Garcia\\Desktop\\ArchivosJson";
 
     public static void main(String[] args) {
-        //pathname lugar donde esta el serializado
-        configuracion = (config) deserialize("config.json");
-        Products = (ArrayList<products>) deserializeArrayList("Products.json");
-        System.out.println(configuracion.getname() + "||" + configuracion.getaddress() + "||" + configuracion.getLoad()
-               + "||" + configuracion.getPhone());
-        jalada();
-        productos();
-        for (int i = 0; i < Products.size(); i++) {
-           System.out.println(Products.get(i).getname() + "||" + Products.get(i).getDescription());
-           System.out.println(Products.get(i).getPrice() + "||" + Products.get(i).getCost());
-           System.out.println(Products.get(i).getId() + "||" + Products.get(i).getDescription());
-        }
+
+    Users();
+    loguin();
 
     }
     public static void loguin (){
@@ -38,10 +35,14 @@ public class Main {
         System.out.println("Ingrese la contraseña");
         String contraseña = u.nextLine();
         for (int i=0;i<Users.size();i++) {
-            if (usuario == Users.get(i).getusername() && contraseña == Users.get(i).getPassword()){
+            System.out.println(Users.get(i).getusername());
+            System.out.println(Users.get(i).getPassword());
+            if (usuario.equals(Users.get(i).getusername() )&& contraseña.equals(Users.get(i).getPassword())  ){
+                System.out.printf("Hola "+usuario+ " :)");
                 Menu();
-            }else{
+            }else if (Users.equals(null)){
                 System.out.println("Los datos ingresados no son correctos");
+                loguin();
             }
         }
     }
@@ -103,13 +104,17 @@ public class Main {
             switch (Op) {
                 case "1":
                     System.out.println("-----Listar Usuarios-----");
-                    System.out.printf("t----------------------");
+                    MostrarUsuarios();
                     System.out.println("-------------------------");
+
                     break;
                 case "2":
                     System.out.println("------Eliminar Usuario------");
-                    System.out.printf("t----------------------");
-                    System.out.printf("t----------------------");
+                    System.out.println("t----------------------");
+                    System.out.println("Ingrese User NAme del Usuario");
+                    String name = u.nextLine();
+                    EliminarUsuario(name);
+                    System.out.println("t----------------------");
                     break;
                 case "3":
                     System.out.println("-----Ver Usuario----- ");
@@ -129,6 +134,7 @@ public class Main {
             }
         } while (flag);
     }
+
     public static void SubmenuProductos() {
         boolean flag = true;
         do {
@@ -169,6 +175,7 @@ public class Main {
             }
         } while (flag);
     }
+
     public static void SubmenuClientes() {
         boolean flag = true;
         do {
@@ -209,6 +216,7 @@ public class Main {
             }
         } while (flag);
     }
+
     public static void SubmenuFacturas() {
         boolean flag = true;
         do {
@@ -249,6 +257,7 @@ public class Main {
             }
         } while (flag);
     }
+
     public static void SubmenuGuardarCambios() {
         boolean flag = true;
         do {
@@ -262,6 +271,9 @@ public class Main {
             switch (Op) {
                 case "1":
                     System.out.println("-----Json-----");
+                    representacionBonita="";
+
+                    SerializacionJson("users.json",Users);
                     break;
                 case "2":
                     System.out.println("------Bin------");
@@ -287,7 +299,7 @@ public class Main {
 
             System.out.println("Ingrese la dirección de la configuración");
             dir = u.nextLine();
-            dir = path+ "\\config.json";
+            dir = path + "\\config.json";
 
             configuracion = gson.fromJson(getContentOfFile(dir), config.class);
             System.out.println("Restaurante:  " + configuracion.getname() + "  Dirección:   " + configuracion.getaddress() + "  Load:  " + configuracion.getLoad() + "  Telefono:  " + configuracion.getPhone());
@@ -325,7 +337,7 @@ public class Main {
         try {
             System.out.println("Ingrese la dirección de los productos");
             dir = u.nextLine();
-            dir = path+"\\products.json";
+            dir = path + "\\products.json";
 
 
             Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), products[].class)));
@@ -361,7 +373,7 @@ public class Main {
         try {
             System.out.println("Ingrese la dirección de llos usuarios");
             dir = u.nextLine();
-            dir = path + "\\users.json";
+            dir =  "users.json";
 
             Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), users[].class)));
             for (users p : Users)
@@ -381,8 +393,9 @@ public class Main {
             }
 
         }
-        users nuevo = new users("UNuevo","126asdf",561326);
-        SerializacionJson("users.json",nuevo);
+
+
+
 
 
     }
@@ -424,7 +437,7 @@ public class Main {
 
     //<----------------------------------------------------------------------Serializacion
     public static String representacionBonita = "";
-    static String add = "";
+
 
     public static void SerializacionJson(String pathname, Object object) {
 
@@ -460,11 +473,25 @@ public class Main {
         }
         return null;
     }
-    //----------------------------Mostrar Datos-----------------------------------
-    public static void  MostrarProductos (){
-        for (int i=0;i<Products.size();i++) {
 
-            System.out.println(Products.get(i));
+    //----------------------------Mostrar Datos-----------------------------------
+    public static void MostrarUsuarios() {
+        for (int i = 0; i < Users.size(); i++) {
+
+            System.out.println("UserName : " + Users.get(i).getusername() + " Password : " + Users.get(i).getPassword());
+        }
+    }
+
+    public static void EliminarUsuario(String name) {
+
+        for (int i = 0; i < Users.size(); i++) {
+            if (name.equals(Users.get(i).getusername())) {
+                System.out.println("Se Elimino a " +Users.get(i).getusername() );
+                Users.remove(i);
+            }if (name.equals(null)){
+                System.out.printf("No se Encontro el Usuario ");
+            }
+
         }
     }
 

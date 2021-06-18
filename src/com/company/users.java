@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class users implements Serializable  {
     private String username, password;
-    private int phone;
 
-    public users(String username, String password,int phone) {
+
+    public users(String username, String password) {
         this.username = username;
         this.password = password;
-        this.phone = phone ;
+
     }
 
     public String getusername() {
@@ -20,11 +20,5 @@ public class users implements Serializable  {
         return password;
     }
 
-    public int getPhone() {
-        return phone;
-    }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
 }
