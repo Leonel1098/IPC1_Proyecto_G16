@@ -1,11 +1,9 @@
 package com.company;
 
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
 import com.google.gson.*;
 
 
@@ -20,11 +18,9 @@ public class Main {
     static String path = "C:\\Users\\Garcia\\Desktop\\ArchivosJson";
 
     public static void main(String[] args) {
-
         //pathname lugar donde esta el serializado
         configuracion = (config) deserialize("config.json");
         Products = (ArrayList<products>) deserializeArrayList("Products.json");
-
         System.out.println(configuracion.getname() + "||" + configuracion.getaddress() + "||" + configuracion.getLoad()
                + "||" + configuracion.getPhone());
         jalada();
@@ -33,53 +29,56 @@ public class Main {
            System.out.println(Products.get(i).getname() + "||" + Products.get(i).getDescription());
            System.out.println(Products.get(i).getPrice() + "||" + Products.get(i).getCost());
            System.out.println(Products.get(i).getId() + "||" + Products.get(i).getDescription());
-    }
+        }
 
     }
-
+    public static void loguin (){
+        System.out.println("Ingrese el nombre de Usuario");
+        String usuario = u.nextLine();
+        System.out.println("Ingrese la contraseña");
+        String contraseña = u.nextLine();
+        for (int i=0;i<Users.size();i++) {
+            if (usuario == Users.get(i).getusername() && contraseña == Users.get(i).getPassword()){
+                Menu();
+            }else{
+                System.out.println("Los datos ingresados no son correctos");
+            }
+        }
+    }
     public static void Menu() {
         boolean flag = true;
         do {
             //Opciones del Menu
             System.out.println("---Menu----");
-            System.out.println("1.Inicio de Sesión ");
             System.out.println("Información del Restaurante");
-            System.out.println("2.Usuarios ");
-            System.out.println("3.Productos");
-            System.out.println("4.Clientes ");
-            System.out.println("5.Facturas");
-            System.out.println("6.Guardar Cambios");
-            System.out.println("7.Cerrar Sesion");
-            System.out.println("8.Salir");
+            System.out.println("1.Usuarios ");
+            System.out.println("2.Productos");
+            System.out.println("3.Clientes ");
+            System.out.println("4.Facturas");
+            System.out.println("5.Guardar Cambios");
+            System.out.println("6.Cerrar Sesion");
+            System.out.println("7.Salir");
             String Op = u.nextLine();
             switch (Op) {
                 case "1":
-                    System.out.println("-----Inicio de Sesión-----");
-                    break;
-                case "2":
-                    System.out.println("-----Usuarios-----");
                     SubmenuUsuarios();
                     break;
-                case "3":
-                    System.out.println("-----Productos------ ");
+                case "2":
                     SubmenuProductos();
                     break;
-                case "4":
-                    System.out.println("-----Clientes-----");
+                case "3":
                     SubmenuClientes();
                     break;
-                case "5":
-                    System.out.println("-----Facturas-----");
+                case "4":
                     SubmenuFacturas();
                     break;
-                case "6":
-                    System.out.println("-----Guardar Cambios-----");
+                case "5":
                     SubmenuGuardarCambios();
                     break;
-                case "7":
+                case "6":
                     System.out.println("-----Cerrar Sesión-----");
                     break;
-                case "8":
+                case "7":
                     System.out.println("-----Vuelve pronto-----");
                     flag = false;
                     break;
@@ -90,7 +89,6 @@ public class Main {
             }
         } while (flag);
     }
-
     public static void SubmenuUsuarios() {
         boolean flag = true;
         do {
@@ -286,7 +284,6 @@ public class Main {
 
     public static void jalada() {
         try {
-
 
             System.out.println("Ingrese la dirección de la configuración");
             dir = u.nextLine();
