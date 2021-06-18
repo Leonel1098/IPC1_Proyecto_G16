@@ -1,26 +1,42 @@
- package com.company;
+package com.company;
 
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
 import com.google.gson.*;
 
 //CAgadas Arregladas
 
 public class Main {
-    public  static Gson gson = new Gson();
+    public static Gson gson = new Gson();
     public static Scanner u = new Scanner(System.in);
     public static config configuracion;
     public static ArrayList<users> Users = new ArrayList<>();
     public static ArrayList<products> Products = new ArrayList<>();
     public static String dir;
+    //path lugar donde estan las cargas JSON
+    static String path = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles";
 
     public static void main(String[] args) {
+        //pathname lugar donde esta el serializado
+        configuracion = (config) deserialize("C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\estessisisisisisis\\config.json");
+        Products = (ArrayList<products>) deserializeArrayList("C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\estessisisisisisis\\Products.json");
+
+        System.out.println(configuracion.getname() + "||" + configuracion.getaddress() + "||" + configuracion.getLoad()
+                + "||" + configuracion.getPhone());
         jalada();
-        Users();
+        productos();
+        for (int i = 0; i < Products.size(); i++) {
+            System.out.println(Products.get(i).getname() + "||" + Products.get(i).getDescription());
+            System.out.println(Products.get(i).getPrice() + "||" + Products.get(i).getCost());
+            System.out.println(Products.get(i).getId() + "||" + Products.get(i).getDescription());
+        }
+
     }
+
     public static void Menu() {
         boolean flag = true;
         do {
@@ -83,9 +99,9 @@ public class Main {
             }
         } while (flag);
     }
+
     public static void jalada() {
         try {
-
 
 
             System.out.println("Ingrese la dirección de la configuración");
@@ -94,49 +110,47 @@ public class Main {
 
             configuracion = gson.fromJson(getContentOfFile(dir), config.class);
             System.out.println("Restaurante:  " + configuracion.getname() + "  Dirección:   " + configuracion.getaddress() + "  Load:  " + configuracion.getLoad() + "  Telefono:  " + configuracion.getPhone());
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             File j = new File(dir);
 
             if (j.exists()) {
                 System.out.println("El archivo json tiene errores");
                 System.out.println("Ingrese un archivo sin errores");
                 jalada();
-            }
-            else   {
+            } else {
                 System.out.println("El archivo no existe");
                 System.out.println("Ingrese una dirección correcta");
                 jalada();
             }
 
         }
-        if(configuracion.getLoad().equalsIgnoreCase("bin"))
-        {
+        if (configuracion.getLoad().equalsIgnoreCase("bin")) {
             System.out.println("Deserealización desde bin");
 
-        }
-        else
-        {
+        } else {
             System.out.println("Deserealización desde json");
             Users();
             productos();
 
         }
+        System.out.printf("Serializando Configuracion ");
+        config objetoConfig = new config("Prueba", "Json ", 5563215, "Prruebas ");
+        SerializacionJson("config.json", configuracion);
+
 
     }
-    public static void productos()
-    {
+
+    public static void productos() {
         try {
             System.out.println("Ingrese la dirección de los productos");
             dir = u.nextLine();
             dir = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles\\products.json";
 
 
-            Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),products[].class)));
+            Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), products[].class)));
 
 
-            int i=0,j=0;
+            int i = 0, j = 0;
            /* for (products p: Products) {
                 i++;
               //  System.out.println("   Numero de ID:    " + p.getId() + "    Nombre: " + p.getname() + "    Descripcion:   " + p.getDescription() + "   Costo:     " + p.getCost() + "   Precio:    " + p.getPrice() + "    Ingredientes:   " );
@@ -144,49 +158,43 @@ public class Main {
                     System.out.println("Nombre:  "+p.getIngredients(i).getName());
 
             }*/
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             File j = new File(dir);
 
             if (j.exists()) {
                 System.out.println("El archivo json tiene errores");
                 System.out.println("Ingrese un archivo sin errores");
                 Users();
-            }
-            else   {
+            } else {
                 System.out.println("El archivo no existe");
                 System.out.println("Ingrese una dirección correcta");
                 Users();
             }
 
         }
-
-
+        //Serializacion de todos los productos
+        SerializeArrayList("Products.json",Products );
 
     }
-    public static void Users()
-    {
+
+    public static void Users() {
         try {
             System.out.println("Ingrese la dirección de llos usuarios");
             dir = u.nextLine();
             dir = "C:\\Users\\Usuario\\Documents\\IPC1\\Vacas\\Project1TestFiles\\users.json";
 
-            Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),users[].class)));
-            for (users p:Users)
-                System.out.println(p.getusername()+p.getPassword());
+            Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), users[].class)));
+            for (users p : Users)
+                System.out.println(p.getusername() + p.getPassword());
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             File j = new File(dir);
 
             if (j.exists()) {
                 System.out.println("El archivo json tiene errores");
                 System.out.println("Ingrese un archivo sin errores");
                 Users();
-            }
-            else   {
+            } else {
                 System.out.println("El archivo no existe");
                 System.out.println("Ingrese una dirección correcta");
                 Users();
@@ -195,6 +203,7 @@ public class Main {
         }
 
     }
+
     public static String getContentOfFile(String pathname) {
         File archivo = null;
         FileReader fr = null;
@@ -228,6 +237,66 @@ public class Main {
             }
         }
         return "";
+    }
+
+    //<----------------------------------------------------------------------Serializacion
+    public static void SerializacionJson(String pathname, Object object) {
+
+        final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+        String representacionBonita = prettyGson.toJson(object);
+        System.out.println(representacionBonita);
+
+        try {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(pathname));
+            objectOutputStream.writeObject(object);
+            objectOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public static Object deserialize(String pathname) {
+        // Leer un objeto serializado
+        try {
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(pathname));
+            Object data = objectInputStream.readObject();
+            objectInputStream.close();
+            return data;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static void SerializeArrayList(String pathname, Object object) {
+
+        final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+        String representacionBonita = prettyGson.toJson(object);
+        System.out.println(representacionBonita);
+
+        try {
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(pathname));
+            objectOutputStream.writeObject(object);
+            objectOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static Object deserializeArrayList(String pathname) {
+        // Leer un objeto serializado
+        try {
+            ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(pathname));
+            Object data = objectInputStream.readObject();
+            objectInputStream.close();
+            return data;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
