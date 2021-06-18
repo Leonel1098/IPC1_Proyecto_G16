@@ -452,7 +452,7 @@ public class Main {
     public static void MostrarUsuarios() {
         for (int i = 0; i < Users.size(); i++) {
 
-            System.out.println("UserName : " + Users.get(i).getusername() + " Password : " + Users.get(i).getPassword());
+            System.out.println("UserName : " + Users.get(i).getusername() + "|| Password : " + Users.get(i).getPassword());
         }
     }
 
