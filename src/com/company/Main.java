@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
 //
 public class Main {
     public static Gson gson = new Gson();
@@ -24,7 +23,6 @@ public class Main {
     static String path = "C:\\Users\\Garcia\\Desktop\\ArchivosJson";
 
     public static void main(String[] args) {
-
     Users();
     loguin();
 
@@ -58,8 +56,7 @@ public class Main {
             System.out.println("3.Clientes ");
             System.out.println("4.Facturas");
             System.out.println("5.Guardar Cambios");
-            System.out.println("6.Cerrar Sesion");
-            System.out.println("7.Salir");
+            System.out.println("6.Salir");
             String Op = u.nextLine();
             switch (Op) {
                 case "1":
@@ -78,9 +75,6 @@ public class Main {
                     SubmenuGuardarCambios();
                     break;
                 case "6":
-                    System.out.println("-----Cerrar Sesión-----");
-                    break;
-                case "7":
                     System.out.println("-----Vuelve pronto-----");
                     flag = false;
                     break;
@@ -100,7 +94,6 @@ public class Main {
             System.out.println("2.Eliminar Usuario");
             System.out.println("3.Ver Usuario ");
             System.out.println("4.Regresar al Menú Principal");
-            System.out.println("5.Salir");
             String Op = u.nextLine();
             switch (Op) {
                 case "1":
@@ -119,14 +112,15 @@ public class Main {
                     break;
                 case "3":
                     System.out.println("-----Ver Usuario----- ");
+                    System.out.println("t----------------------");
+                    System.out.println("Ingrese UserName del Usuario");
+                    String nombre= u.nextLine();
+                    VerUsuario(nombre);
+                    System.out.println("t----------------------");
                     break;
                 case "4":
                     System.out.println("-----Regresar al Menú Principal-----");
                     Menu();
-                    break;
-                case "5":
-                    System.out.println("Vuelve pronto :)");
-                    flag = false;
                     break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
@@ -145,7 +139,6 @@ public class Main {
             System.out.println("2.Eliminar Producto");
             System.out.println("3.Ver Producto ");
             System.out.println("4.Regresar al Menú Principal");
-            System.out.println("5.Salir");
             String Op = u.nextLine();
             switch (Op) {
                 case "1":
@@ -165,10 +158,6 @@ public class Main {
                     System.out.println("-----Regresar al Menú Principal-----");
                     Menu();
                     break;
-                case "5":
-                    System.out.println("Vuelve pronto :)");
-                    flag = false;
-                    break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
                     System.out.println();
@@ -186,7 +175,6 @@ public class Main {
             System.out.println("2.Eliminar Cliente");
             System.out.println("3.Ver Cliente ");
             System.out.println("4.Regresar al Menú Principal");
-            System.out.println("5.Salir");
             String Op = u.nextLine();
             switch (Op) {
                 case "1":
@@ -206,10 +194,6 @@ public class Main {
                     System.out.println("-----Regresar al Menú Principal-----");
                     Menu();
                     break;
-                case "5":
-                    System.out.println("Vuelve pronto :)");
-                    flag = false;
-                    break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
                     System.out.println();
@@ -227,7 +211,6 @@ public class Main {
             System.out.println("2.Eliminar Factura");
             System.out.println("3.Ver Factura ");
             System.out.println("4.Regresar al Menú Principal");
-            System.out.println("5.Salir");
             String Op = u.nextLine();
             switch (Op) {
                 case "1":
@@ -247,10 +230,6 @@ public class Main {
                     System.out.println("-----Regresar al Menú Principal-----");
                     Menu();
                     break;
-                case "5":
-                    System.out.println("Vuelve pronto :)");
-                    flag = false;
-                    break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
                     System.out.println();
@@ -267,25 +246,19 @@ public class Main {
             System.out.println("1.Json ");
             System.out.println("2.Binario");
             System.out.println("3.Regresar al Menú Principal");
-            System.out.println("4.Salir");
             String Op = u.nextLine();
             switch (Op) {
                 case "1":
                     System.out.println("-----Json-----");
                     representacionBonita="";
-
                     SerializacionJson("users.json",Users);
                     break;
                 case "2":
                     System.out.println("------Bin------");
                     break;
-                case "4":
+                case "3":
                     System.out.println("-----Regresar al Menú Principal-----");
                     Menu();
-                    break;
-                case "5":
-                    System.out.println("Vuelve pronto :)");
-                    flag = false;
                     break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
@@ -496,6 +469,17 @@ public class Main {
         }
     }
 
+    public static void VerUsuario(String nombre) {
+
+        for (int i = 0; i < Users.size(); i++) {
+            if (nombre.equals(Users.get(i).getusername())) {
+                System.out.println("El Usuario es  " +Users.get(i).getusername() );
+            }if (nombre.equals(null)){
+                System.out.printf("No se Encontro el Usuario ");
+            }
+
+        }
+    }
     public static void SerializeArrayList(String pathname, Object object) {
 
         final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
