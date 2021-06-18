@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-
+//
 public class Main {
     public static Gson gson = new Gson();
     public static Scanner u = new Scanner(System.in);
@@ -29,6 +29,7 @@ public class Main {
     loguin();
 
     }
+    //Login de los Usuariosn 
     public static void loguin (){
         System.out.println("Ingrese el nombre de Usuario");
         String usuario = u.nextLine();
