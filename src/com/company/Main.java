@@ -25,20 +25,21 @@ public class Main implements Serializable {
     public static ArrayList<Clients> Clients = new ArrayList<>();
     public static String dir;
     //path lugar donde estan las cargas JSON
-    static String path = "C:\\Users\\Garcia\\Desktop\\ArchivosJson";
+
 
     public static void main(String[] args) {
 
-        Users=(ArrayList<users>)deserializeArrayList("users.ipcrm");
-        //Users();
+
+        Users();
         loguin();
 
     }
 
     //Login de los Usuariosn
+    public static String usuario ;
     public static void loguin() {
         System.out.println("Ingrese el nombre de Usuario");
-        String usuario = u.nextLine();
+       usuario = u.nextLine();
         System.out.println("Ingrese la contraseña");
         String contraseña = u.nextLine();
         boolean verificar = false;
@@ -54,9 +55,20 @@ public class Main implements Serializable {
 
         if (verificar) {
             System.out.println("Hola " + usuario + " :)");
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+            String HoraFecha=dtf.format(LocalDateTime.now());
+            logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Ingreso Exitoso "+"\n";
+            logAcciones();
             Menu();
+
         } else {
             System.out.println("Los datos ingresados no son correctos");
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+            String HoraFecha=dtf.format(LocalDateTime.now());
+            logAcciones+=HoraFecha+" \t" +usuario +" : "+"Ingreso Fallido"+"\n";
+            logAcciones();
             loguin();
         }
     }
@@ -116,6 +128,7 @@ public class Main implements Serializable {
                 case "1":
                     System.out.println("-----Listar Usuarios-----");
                     MostrarUsuarios();
+
                     System.out.println("-------------------------");
 
                     break;
@@ -125,6 +138,12 @@ public class Main implements Serializable {
                     System.out.println("Ingrese User NAme del Usuario");
                     String name = u.nextLine();
                     EliminarUsuario(name);
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                    String HoraFecha=dtf.format(LocalDateTime.now());
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnioa a : "+name+"\n";
+                    logAcciones();
+
                     System.out.println("t----------------------");
                     break;
                 case "3":
@@ -160,13 +179,23 @@ public class Main implements Serializable {
             switch (Op) {
                 case "1":
                     System.out.println("-----Listar Productos-----");
-                    System.out.printf("t----------------------");
+                    System.out.println("t----------------------");
                     System.out.println("-------------------------");
                     break;
                 case "2":
                     System.out.println("------Eliminar Producto------");
-                    System.out.printf("t----------------------");
-                    System.out.printf("t----------------------");
+                    System.out.println("t----------------------");
+                    String Producto=u.nextLine();
+
+
+
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                    String HoraFecha=dtf.format(LocalDateTime.now());
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+Producto+"\n";
+                    logAcciones();
+
+                    System.out.println("t----------------------");
                     break;
                 case "3":
                     System.out.println("-----Ver Producto----- ");
@@ -202,7 +231,20 @@ public class Main implements Serializable {
                 case "2":
                     System.out.println("------Eliminar Cliente------");
                     System.out.printf("t----------------------");
-                    System.out.printf("t----------------------");
+
+
+
+
+                    String Cliente=u.nextLine();
+
+
+
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                    String HoraFecha=dtf.format(LocalDateTime.now());
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+Cliente+"\n";
+                    logAcciones();
+                    System.out.println("t----------------------");
                     break;
                 case "3":
                     System.out.println("-----Ver Cliente----- ");
@@ -232,13 +274,25 @@ public class Main implements Serializable {
             switch (Op) {
                 case "1":
                     System.out.println("-----Listar Factura-----");
-                    System.out.printf("t----------------------");
+                    System.out.println("t----------------------");
                     System.out.println("-------------------------");
                     break;
                 case "2":
                     System.out.println("------Eliminar Factura------");
-                    System.out.printf("t----------------------");
-                    System.out.printf("t----------------------");
+                    System.out.println("t----------------------");
+
+
+
+                    String Factura=u.nextLine();
+
+
+
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                    String HoraFecha=dtf.format(LocalDateTime.now());
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+Factura+"\n";
+                    logAcciones();
+                    System.out.println("t----------------------");
                     break;
                 case "3":
                     System.out.println("-----Ver Factura----- ");
@@ -362,7 +416,7 @@ public class Main implements Serializable {
         try {
             System.out.println("Ingrese la dirección de llos usuarios");
             dir = u.nextLine();
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\users.json";
+            dir = "users.json";
 
             Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),users[].class)));
             ShowUsers();
@@ -614,15 +668,13 @@ public class Main implements Serializable {
         }
         return null;
     }
-    public static String logAcciones;
+    public static String logAcciones ="";
     public static void logAcciones(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        System.out.println(dtf.format(LocalDateTime.now()));
 
         try {
             FileWriter archivo = new FileWriter("log.log");
 
-            archivo.write(dtf.format(LocalDateTime.now())+logAcciones + "\n");
+            archivo.write(logAcciones + "\n");
 
 
             archivo.close();
