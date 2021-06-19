@@ -11,8 +11,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
 //
-public class Main {
+public class Main implements Serializable {
     public static Gson gson = new Gson();
     public static Scanner u = new Scanner(System.in);
     public static config configuracion;
@@ -23,28 +24,37 @@ public class Main {
     static String path = "C:\\Users\\Garcia\\Desktop\\ArchivosJson";
 
     public static void main(String[] args) {
-    Users();
-    loguin();
+        Users();
+        loguin();
 
     }
-    //Login de los Usuariosn 
-    public static void loguin (){
+
+    //Login de los Usuariosn
+    public static void loguin() {
         System.out.println("Ingrese el nombre de Usuario");
         String usuario = u.nextLine();
         System.out.println("Ingrese la contraseña");
         String contraseña = u.nextLine();
-        for (int i=0;i<Users.size();i++) {
-            System.out.println(Users.get(i).getusername());
-            System.out.println(Users.get(i).getPassword());
-            if (usuario.equals(Users.get(i).getusername() )&& contraseña.equals(Users.get(i).getPassword())  ){
-                System.out.printf("Hola "+usuario+ " :)");
-                Menu();
-            }else if (Users.equals(null)){
-                System.out.println("Los datos ingresados no son correctos");
-                loguin();
+        boolean verificar = false;
+        for (int i = 0; i < Users.size(); i++) {
+
+            if (usuario.equals(Users.get(i).getusername()) && contraseña.equals(Users.get(i).getPassword())) {
+
+                verificar = true;
+
             }
         }
+
+
+        if (verificar) {
+            System.out.println("Hola " + usuario + " :)");
+            Menu();
+        } else {
+            System.out.println("Los datos ingresados no son correctos");
+            loguin();
+        }
     }
+
     public static void Menu() {
         boolean flag = true;
         do {
@@ -85,6 +95,7 @@ public class Main {
             }
         } while (flag);
     }
+
     public static void SubmenuUsuarios() {
         boolean flag = true;
         do {
@@ -114,7 +125,7 @@ public class Main {
                     System.out.println("-----Ver Usuario----- ");
                     System.out.println("t----------------------");
                     System.out.println("Ingrese UserName del Usuario");
-                    String nombre= u.nextLine();
+                    String nombre = u.nextLine();
                     VerUsuario(nombre);
                     System.out.println("t----------------------");
                     break;
@@ -250,11 +261,14 @@ public class Main {
             switch (Op) {
                 case "1":
                     System.out.println("-----Json-----");
-                    representacionBonita="";
-                    SerializacionJson("users.json",Users);
+                    representacionBonita = "";
+                    SerializacionJson("users.json", Users);
                     break;
                 case "2":
                     System.out.println("------Bin------");
+                    System.out.println("Serealizando....");
+                    SerializeBin("users.ipcrm", Users);
+                    System.out.println("Serealizado....");
                     break;
                 case "3":
                     System.out.println("-----Regresar al Menú Principal-----");
@@ -347,7 +361,7 @@ public class Main {
         try {
             System.out.println("Ingrese la dirección de llos usuarios");
             dir = u.nextLine();
-            dir =  "users.json";
+            dir = "users.json";
 
             Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), users[].class)));
             for (users p : Users)
@@ -367,9 +381,6 @@ public class Main {
             }
 
         }
-
-
-
 
 
     }
@@ -460,9 +471,10 @@ public class Main {
 
         for (int i = 0; i < Users.size(); i++) {
             if (name.equals(Users.get(i).getusername())) {
-                System.out.println("Se Elimino a " +Users.get(i).getusername() );
+                System.out.println("Se Elimino a " + Users.get(i).getusername());
                 Users.remove(i);
-            }if (name.equals(null)){
+            }
+            if (name.equals(null)) {
                 System.out.printf("No se Encontro el Usuario ");
             }
 
@@ -473,25 +485,31 @@ public class Main {
 
         for (int i = 0; i < Users.size(); i++) {
             if (nombre.equals(Users.get(i).getusername())) {
-                System.out.println("El Usuario es  " +Users.get(i).getusername() );
-            }if (nombre.equals(null)){
+                System.out.println("El Usuario es  " + Users.get(i).getusername());
+            }
+            if (nombre.equals(null)) {
                 System.out.printf("No se Encontro el Usuario ");
             }
 
         }
     }
-    public static void SerializeArrayList(String pathname, Object object) {
+    public  static ObjectOutputStream oos;
+    public static void SerializeBin(String pathname, Object object) {
 
         final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-        String representacionBonita = prettyGson.toJson(object);
+        final String representacionBonita = prettyGson.toJson(object);
         System.out.println(representacionBonita);
 
         try {
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(pathname));
-            objectOutputStream.writeObject(object);
-            objectOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            // Creamos un archivo, entre comillas va la ruta donde queremos almacenar el archivo
+            // SE RECOMIENDA UTILIZAR RUTAS RELATIVAS PARA ESTE CASO.
+             oos = new ObjectOutputStream(new FileOutputStream(pathname));
+            // Utilizamos el metodo writeObject, para convertir el objeto serializable en parte del archivo
+            oos.writeObject(object);
+            // Cerramos el archivo para que se efectuen los cambios
+            oos.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
     }
