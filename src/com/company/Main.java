@@ -39,7 +39,7 @@ public class Main implements Serializable {
     public static String usuario ;
     public static void loguin() {
         System.out.println("Ingrese el nombre de Usuario");
-       usuario = u.nextLine();
+        usuario = u.nextLine();
         System.out.println("Ingrese la contraseña");
         String contraseña = u.nextLine();
         boolean verificar = false;
@@ -645,7 +645,7 @@ public class Main implements Serializable {
         try {
             // Creamos un archivo, entre comillas va la ruta donde queremos almacenar el archivo
             // SE RECOMIENDA UTILIZAR RUTAS RELATIVAS PARA ESTE CASO.
-             oos = new ObjectOutputStream(new FileOutputStream(pathname));
+            oos = new ObjectOutputStream(new FileOutputStream(pathname));
             // Utilizamos el metodo writeObject, para convertir el objeto serializable en parte del archivo
             oos.writeObject(object);
             // Cerramos el archivo para que se efectuen los cambios
