@@ -13,12 +13,14 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 //
-public class Main implements Serializable {
+public class main implements Serializable {
     public static Gson gson = new Gson();
     public static Scanner u = new Scanner(System.in);
     public static config configuracion;
     public static ArrayList<users> Users = new ArrayList<>();
     public static ArrayList<products> Products = new ArrayList<>();
+    public static ArrayList<Invoices> Invoices = new ArrayList<>();
+    public static ArrayList<Clients> Clients = new ArrayList<>();
     public static String dir;
     //path lugar donde estan las cargas JSON
     static String path = "C:\\Users\\Garcia\\Desktop\\ArchivosJson";
@@ -284,69 +286,64 @@ public class Main implements Serializable {
 
     public static void jalada() {
         try {
-
             System.out.println("Ingrese la dirección de la configuración");
             dir = u.nextLine();
-            dir = path + "\\config.json";
+            dir = "C:\\Users\\Alberto\\Desktop\\borar\\config.json";
 
             configuracion = gson.fromJson(getContentOfFile(dir), config.class);
             System.out.println("Restaurante:  " + configuracion.getname() + "  Dirección:   " + configuracion.getaddress() + "  Load:  " + configuracion.getLoad() + "  Telefono:  " + configuracion.getPhone());
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             File j = new File(dir);
-
             if (j.exists()) {
                 System.out.println("El archivo json tiene errores");
                 System.out.println("Ingrese un archivo sin errores");
                 jalada();
-            } else {
+            }
+            else   {
                 System.out.println("El archivo no existe");
                 System.out.println("Ingrese una dirección correcta");
                 jalada();
             }
 
         }
-        if (configuracion.getLoad().equalsIgnoreCase("bin")) {
+        if(configuracion.getLoad().equalsIgnoreCase("bin"))
+        {
             System.out.println("Deserealización desde bin");
 
-        } else {
+        }
+        else
+        {
             System.out.println("Deserealización desde json");
             Users();
             productos();
+            Invoices();
+            Clients();
 
         }
-        System.out.printf("Serializando Configuracion ");
-        config objetoConfig = new config("Prueba", "Json ", 5563215, "Prruebas ");
-        SerializacionJson("config.json", configuracion);
-
 
     }
-
     public static void productos() {
         try {
             System.out.println("Ingrese la dirección de los productos");
             dir = u.nextLine();
-            dir = path + "\\products.json";
+            dir = "C:\\Users\\Alberto\\Desktop\\borar\\products.json";
 
 
-            Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), products[].class)));
-
-
-            int i = 0, j = 0;
-           /* for (products p: Products) {
-                i++;
-              //  System.out.println("   Numero de ID:    " + p.getId() + "    Nombre: " + p.getname() + "    Descripcion:   " + p.getDescription() + "   Costo:     " + p.getCost() + "   Precio:    " + p.getPrice() + "    Ingredientes:   " );
-             //   for(ingredients s:Products.get(i).getIngredients())
-                    System.out.println("Nombre:  "+p.getIngredients(i).getName());
-
-            }*/
-        } catch (Exception e) {
+            Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),products[].class)));
+            ShowProducts();
+        }
+        catch (Exception e)
+        {
             File j = new File(dir);
 
             if (j.exists()) {
                 System.out.println("El archivo json tiene errores");
                 System.out.println("Ingrese un archivo sin errores");
                 Users();
-            } else {
+            }
+            else   {
                 System.out.println("El archivo no existe");
                 System.out.println("Ingrese una dirección correcta");
                 Users();
@@ -355,26 +352,29 @@ public class Main implements Serializable {
         }
 
 
-    }
 
+    }
     public static void Users() {
         try {
             System.out.println("Ingrese la dirección de llos usuarios");
             dir = u.nextLine();
-            dir = "users.json";
+            dir = "C:\\Users\\Alberto\\Desktop\\borar\\users.json";
 
-            Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir), users[].class)));
-            for (users p : Users)
-                System.out.println(p.getusername() + p.getPassword());
+            Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),users[].class)));
+            ShowUsers();
 
-        } catch (Exception e) {
+
+        }
+        catch (Exception e)
+        {
             File j = new File(dir);
 
             if (j.exists()) {
                 System.out.println("El archivo json tiene errores");
                 System.out.println("Ingrese un archivo sin errores");
                 Users();
-            } else {
+            }
+            else   {
                 System.out.println("El archivo no existe");
                 System.out.println("Ingrese una dirección correcta");
                 Users();
@@ -382,7 +382,91 @@ public class Main implements Serializable {
 
         }
 
+    }
+    public static void Invoices() {
+        try {
+            System.out.println("Ingrese la dirección de las facturas" +
+                    "");
+            dir = u.nextLine();
+            dir = "C:\\Users\\Alberto\\Desktop\\borar\\invoices.json";
 
+            Invoices.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),Invoices[].class)));
+            ShowInvoices();
+
+        }
+        catch (Exception e)
+        {
+            File j = new File(dir);
+
+            if (j.exists()) {
+                System.out.println("El archivo json tiene errores");
+                System.out.println("Ingrese un archivo sin errores");
+                Invoices();
+            }
+            else   {
+                System.out.println("El archivo no existe");
+                System.out.println("Ingrese una dirección correcta");
+                Invoices();
+            }
+
+        }
+    }
+    public static void  Clients(){
+        try {
+            System.out.println("Ingrese la dirección de los clientes");
+            dir = u.nextLine();
+            dir = "C:\\Users\\Alberto\\Desktop\\borar\\clients.json";
+            Clients.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),Clients[].class)));
+            ShowClients();
+
+        }
+        catch (Exception e)
+        {
+            File j = new File(dir);
+
+            if (j.exists()) {
+                System.out.println("El archivo json tiene errores");
+                System.out.println("Ingrese un archivo sin errores");
+                Clients();
+            }
+            else   {
+                System.out.println("El archivo no existe");
+                System.out.println("Ingrese una dirección correcta");
+                Clients();
+            }
+
+        }
+    }
+    public static void ShowProducts()
+    {
+        for (products p: Products) {
+
+            System.out.println("   Numero de ID:    " + p.getId() + "    Nombre: " + p.getname() + "    Descripcion:   " + p.getDescription() + "   Costo:     " + p.getCost() + "   Precio:    " + p.getPrice() + "\nIngredientes:  " );
+            for(int i =0; i<p.ingredients.length;i++) {
+                System.out.println("Nombre:  " + p.getIngredients(i).getName() + "\nCantidad:  " + p.getIngredients(i).getQuantity() + "\nUnidades:   " + p.getIngredients(i).getUnits()+"\n");
+
+            }  System.out.println();
+            System.out.println();
+            System.out.println();
+
+        }
+    }
+    public static void ShowUsers()
+    {
+        for (users p:Users)
+            System.out.println(p.getusername()+p.getPassword());
+    }
+    public static void ShowInvoices()
+    {
+        for (Invoices p:Invoices) {
+            System.out.println(p.getClient() + p.getId() + p.getDate());
+            for (int i = 0; i<p.products.length;i++)System.out.println(p.getProducts(i).getPrice() + p.getProducts(i).getName());
+        }
+
+    }
+    public static void ShowClients(){
+        for (Clients p: Clients)
+            System.out.println(p.getAddress()+p.getName()+p.getId()+p.getNit()+p.getPhone());
     }
 
     public static String getContentOfFile(String pathname) {
