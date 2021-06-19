@@ -8,12 +8,14 @@ import java.io.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
 //
-public class main implements Serializable {
+public class Main implements Serializable {
     public static Gson gson = new Gson();
     public static Scanner u = new Scanner(System.in);
     public static config configuracion;
@@ -26,7 +28,9 @@ public class main implements Serializable {
     static String path = "C:\\Users\\Garcia\\Desktop\\ArchivosJson";
 
     public static void main(String[] args) {
-        Users();
+
+        Users=(ArrayList<users>)deserializeArrayList("users.ipcrm");
+        //Users();
         loguin();
 
     }
@@ -609,5 +613,22 @@ public class main implements Serializable {
             e.printStackTrace();
         }
         return null;
+    }
+    public static String logAcciones;
+    public static void logAcciones(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        System.out.println(dtf.format(LocalDateTime.now()));
+
+        try {
+            FileWriter archivo = new FileWriter("log.log");
+
+            archivo.write(dtf.format(LocalDateTime.now())+logAcciones + "\n");
+
+
+            archivo.close();
+
+        } catch (Exception e) {
+
+        }
     }
 }
