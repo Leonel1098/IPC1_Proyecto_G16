@@ -29,7 +29,6 @@ public class Main implements Serializable {
 
     public static void main(String[] args) {
 
-
         Users();
         loguin();
 
@@ -48,10 +47,8 @@ public class Main implements Serializable {
             if (usuario.equals(Users.get(i).getusername()) && contraseña.equals(Users.get(i).getPassword())) {
 
                 verificar = true;
-
             }
         }
-
 
         if (verificar) {
             System.out.println("Hola " + usuario + " :)");
@@ -128,20 +125,18 @@ public class Main implements Serializable {
                 case "1":
                     System.out.println("-----Listar Usuarios-----");
                     MostrarUsuarios();
-
                     System.out.println("-------------------------");
-
                     break;
                 case "2":
                     System.out.println("------Eliminar Usuario------");
                     System.out.println("t----------------------");
-                    System.out.println("Ingrese User NAme del Usuario");
+                    System.out.println("Ingrese Username del Usuario");
                     String name = u.nextLine();
                     EliminarUsuario(name);
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                     String HoraFecha=dtf.format(LocalDateTime.now());
-                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnioa a : "+name+"\n";
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+name+"\n";
                     logAcciones();
 
                     System.out.println("t----------------------");
@@ -149,7 +144,7 @@ public class Main implements Serializable {
                 case "3":
                     System.out.println("-----Ver Usuario----- ");
                     System.out.println("t----------------------");
-                    System.out.println("Ingrese UserName del Usuario");
+                    System.out.println("Ingrese Username del Usuario");
                     String nombre = u.nextLine();
                     VerUsuario(nombre);
                     System.out.println("t----------------------");
@@ -179,26 +174,31 @@ public class Main implements Serializable {
             switch (Op) {
                 case "1":
                     System.out.println("-----Listar Productos-----");
-                    System.out.println("t----------------------");
+                    MostrarProductos();
                     System.out.println("-------------------------");
                     break;
                 case "2":
                     System.out.println("------Eliminar Producto------");
                     System.out.println("t----------------------");
-                    String Producto=u.nextLine();
-
-
+                    System.out.println("Ingrese el ID del Producto");
+                    String id = u.nextLine();
+                    EliminarProducto(id);
 
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                     String HoraFecha=dtf.format(LocalDateTime.now());
-                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+Producto+"\n";
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+id+"\n";
                     logAcciones();
 
                     System.out.println("t----------------------");
                     break;
                 case "3":
                     System.out.println("-----Ver Producto----- ");
+                    System.out.println("t----------------------");
+                    System.out.println("Ingrese ID del Producto");
+                    String Id = u.nextLine();
+                    VerProducto(Id);
+                    System.out.printf("t----------------------");
                     break;
                 case "4":
                     System.out.println("-----Regresar al Menú Principal-----");
@@ -225,29 +225,30 @@ public class Main implements Serializable {
             switch (Op) {
                 case "1":
                     System.out.println("-----Listar Clientes-----");
-                    System.out.printf("t----------------------");
+                    MostrarClientes();
                     System.out.println("-------------------------");
                     break;
                 case "2":
                     System.out.println("------Eliminar Cliente------");
                     System.out.printf("t----------------------");
-
-
-
-
-                    String Cliente=u.nextLine();
-
-
+                    System.out.println("Ingrese el ID del Cliente");
+                    String id = u.nextLine();
+                    EliminarCliente(id);
 
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                     String HoraFecha=dtf.format(LocalDateTime.now());
-                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+Cliente+"\n";
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+id+"\n";
                     logAcciones();
                     System.out.println("t----------------------");
                     break;
                 case "3":
                     System.out.println("-----Ver Cliente----- ");
+                    System.out.println("t----------------------");
+                    System.out.println("Ingrese ID del Cliente");
+                    String Id = u.nextLine();
+                    VerCliente(Id);
+                    System.out.printf("t----------------------");
                     break;
                 case "4":
                     System.out.println("-----Regresar al Menú Principal-----");
@@ -274,28 +275,29 @@ public class Main implements Serializable {
             switch (Op) {
                 case "1":
                     System.out.println("-----Listar Factura-----");
-                    System.out.println("t----------------------");
+                    MostrarFacturas();
                     System.out.println("-------------------------");
                     break;
                 case "2":
                     System.out.println("------Eliminar Factura------");
                     System.out.println("t----------------------");
-
-
-
-                    String Factura=u.nextLine();
-
-
-
+                    System.out.println("Ingrese el ID de las Facturas");
+                    String id = u.nextLine();
+                    EliminarFacturas(id);
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                     String HoraFecha=dtf.format(LocalDateTime.now());
-                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+Factura+"\n";
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+id+"\n";
                     logAcciones();
                     System.out.println("t----------------------");
                     break;
                 case "3":
                     System.out.println("-----Ver Factura----- ");
+                    System.out.println("t----------------------");
+                    System.out.println("Ingrese ID del Cliente");
+                    String Id = u.nextLine();
+                    VerFacturas(Id);
+                    System.out.printf("t----------------------");
                     break;
                 case "4":
                     System.out.println("-----Regresar al Menú Principal-----");
@@ -322,12 +324,38 @@ public class Main implements Serializable {
                 case "1":
                     System.out.println("-----Json-----");
                     representacionBonita = "";
+                    System.out.println("Serealizando....");
                     SerializacionJson("users.json", Users);
+                    System.out.println("Serealizado....");
+
+                    System.out.println("Serealizando....");
+                    SerializacionJson("products.json", Products);
+                    System.out.println("Serealizado....");
+
+                    System.out.println("Serealizando....");
+                    SerializacionJson("clients.json", Clients);
+                    System.out.println("Serealizado....");
+
+                    System.out.println("Serealizando....");
+                    SerializacionJson("invoices.json", Invoices);
+                    System.out.println("Serealizado....");
                     break;
                 case "2":
                     System.out.println("------Bin------");
                     System.out.println("Serealizando....");
                     SerializeBin("users.ipcrm", Users);
+                    System.out.println("Serealizado....");
+
+                    System.out.println("Serealizando....");
+                    SerializeBin("products.ipcrm",Products);
+                    System.out.println("Serealizado....");
+
+                    System.out.println("Serealizando....");
+                    SerializeBin("clients.ipcrm", Clients);
+                    System.out.println("Serealizado....");
+
+                    System.out.println("Serealizando....");
+                    SerializeBin("invoices.ipcrm", Invoices);
                     System.out.println("Serealizado....");
                     break;
                 case "3":
@@ -562,6 +590,137 @@ public class Main implements Serializable {
         return "";
     }
 
+    //----------------------------Mostrar Datos-----------------------------------
+    public static void MostrarUsuarios() {
+        for (int i = 0; i < Users.size(); i++) {
+
+            System.out.println("UserName : " + Users.get(i).getusername() + "|| Password : " + Users.get(i).getPassword());
+        }
+    }
+    public static void MostrarProductos (){
+        for (int i = 0; i < Products.size(); i++){
+            System.out.println("  Numero de ID:  " + Products.get(i).getId() + "  || Nombre: " + Products.get(i).getname() + "  || Descripcion:  " + Products.get(i).getDescription() +
+                    "  || Costo:  " + Products.get(i).getCost() + "  || Precio:    " + Products.get(i).getPrice() );
+            System.out.println("  Ingredientes:  " );
+            System.out.println("  Nombre: " + Products.get(i).getIngredients(i).getName() + "  || Cantidad:  " + Products.get(i).getIngredients(i).getQuantity() +
+                    "  ||Unidades:  " + Products.get(i).getIngredients(i).getUnits() );
+        }
+    }
+    public static void MostrarClientes(){
+        for (int i = 0; i < Clients.size(); i++) {
+            System.out.println("Número de ID: " + Clients.get(i).getId() + "  || Name: " + Clients.get(i).getName() + "|| Dirección: " + Clients.get(i).getAddress()
+                    + "  || Telefóno:  " + Clients.get(i).getPhone() + "  || NIT: " + Clients.get(i).getNit());
+        }
+    }
+    public static void MostrarFacturas(){
+        for (int i = 0; i < Invoices.size(); i++){
+            System.out.println("  Numero de ID:  " + Invoices.get(i).getId() + "  || CLiente: " + Invoices.get(i).getClient() + "  || Fecha: " + Invoices.get(i).getDate());
+            System.out.println("  Productos:  " );
+            System.out.println("  Nombre: " + Invoices.get(i).getProducts(i).getName() + "  || Precio:  " + Invoices.get(i).getProducts(i).getPrice());
+        }
+    }
+    //----------------------------Eliminar Datos----------------------------------
+    public static void EliminarUsuario(String name) {
+
+        for (int i = 0; i < Users.size(); i++) {
+            if (name.equals(Users.get(i).getusername())) {
+                System.out.println("Se Elimino a:" + Users.get(i).getusername());
+                Users.remove(i);
+            }
+            if (name.equals(null)) {
+                System.out.printf("No se encontro el usuario ");
+            }
+
+        }
+    }
+    public static void EliminarProducto(String id) {
+        for (int i = 0; i < Products.size(); i++) {
+            if (id.equals(Products.get(i).getId())) {
+                System.out.println("Se eliminó el Producto: " + Products.get(i).getId());
+                Products.remove(i);
+            }
+            if (id.equals(null)) {
+                System.out.printf("No se encontro el producto ");
+            }
+        }
+    }
+    public static void EliminarCliente(String id){
+        for (int i = 0; i < Clients.size(); i++) {
+            if (id.equals(Clients.get(i).getId())) {
+                System.out.println("Se eliminó al cliente con ID: " + Clients.get(i).getId());
+                Clients.remove(i);
+            }
+            if (id.equals(null)) {
+                System.out.printf("No se encontro el cliente ");
+            }
+
+        }
+    }
+    public static void EliminarFacturas (String id){
+        for (int i = 0; i < Invoices.size(); i++) {
+            if (id.equals(Invoices.get(i).getId())) {
+                System.out.println("Se eliminó la factura con ID: " + Invoices.get(i).getId());
+                Invoices.remove(i);
+            }
+            if (id.equals(null)) {
+                System.out.printf("No se encontró la factura ");
+            }
+
+        }
+
+    }
+    //----------------------------Ver Datos Específicos---------------------------
+    public static void VerUsuario(String nombre) {
+
+        for (int i = 0; i < Users.size(); i++) {
+            if (nombre.equals(Users.get(i).getusername())) {
+                System.out.println("UserName : " + Users.get(i).getusername() + "|| Password : " + Users.get(i).getPassword());
+            }
+            if (nombre.equals(null)) {
+                System.out.printf("No se Encontro el Usuario ");
+            }
+
+        }
+    }
+    public static void VerProducto(String Id){
+        for (int i = 0; i < Products.size(); i++) {
+            if (Id.equals(Products.get(i).getId())) {
+                System.out.println("El Producto es:  ");
+                System.out.println("  Numero de ID:  " + Products.get(i).getId() + "  || Nombre: " + Products.get(i).getname() + "  || Descripcion:  " + Products.get(i).getDescription() +
+                        "  || Costo:  " + Products.get(i).getCost() + "  || Precio:    " + Products.get(i).getPrice() );
+                System.out.println("  Ingredientes:  " );
+                System.out.println("  Nombre: " + Products.get(i).getIngredients(i).getName() + "  || Cantidad:  " + Products.get(i).getIngredients(i).getQuantity() +
+                        "  ||Unidades:  " + Products.get(i).getIngredients(i).getUnits() );
+            }
+            if (Id.equals(null)) {
+                System.out.printf("No se Encontro el producto");
+            }
+        }
+    }
+    public static void VerCliente(String Id){
+        for (int i = 0; i <Clients.size(); i++) {
+            if (Id.equals(Clients.get(i).getId())) {
+                System.out.println("El Cliente es:  ");
+                System.out.println("Número de ID: " + Clients.get(i).getId() + "  || Name: " + Clients.get(i).getName() + "|| Dirección: " + Clients.get(i).getAddress()
+                        + "  || Telefóno:  " + Clients.get(i).getPhone() + "  || NIT: " + Clients.get(i).getNit());
+            }
+            if (Id.equals(null)) {
+                System.out.printf("No se Encontro el Cliente");
+            }
+        }
+    }
+    public static void VerFacturas(String Id){
+        for (int i = 0; i <Invoices.size(); i++) {
+            if (Id.equals(Invoices.get(i).getId())) {
+                System.out.println("  Numero de ID:  " + Invoices.get(i).getId() + "  || CLiente: " + Invoices.get(i).getClient() + "  || Fecha: " + Invoices.get(i).getDate());
+                System.out.println("  Productos:  " );
+                System.out.println("  Nombre: " + Invoices.get(i).getProducts(i).getName() + "  || Precio:  " + Invoices.get(i).getProducts(i).getPrice());
+            }
+            if (Id.equals(null)) {
+                System.out.printf("No se Encontro la Factura");
+            }
+        }
+    }
     //<----------------------------------------------------------------------Serializacion
     public static String representacionBonita = "";
 
@@ -601,40 +760,6 @@ public class Main implements Serializable {
         return null;
     }
 
-    //----------------------------Mostrar Datos-----------------------------------
-    public static void MostrarUsuarios() {
-        for (int i = 0; i < Users.size(); i++) {
-
-            System.out.println("UserName : " + Users.get(i).getusername() + "|| Password : " + Users.get(i).getPassword());
-        }
-    }
-
-    public static void EliminarUsuario(String name) {
-
-        for (int i = 0; i < Users.size(); i++) {
-            if (name.equals(Users.get(i).getusername())) {
-                System.out.println("Se Elimino a " + Users.get(i).getusername());
-                Users.remove(i);
-            }
-            if (name.equals(null)) {
-                System.out.printf("No se Encontro el Usuario ");
-            }
-
-        }
-    }
-
-    public static void VerUsuario(String nombre) {
-
-        for (int i = 0; i < Users.size(); i++) {
-            if (nombre.equals(Users.get(i).getusername())) {
-                System.out.println("El Usuario es  " + Users.get(i).getusername());
-            }
-            if (nombre.equals(null)) {
-                System.out.printf("No se Encontro el Usuario ");
-            }
-
-        }
-    }
     public  static ObjectOutputStream oos;
     public static void SerializeBin(String pathname, Object object) {
 
