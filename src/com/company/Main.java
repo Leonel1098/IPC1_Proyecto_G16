@@ -397,6 +397,10 @@ public class Main implements Serializable {
         if(configuracion.getLoad().equalsIgnoreCase("bin"))
         {
             System.out.println("Deserealización desde bin");
+            ReadBinUsers();
+            ReadBinProducts();
+            ReadBinInvoices();
+            ReadBinClients();
 
         }
         else
@@ -406,18 +410,24 @@ public class Main implements Serializable {
             productos();
             Invoices();
             Clients();
+            RevisionUsers();
+            RevisionProducts();
+            RevisionInvoices();
+            RevisionClients();
+
 
         }
 
     }
+    //INGRESOPORJAVA
     public static void productos() {
         try {
-            System.out.println("Ingrese la dirección de los productos");
-            dir = u.nextLine();
+
             dir = "C:\\Users\\Alberto\\Desktop\\borar\\products.json";
 
 
             Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),products[].class)));
+            RevisionProducts();
             ShowProducts();
         }
         catch (Exception e)
@@ -442,11 +452,11 @@ public class Main implements Serializable {
     }
     public static void Users() {
         try {
-            System.out.println("Ingrese la dirección de llos usuarios");
-            dir = u.nextLine();
-            dir = "users.json";
+
+            dir = "C:\\Users\\Alberto\\Desktop\\borar\\users.json";
 
             Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),users[].class)));
+            RevisionUsers();
             ShowUsers();
 
 
@@ -471,12 +481,11 @@ public class Main implements Serializable {
     }
     public static void Invoices() {
         try {
-            System.out.println("Ingrese la dirección de las facturas" +
-                    "");
-            dir = u.nextLine();
+
             dir = "C:\\Users\\Alberto\\Desktop\\borar\\invoices.json";
 
             Invoices.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),Invoices[].class)));
+            RevisionInvoices();
             ShowInvoices();
 
         }
@@ -499,10 +508,10 @@ public class Main implements Serializable {
     }
     public static void  Clients(){
         try {
-            System.out.println("Ingrese la dirección de los clientes");
-            dir = u.nextLine();
+
             dir = "C:\\Users\\Alberto\\Desktop\\borar\\clients.json";
             Clients.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),Clients[].class)));
+            RevisionClients();
             ShowClients();
 
         }
@@ -523,6 +532,41 @@ public class Main implements Serializable {
 
         }
     }
+    public static String getContentOfFile(String pathname) {
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+
+        try {
+            // Apertura del fichero y creacion de BufferedReader para poder
+            // hacer una lectura comoda (disponer del metodo readLine()).
+            archivo = new File(pathname);
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            // Lectura del fichero
+            String content = "";
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                content += linea + "\n";
+            }
+            return content;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // En el finally cerramos el fichero, para asegurarnos
+            // que se cierra tanto si todo va bien como si salta
+            // una excepcion.
+            try {
+                if (null != fr) {
+                    fr.close();
+                }
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+        return "";
+    }
+    //MUESTRA
     public static void ShowProducts()
     {
         for (products p: Products) {
@@ -540,7 +584,7 @@ public class Main implements Serializable {
     public static void ShowUsers()
     {
         for (users p:Users)
-            System.out.println(p.getusername()+p.getPassword());
+            System.out.println("\nNombre de Usuario: "+p.getusername()+"\nContraseña:  "+p.getPassword());
     }
     public static void ShowInvoices()
     {
@@ -553,6 +597,140 @@ public class Main implements Serializable {
     public static void ShowClients(){
         for (Clients p: Clients)
             System.out.println(p.getAddress()+p.getName()+p.getId()+p.getNit()+p.getPhone());
+    }
+    //INGRESOPORBIN
+    public static void ReadBinProducts()
+    {
+        try
+        {
+            Products.addAll((ArrayList<products>)deserializeArrayList("products.ipcmr"));
+            RevisionProducts();
+            ShowProducts();
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("El archivo no existe");
+        }
+    }
+    public static void ReadBinUsers()
+    {
+        try
+        {
+            Users.addAll((ArrayList<users>)deserializeArrayList("users.ipcmr"));
+            RevisionUsers();
+            ShowUsers();
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("El archivo no existe");
+        }
+    }
+    public static void ReadBinInvoices()
+    {
+        try
+        {
+            Invoices.addAll((ArrayList<Invoices>)deserializeArrayList("invoices.ipcmr"));
+            RevisionInvoices();
+            ShowInvoices();
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("El archivo no existe");
+        }
+    }
+    public static void ReadBinClients()
+    {
+        try
+        {
+            Clients.addAll((ArrayList<Clients>)deserializeArrayList("clients.ipcmr"));
+            RevisionClients();
+            ShowClients();
+
+
+        }
+        catch (Exception e)
+        {
+            System.out.println("El archivo no existe");
+        }
+    }
+    //REVISIONES
+    public static void  RevisionUsers(){
+
+        int cont=0;
+        for (int i = 0;i<Users.size();i++)
+        {
+            for(int j=0;j<Users.size();j++)
+            {
+                if(Users.get(i).getusername().equals(Users.get(j).getusername())) {
+                    cont++;
+                    if (cont > 1) {
+                        System.out.println("Se repitió el nombre de usuario:  " + Users.get(i).getusername());
+                        Users.remove(j);
+                    }
+                }
+            }
+            cont=0;
+        }
+
+
+
+    }
+    public static void RevisionProducts(){
+        int cont=0;
+        for (int i = 0;i<Products.size();i++)
+        {
+            for(int j=0;j<Products.size();j++)
+            {
+                if(Products.get(i).getId().equals(Products.get(j).getId())) {
+                    cont++;
+                    if (cont > 1) {
+                        System.out.println("Se repitió el nombre de usuario:  " + Products.get(i).getId());
+                        Products.remove(j);
+                    }
+                }
+            }
+            cont=0;
+        }
+
+    }
+    public static void RevisionInvoices(){
+        int cont=0;
+        for (int i = 0;i<Invoices.size();i++)
+        {
+            for(int j=0;j<Invoices.size();j++)
+            {
+                if(Invoices.get(i).getId()==(Invoices.get(j).getId())) {
+                    cont++;
+                    if (cont > 1) {
+                        System.out.println("Se repitió el nombre de ID:  " + Invoices.get(i).getId());
+                        Invoices.remove(j);
+                    }
+                }
+            }
+            cont=0;
+        }
+
+    }
+    public static void RevisionClients(){
+        int cont=0;
+        for (int i = 0;i<Clients.size();i++)
+        {
+            for(int j=0;j<Clients.size();j++)
+            {
+                if(Clients.get(i).getId()==(Clients.get(j).getId())) {
+                    cont++;
+                    if (cont > 1) {
+                        System.out.println("Se repitió el ID:  " + Clients.get(i).getId());
+                        Clients.remove(j);
+                    }
+                }
+            }
+            cont=0;
+        }
+
     }
 
     public static String getContentOfFile(String pathname) {
