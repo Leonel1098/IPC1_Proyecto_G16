@@ -379,8 +379,7 @@ public class Main implements Serializable {
     //------------------------------------------Carga de Archivos--------------------------------------------------
     public static void jalada() {
         try {
-            System.out.println("Ingrese la dirección de la configuración");
-            dir = u.nextLine();
+
             dir = "config.json";
 
             configuracion = gson.fromJson(getContentOfFile(dir), config.class);
