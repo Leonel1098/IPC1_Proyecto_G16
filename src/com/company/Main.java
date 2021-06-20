@@ -611,7 +611,7 @@ public class Main implements Serializable {
     public static void ReadBinProducts() {
         try
         {
-            Products.addAll((ArrayList<products>)deserializeArrayList("products.ipcmr"));
+            Products.addAll((ArrayList<products>)deserializeArrayList("products.ipcrm"));
             RevisionProducts();
             ShowProducts();
 
@@ -624,7 +624,7 @@ public class Main implements Serializable {
     public static void ReadBinUsers() {
         try
         {
-            Users.addAll((ArrayList<users>)deserializeArrayList("users.ipcmr"));
+            Users.addAll((ArrayList<users>)deserializeArrayList("users.ipcrm"));
             RevisionUsers();
             ShowUsers();
 
@@ -638,7 +638,7 @@ public class Main implements Serializable {
     {
         try
         {
-            Invoices.addAll((ArrayList<Invoices>)deserializeArrayList("invoices.ipcmr"));
+            Invoices.addAll((ArrayList<Invoices>)deserializeArrayList("invoices.ipcrm"));
             RevisionInvoices();
             ShowInvoices();
 
@@ -652,7 +652,7 @@ public class Main implements Serializable {
     {
         try
         {
-            Clients.addAll((ArrayList<Clients>)deserializeArrayList("clients.ipcmr"));
+            Clients.addAll((ArrayList<Clients>)deserializeArrayList("clients.ipcrm"));
             RevisionClients();
             ShowClients();
 
