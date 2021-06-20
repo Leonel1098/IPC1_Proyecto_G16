@@ -575,6 +575,7 @@ public class Main implements Serializable {
     }*/
     //------------------------------------------------MUESTRA----------------------------------------------------------
     public static void ShowProducts() {
+        System.out.println("...........PRODUCTOS........");
         for (products p: Products) {
 
             System.out.println("   Numero de ID:    " + p.getId() + "    Nombre: " + p.getname() + "    Descripcion:   " + p.getDescription() + "   Costo:     " + p.getCost() + "   Precio:    " + p.getPrice() + "\nIngredientes:  " );
@@ -588,19 +589,23 @@ public class Main implements Serializable {
         }
     }
     public static void ShowUsers() {
+        System.out.println("...........USUARIOS........");
         for (users p:Users)
             System.out.println("\nNombre de Usuario: "+p.getusername()+"\nContraseña:  "+p.getPassword());
     }
     public static void ShowInvoices() {
+        System.out.println("...........FACTURAS........");
         for (Invoices p:Invoices) {
-            System.out.println(p.getClient() + p.getId() + p.getDate());
-            for (int i = 0; i<p.products.length;i++)System.out.println(p.getProducts(i).getPrice() + p.getProducts(i).getName());
+            System.out.println("Cliente: "+p.getClient() +"   ID:  "+ p.getId() +"  Fecha: "+ p.getDate());
+            for (int i = 0; i<p.products.length;i++)System.out.println("Precio:  "+p.getProducts(i).getPrice() +"\n Nombre:"+ p.getProducts(i).getName());
         }
+        System.out.println();
 
     }
     public static void ShowClients(){
+        System.out.println("...........CLIENTES........");
         for (Clients p: Clients)
-            System.out.println(p.getAddress()+p.getName()+p.getId()+p.getNit()+p.getPhone());
+            System.out.println("Direccion:  "+p.getAddress()+"\nNombre: "+p.getName()+"\nID:  "+p.getId()+"\nNIT:  "+p.getNit()+"\nPhone:"+p.getPhone());
     }
     //---------------------------------------------------------INGRESOPORBIN---------------------------------------
     public static void ReadBinProducts() {
