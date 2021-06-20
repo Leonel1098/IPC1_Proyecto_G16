@@ -29,7 +29,7 @@ public class Main implements Serializable {
 
     public static void main(String[] args) {
 
-        //jalada();
+        jalada();
         //Users();
         //productos();
         //Clients();
@@ -408,6 +408,7 @@ public class Main implements Serializable {
             ReadBinProducts();
             ReadBinInvoices();
             ReadBinClients();
+            Menu();
 
         }
         else
@@ -417,10 +418,11 @@ public class Main implements Serializable {
             productos();
             Invoices();
             Clients();
-            RevisionUsers();
+           /* RevisionUsers();
             RevisionProducts();
             RevisionInvoices();
-            RevisionClients();
+            RevisionClients();*/
+            loguin();
 
 
         }
@@ -758,7 +760,7 @@ public class Main implements Serializable {
     public static void logErrores(){
 
         try {
-            FileWriter archivo = new FileWriter("log.log");
+            FileWriter archivo = new FileWriter("Errores.log");
 
             archivo.write(logErrores + "\n");
 
