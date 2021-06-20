@@ -29,7 +29,11 @@ public class Main implements Serializable {
 
     public static void main(String[] args) {
 
+        //jalada();
         Users();
+        productos();
+        Clients();
+        Invoices();
         loguin();
 
     }
@@ -69,6 +73,8 @@ public class Main implements Serializable {
             loguin();
         }
     }
+
+    //----------------------------Menús----------------------------------------------
 
     public static void Menu() {
         boolean flag = true;
@@ -232,7 +238,7 @@ public class Main implements Serializable {
                     System.out.println("------Eliminar Cliente------");
                     System.out.printf("t----------------------");
                     System.out.println("Ingrese el ID del Cliente");
-                    String id = u.nextLine();
+                    int id = u.nextInt();
                     EliminarCliente(id);
 
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -246,7 +252,7 @@ public class Main implements Serializable {
                     System.out.println("-----Ver Cliente----- ");
                     System.out.println("t----------------------");
                     System.out.println("Ingrese ID del Cliente");
-                    String Id = u.nextLine();
+                    int Id = u.nextInt();
                     VerCliente(Id);
                     System.out.printf("t----------------------");
                     break;
@@ -282,7 +288,7 @@ public class Main implements Serializable {
                     System.out.println("------Eliminar Factura------");
                     System.out.println("t----------------------");
                     System.out.println("Ingrese el ID de las Facturas");
-                    String id = u.nextLine();
+                    int id = u.nextInt();
                     EliminarFacturas(id);
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
@@ -294,8 +300,8 @@ public class Main implements Serializable {
                 case "3":
                     System.out.println("-----Ver Factura----- ");
                     System.out.println("t----------------------");
-                    System.out.println("Ingrese ID del Cliente");
-                    String Id = u.nextLine();
+                    System.out.println("Ingrese ID de la Factura");
+                    int Id = u.nextInt();
                     VerFacturas(Id);
                     System.out.printf("t----------------------");
                     break;
@@ -303,7 +309,7 @@ public class Main implements Serializable {
                     System.out.println("-----Regresar al Menú Principal-----");
                     Menu();
                     break;
-                default:
+               default:
                     System.out.println("ERROR: OPCION INVALIDA ");
                     System.out.println();
                     break;
@@ -370,11 +376,12 @@ public class Main implements Serializable {
         } while (flag);
     }
 
+    //------------------------------------------Carga de Archivos--------------------------------------------------
     public static void jalada() {
         try {
             System.out.println("Ingrese la dirección de la configuración");
             dir = u.nextLine();
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\config.json";
+            dir = "config.json";
 
             configuracion = gson.fromJson(getContentOfFile(dir), config.class);
             System.out.println("Restaurante:  " + configuracion.getname() + "  Dirección:   " + configuracion.getaddress() + "  Load:  " + configuracion.getLoad() + "  Telefono:  " + configuracion.getPhone());
@@ -419,12 +426,11 @@ public class Main implements Serializable {
         }
 
     }
-    //INGRESOPORJAVA
+    //-----------------------------------------------------INGRESOPORJAVA------------------------------------
     public static void productos() {
         try {
 
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\products.json";
-
+            dir = "products.json";
 
             Products.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),products[].class)));
             RevisionProducts();
@@ -453,7 +459,7 @@ public class Main implements Serializable {
     public static void Users() {
         try {
 
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\users.json";
+            dir = "users.json";
 
             Users.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),users[].class)));
             RevisionUsers();
@@ -482,7 +488,7 @@ public class Main implements Serializable {
     public static void Invoices() {
         try {
 
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\invoices.json";
+            dir = "invoices.json";
 
             Invoices.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),Invoices[].class)));
             RevisionInvoices();
@@ -509,7 +515,7 @@ public class Main implements Serializable {
     public static void  Clients(){
         try {
 
-            dir = "C:\\Users\\Alberto\\Desktop\\borar\\clients.json";
+            dir = "clients.json";
             Clients.addAll(Arrays.asList(gson.fromJson(getContentOfFile(dir),Clients[].class)));
             RevisionClients();
             ShowClients();
@@ -532,7 +538,7 @@ public class Main implements Serializable {
 
         }
     }
-    public static String getContentOfFile(String pathname) {
+    /*public static String getContentOfFile(String pathname) {
         File archivo = null;
         FileReader fr = null;
         BufferedReader br = null;
@@ -554,7 +560,7 @@ public class Main implements Serializable {
             e.printStackTrace();
         } finally {
             // En el finally cerramos el fichero, para asegurarnos
-            // que se cierra tanto si todo va bien como si salta
+            // que se cierra tanto sitodo va bien como si salta
             // una excepcion.
             try {
                 if (null != fr) {
@@ -565,10 +571,9 @@ public class Main implements Serializable {
             }
         }
         return "";
-    }
-    //MUESTRA
-    public static void ShowProducts()
-    {
+    }*/
+    //------------------------------------------------MUESTRA----------------------------------------------------------
+    public static void ShowProducts() {
         for (products p: Products) {
 
             System.out.println("   Numero de ID:    " + p.getId() + "    Nombre: " + p.getname() + "    Descripcion:   " + p.getDescription() + "   Costo:     " + p.getCost() + "   Precio:    " + p.getPrice() + "\nIngredientes:  " );
@@ -581,13 +586,11 @@ public class Main implements Serializable {
 
         }
     }
-    public static void ShowUsers()
-    {
+    public static void ShowUsers() {
         for (users p:Users)
             System.out.println("\nNombre de Usuario: "+p.getusername()+"\nContraseña:  "+p.getPassword());
     }
-    public static void ShowInvoices()
-    {
+    public static void ShowInvoices() {
         for (Invoices p:Invoices) {
             System.out.println(p.getClient() + p.getId() + p.getDate());
             for (int i = 0; i<p.products.length;i++)System.out.println(p.getProducts(i).getPrice() + p.getProducts(i).getName());
@@ -598,9 +601,8 @@ public class Main implements Serializable {
         for (Clients p: Clients)
             System.out.println(p.getAddress()+p.getName()+p.getId()+p.getNit()+p.getPhone());
     }
-    //INGRESOPORBIN
-    public static void ReadBinProducts()
-    {
+    //---------------------------------------------------------INGRESOPORBIN---------------------------------------
+    public static void ReadBinProducts() {
         try
         {
             Products.addAll((ArrayList<products>)deserializeArrayList("products.ipcmr"));
@@ -613,8 +615,7 @@ public class Main implements Serializable {
             System.out.println("El archivo no existe");
         }
     }
-    public static void ReadBinUsers()
-    {
+    public static void ReadBinUsers() {
         try
         {
             Users.addAll((ArrayList<users>)deserializeArrayList("users.ipcmr"));
@@ -656,7 +657,7 @@ public class Main implements Serializable {
             System.out.println("El archivo no existe");
         }
     }
-    //REVISIONES
+    //----------------------------------------REVISIONES-----------------------------------------------------------
     public static void  RevisionUsers(){
 
         int cont=0;
@@ -755,7 +756,7 @@ public class Main implements Serializable {
             e.printStackTrace();
         } finally {
             // En el finally cerramos el fichero, para asegurarnos
-            // que se cierra tanto si todo va bien como si salta
+            // que se cierra tanto sitodo va bien como si salta
             // una excepcion.
             try {
                 if (null != fr) {
@@ -767,7 +768,6 @@ public class Main implements Serializable {
         }
         return "";
     }
-
     //----------------------------Mostrar Datos-----------------------------------
     public static void MostrarUsuarios() {
         for (int i = 0; i < Users.size(); i++) {
@@ -822,25 +822,25 @@ public class Main implements Serializable {
             }
         }
     }
-    public static void EliminarCliente(String id){
+    public static void EliminarCliente(int id){
         for (int i = 0; i < Clients.size(); i++) {
-            if (id.equals(Clients.get(i).getId())) {
+            if (id == Clients.get(i).getId()) {
                 System.out.println("Se eliminó al cliente con ID: " + Clients.get(i).getId());
                 Clients.remove(i);
             }
-            if (id.equals(null)) {
+            if (id != Clients.get(i).getId()) {
                 System.out.printf("No se encontro el cliente ");
             }
 
         }
     }
-    public static void EliminarFacturas (String id){
+    public static void EliminarFacturas (int id){
         for (int i = 0; i < Invoices.size(); i++) {
-            if (id.equals(Invoices.get(i).getId())) {
+            if (id == Invoices.get(i).getId()) {
                 System.out.println("Se eliminó la factura con ID: " + Invoices.get(i).getId());
                 Invoices.remove(i);
             }
-            if (id.equals(null)) {
+            if (id != Invoices.get(i).getId()) {
                 System.out.printf("No se encontró la factura ");
             }
 
@@ -875,26 +875,26 @@ public class Main implements Serializable {
             }
         }
     }
-    public static void VerCliente(String Id){
+    public static void VerCliente(int Id){
         for (int i = 0; i <Clients.size(); i++) {
-            if (Id.equals(Clients.get(i).getId())) {
+            if (Id == Clients.get(i).getId()) {
                 System.out.println("El Cliente es:  ");
                 System.out.println("Número de ID: " + Clients.get(i).getId() + "  || Name: " + Clients.get(i).getName() + "|| Dirección: " + Clients.get(i).getAddress()
                         + "  || Telefóno:  " + Clients.get(i).getPhone() + "  || NIT: " + Clients.get(i).getNit());
             }
-            if (Id.equals(null)) {
+            if (Id != Clients.get(i).getId()) {
                 System.out.printf("No se Encontro el Cliente");
             }
         }
     }
-    public static void VerFacturas(String Id){
+    public static void VerFacturas(int Id){
         for (int i = 0; i <Invoices.size(); i++) {
-            if (Id.equals(Invoices.get(i).getId())) {
+            if (Id == Invoices.get(i).getId()) {
                 System.out.println("  Numero de ID:  " + Invoices.get(i).getId() + "  || CLiente: " + Invoices.get(i).getClient() + "  || Fecha: " + Invoices.get(i).getDate());
                 System.out.println("  Productos:  " );
                 System.out.println("  Nombre: " + Invoices.get(i).getProducts(i).getName() + "  || Precio:  " + Invoices.get(i).getProducts(i).getPrice());
             }
-            if (Id.equals(null)) {
+            if (Id != Invoices.get(i).getId()) {
                 System.out.printf("No se Encontro la Factura");
             }
         }
@@ -971,6 +971,8 @@ public class Main implements Serializable {
         }
         return null;
     }
+
+    //----------------------------------------------Log de Acciones-----------------------------------
     public static String logAcciones ="";
     public static void logAcciones(){
 
