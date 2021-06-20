@@ -180,7 +180,7 @@ public class Main implements Serializable {
             switch (Op) {
                 case "1":
                     System.out.println("-----Listar Productos-----");
-                    MostrarProductos();
+                    ShowProducts();
                     System.out.println("-------------------------");
                     break;
                 case "2":
@@ -417,10 +417,6 @@ public class Main implements Serializable {
             productos();
             Invoices();
             Clients();
-           /* RevisionUsers();
-            RevisionProducts();
-            RevisionInvoices();
-            RevisionClients();*/
             loguin();
 
 
@@ -840,51 +836,67 @@ public class Main implements Serializable {
     }
     //----------------------------Eliminar Datos----------------------------------
     public static void EliminarUsuario(String name) {
+        try {
+            for (int i = 0; i < Users.size(); i++) {
+                if (name.equals(Users.get(i).getusername())) {
+                    System.out.println("Se Elimino a:" + Users.get(i).getusername());
+                    Users.remove(i);
+                }
+                if (name.equals(null)) {
+                    System.out.printf("No se encontro el usuario ");
+                }
 
-        for (int i = 0; i < Users.size(); i++) {
-            if (name.equals(Users.get(i).getusername())) {
-                System.out.println("Se Elimino a:" + Users.get(i).getusername());
-                Users.remove(i);
             }
-            if (name.equals(null)) {
-                System.out.printf("No se encontro el usuario ");
-            }
-
+        }catch (Exception e){
+            System.out.printf("");
         }
+
     }
     public static void EliminarProducto(String id) {
-        for (int i = 0; i < Products.size(); i++) {
-            if (id.equals(Products.get(i).getId())) {
-                System.out.println("Se eliminó el Producto: " + Products.get(i).getId());
-                Products.remove(i);
+        try {
+            for (int i = 0; i < Products.size(); i++) {
+                if (id.equals(Products.get(i).getId())) {
+                    System.out.println("Se eliminó el Producto: " + Products.get(i).getId());
+                    Products.remove(i);
+                }
+                if (id.equals(null)) {
+                    System.out.printf("No se encontro el producto ");
+                }
             }
-            if (id.equals(null)) {
-                System.out.printf("No se encontro el producto ");
-            }
+        }catch (Exception e){
+            System.out.printf("");
         }
     }
     public static void EliminarCliente(int id){
-        for (int i = 0; i < Clients.size(); i++) {
-            if (id == Clients.get(i).getId()) {
-                System.out.println("Se eliminó al cliente con ID: " + Clients.get(i).getId());
-                Clients.remove(i);
-            }
-            if (id != Clients.get(i).getId()) {
-                System.out.printf("No se encontro el cliente ");
-            }
+        try {
+            for (int i = 0; i < Clients.size(); i++) {
+                if (id == Clients.get(i).getId()) {
+                    System.out.println("Se eliminó al cliente con ID: " + Clients.get(i).getId());
+                    Clients.remove(i);
+                }
+                if (id != Clients.get(i).getId()) {
+                    System.out.printf("No se encontro el cliente ");
+                }
 
-        }
+            }
+        }catch (Exception e){
+            System.out.println("");
+            }
     }
     public static void EliminarFacturas (int id){
-        for (int i = 0; i < Invoices.size(); i++) {
-            if (id == Invoices.get(i).getId()) {
-                System.out.println("Se eliminó la factura con ID: " + Invoices.get(i).getId());
-                Invoices.remove(i);
-            }
-            if (id != Invoices.get(i).getId()) {
-                System.out.printf("No se encontró la factura ");
-            }
+        try {
+            for (int i = 0; i < Invoices.size(); i++) {
+                if (id == Invoices.get(i).getId()) {
+                    System.out.println("Se eliminó la factura con ID: " + Invoices.get(i).getId());
+                    Invoices.remove(i);
+                }
+                if (id != Invoices.get(i).getId()) {
+                    System.out.printf("No se encontró la factura ");
+                }
 
+            }
+        }catch (Exception e){
+            System.out.println("");
         }
 
     }
@@ -901,18 +913,16 @@ public class Main implements Serializable {
 
         }
     }
-    public static void VerProducto(String Id){
-        for (int i = 0; i < Products.size(); i++) {
-            if (Id.equals(Products.get(i).getId())) {
-                System.out.println("El Producto es:  ");
-                System.out.println("  Numero de ID:  " + Products.get(i).getId() + "  || Nombre: " + Products.get(i).getname() + "  || Descripcion:  " + Products.get(i).getDescription() +
-                        "  || Costo:  " + Products.get(i).getCost() + "  || Precio:    " + Products.get(i).getPrice() );
-                System.out.println("  Ingredientes:  " );
-                System.out.println("  Nombre: " + Products.get(i).getIngredients(i).getName() + "  || Cantidad:  " + Products.get(i).getIngredients(i).getQuantity() +
-                        "  ||Unidades:  " + Products.get(i).getIngredients(i).getUnits() );
-            }
-            if (Id.equals(null)) {
-                System.out.printf("No se Encontro el producto");
+    public static void VerProducto(String Id) {
+        for (products p : Products) {
+            if (Id.equals(p.getId())) {
+                System.out.println("   Numero de ID:    " + p.getId() + "    Nombre: " + p.getname() + "    Descripcion:   " + p.getDescription() + "   Costo:     " + p.getCost() + "   Precio:    " + p.getPrice() + "\nIngredientes:  ");
+                for (int i = 0; i < p.ingredients.length; i++) {
+                    System.out.println("Nombre:  " + p.getIngredients(i).getName() + "\nCantidad:  " + p.getIngredients(i).getQuantity() + "\nUnidades:   " + p.getIngredients(i).getUnits() + "\n");
+                }
+                if (Id.equals(null)) {
+                    System.out.printf("No se Encontro el producto");
+                }
             }
         }
     }
@@ -929,13 +939,12 @@ public class Main implements Serializable {
         }
     }
     public static void VerFacturas(int Id){
-        for (int i = 0; i <Invoices.size(); i++) {
-            if (Id == Invoices.get(i).getId()) {
-                System.out.println("  Numero de ID:  " + Invoices.get(i).getId() + "  || CLiente: " + Invoices.get(i).getClient() + "  || Fecha: " + Invoices.get(i).getDate());
-                System.out.println("  Productos:  " );
-                System.out.println("  Nombre: " + Invoices.get(i).getProducts(i).getName() + "  || Precio:  " + Invoices.get(i).getProducts(i).getPrice());
+        for (Invoices p:Invoices) {
+            if (Id == p.getId()) {
+            System.out.println("Cliente: "+p.getClient() +"   ID:  "+ p.getId() +"  Fecha: "+ p.getDate());
+            for (int i = 0; i<p.products.length;i++)System.out.println("Precio:  "+p.getProducts(i).getPrice() +"\n Nombre:"+ p.getProducts(i).getName());
             }
-            if (Id != Invoices.get(i).getId()) {
+            if (Id != p.getId()) {
                 System.out.printf("No se Encontro la Factura");
             }
         }
