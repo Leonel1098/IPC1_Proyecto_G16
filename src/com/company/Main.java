@@ -30,11 +30,11 @@ public class Main implements Serializable {
     public static void main(String[] args) {
 
         //jalada();
-        Users();
-        productos();
-        Clients();
-        Invoices();
-        loguin();
+        //Users();
+        //productos();
+        //Clients();
+        //Invoices();
+       // loguin();
 
     }
 
@@ -899,7 +899,7 @@ public class Main implements Serializable {
             }
         }
     }
-    //<----------------------------------------------------------------------Serializacion
+    //<-------------------------------------------------------Serializacion-------------------
     public static String representacionBonita = "";
 
 
