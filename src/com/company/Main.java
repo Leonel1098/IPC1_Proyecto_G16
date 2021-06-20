@@ -142,7 +142,7 @@ public class Main implements Serializable {
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                     String HoraFecha=dtf.format(LocalDateTime.now());
-                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+name+"\n";
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnió a el usuario con nombre: "+name+"\n";
                     logAcciones();
 
                     System.out.println("t----------------------");
@@ -193,7 +193,7 @@ public class Main implements Serializable {
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                     String HoraFecha=dtf.format(LocalDateTime.now());
-                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+id+"\n";
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnió al producto con ID : "+id+"\n";
                     logAcciones();
 
                     System.out.println("t----------------------");
@@ -244,7 +244,7 @@ public class Main implements Serializable {
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                     String HoraFecha=dtf.format(LocalDateTime.now());
-                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+id+"\n";
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnió al cliente con ID : "+id+"\n";
                     logAcciones();
                     System.out.println("t----------------------");
                     break;
@@ -293,7 +293,7 @@ public class Main implements Serializable {
                     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                     String HoraFecha=dtf.format(LocalDateTime.now());
-                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnio a : "+id+"\n";
+                    logAcciones+=HoraFecha+" \t"+usuario +" :"+ "Elimnió la factura con ID : "+id+"\n";
                     logAcciones();
                     System.out.println("t----------------------");
                     break;
