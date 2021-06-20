@@ -658,6 +658,7 @@ public class Main implements Serializable {
         }
     }
     //----------------------------------------REVISIONES-----------------------------------------------------------
+    //REVISIONES
     public static void  RevisionUsers(){
 
         int cont=0;
@@ -668,7 +669,12 @@ public class Main implements Serializable {
                 if(Users.get(i).getusername().equals(Users.get(j).getusername())) {
                     cont++;
                     if (cont > 1) {
-                        System.out.println("Se repitió el nombre de usuario:  " + Users.get(i).getusername());
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                        String HoraFecha=dtf.format(LocalDateTime.now());
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Usuarios:  "+"Se repitió el nombre de usuario:  " + Users.get(i).getusername()+"\n";
+                        logErrores();
+
                         Users.remove(j);
                     }
                 }
@@ -688,7 +694,12 @@ public class Main implements Serializable {
                 if(Products.get(i).getId().equals(Products.get(j).getId())) {
                     cont++;
                     if (cont > 1) {
-                        System.out.println("Se repitió el nombre de usuario:  " + Products.get(i).getId());
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                        String HoraFecha=dtf.format(LocalDateTime.now());
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Productos:  "+"Se repitió el ID:  " + Products.get(i).getId()+"\n";
+                        logErrores();
+                        System.out.println();
                         Products.remove(j);
                     }
                 }
@@ -706,7 +717,12 @@ public class Main implements Serializable {
                 if(Invoices.get(i).getId()==(Invoices.get(j).getId())) {
                     cont++;
                     if (cont > 1) {
-                        System.out.println("Se repitió el nombre de ID:  " + Invoices.get(i).getId());
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                        String HoraFecha=dtf.format(LocalDateTime.now());
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Facturas:  "+"Se repitió el ID:  " + Invoices.get(i).getId()+"\n";
+                        logErrores();
+
                         Invoices.remove(j);
                     }
                 }
@@ -724,7 +740,11 @@ public class Main implements Serializable {
                 if(Clients.get(i).getId()==(Clients.get(j).getId())) {
                     cont++;
                     if (cont > 1) {
-                        System.out.println("Se repitió el ID:  " + Clients.get(i).getId());
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                        String HoraFecha=dtf.format(LocalDateTime.now());
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Clientes:  "+"Se repitió el ID:  " + Clients.get(i).getId()+"\n";
+                        logErrores();
                         Clients.remove(j);
                     }
                 }
@@ -733,7 +753,22 @@ public class Main implements Serializable {
         }
 
     }
+    //LOGERRORES
+    public static String logErrores ="";
+    public static void logErrores(){
 
+        try {
+            FileWriter archivo = new FileWriter("log.log");
+
+            archivo.write(logErrores + "\n");
+
+
+            archivo.close();
+
+        } catch (Exception e) {
+
+        }
+    }
     public static String getContentOfFile(String pathname) {
         File archivo = null;
         FileReader fr = null;
