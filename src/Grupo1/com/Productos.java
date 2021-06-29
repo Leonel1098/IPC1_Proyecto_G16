@@ -9,15 +9,15 @@ public class Productos implements Serializable{
     private String description;
     private int cost;
     private int price;
-    ArrayList<Ingredientes>ingredients = new ArrayList<>();
+    ArrayList<Ingredientes>ingredients;
 
-    public Productos(int id, String name, String description, int cost, int price) {
+    public Productos(int id, String name, String description, int cost, int price, ArrayList<Ingredientes>ingredients) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.cost = cost;
         this.price = price;
-        this.ingredients = null;
+        this.ingredients = ingredients;
     }
 
     public int getId() {

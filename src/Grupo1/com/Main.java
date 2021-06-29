@@ -1,6 +1,7 @@
 package Grupo1.com;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import com.google.gson.*;
 
@@ -13,6 +14,8 @@ public class Main {
     static ArrayList<Productos>products = new ArrayList<>();
     static ArrayList<Clientes>clients = new ArrayList<>();
     static ArrayList<Facturas>invoices = new ArrayList<>();
+    static ArrayList<Ingredientes>temp = new ArrayList<>();
+    static ArrayList<ProductoF>temp2 = new ArrayList<>();
     static int ContadorUsers = 0;
     static int ContadorClients = 0;
     static int ContadorProducts = 0;
@@ -80,6 +83,20 @@ public class Main {
             }
         }
 
+        public static void AgregaUsuario(String username, String password){
+            Usuarios UsuriosAgregados = new Usuarios(username, password);
+            users.add(UsuriosAgregados);
+        }
+
+        public static void EditarUsuario(String user, String username, String password){
+        for (int i=0; i<users.size(); i++){
+            if(users.get(i).getUsername().equals(user)){
+                users.get(i).setUsername(username);
+                users.get(i).setPassword(password);
+            }
+        }
+        }
+
         public static void CargaClientes(){
         String ContenidoClientes = Archivos.getContentOfFile("./JPruebas/clients.json");
         Gson gson = new Gson();
@@ -94,6 +111,22 @@ public class Main {
             //Object UserS = Archivos.deserialize("./Serealizables/users.ipcrm");
         }
 
+        public static void AgregaCliente(int id, String name, String address, int phone, String nit){
+        Clientes ClientesAgregados = new Clientes(id, name, address, phone, nit);
+        clients.add(ClientesAgregados);
+        }
+
+        public static void EditarCliente(int id, String name, String address, int phone, String nit){
+        for (int i=0; i<clients.size(); i++){
+            if(clients.get(i).getId() == id){
+                clients.get(i).setName(name);
+                clients.get(i).setAddress(address);
+                clients.get(i).setPhone(phone);
+                clients.get(i).setNit(nit);
+            }
+        }
+    }
+
         public static void CargaProductos(){
         String ContenidoProductos = Archivos.getContentOfFile("./JPruebas/products.json");
         Gson gson = new Gson();
@@ -107,6 +140,40 @@ public class Main {
             //Archivos.serialize("./Serealizables/products.ipcrm", products);
         }
 
+        public static void AgregarIngrediente(String name, int quantity, String units){
+            Ingredientes IngredientesP = new Ingredientes(name, quantity, units);
+            temp.add(IngredientesP);
+        }
+
+        public static void EditarIngrediente(String name, int quantity, String units, int cont){
+        for (int i=0; i< products.get(cont).ingredients.size(); i++){
+            products.get(cont).ingredients.get(i).setName(name);
+            products.get(cont).ingredients.get(i).setQuantity(quantity);
+            products.get(cont).ingredients.get(i).setUnits(units);
+        }
+    }
+
+        public static void AgregaProducto(int id, String name, String description, int cost, int price, ArrayList<Ingredientes>ig){
+        Productos ProductosAgregados = new Productos(id,name,description,cost,price, ig);
+        products.add(ProductosAgregados);
+        }
+
+        public static void EditarProducto(int id, String name, String description, int cost, int price){
+        for (int i=0; i< products.size(); i++){
+            products.get(i).setName(name);
+            products.get(i).setDescription(description);
+            products.get(i).setCost(cost);
+            products.get(i).setPrice(price);
+        }
+    }
+
+        public static void ejemplo(){
+            AgregaProducto(5, "Beto", "asdfasdfsf", 6, 7, temp);
+            temp.clear();
+            AgregaFactura(1, 2, "12/12/2020", temp2);
+            temp2.clear();
+        }
+
         public static void CargaFacturas(){
         String ContenidoFacturas = Archivos.getContentOfFile("./JPruebas/invoices.json");
         Gson gson = new Gson();
@@ -118,6 +185,16 @@ public class Main {
             }
 
             //Archivos.serialize("./Serealizables/invoices.ipcrm", invoices);
+        }
+
+        public static void AgregarProductoF(String name, int price){
+        ProductoF PdF = new ProductoF(name, price);
+        temp2.add(PdF);
+        }
+
+        public static void AgregaFactura(int id, int user, String date, ArrayList<ProductoF>PF){
+        Facturas FacturasAgregadas = new Facturas(id, user,date,PF);
+        invoices.add(FacturasAgregadas);
         }
 
         public static void Menu() {
