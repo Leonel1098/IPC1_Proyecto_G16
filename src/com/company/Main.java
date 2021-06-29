@@ -157,7 +157,7 @@ public class Main implements Serializable {
                     break;
                 case "4":
                     System.out.println("-----Regresar al Menú Principal-----");
-                    Menu();
+                    flag = false;
                     break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
@@ -208,7 +208,7 @@ public class Main implements Serializable {
                     break;
                 case "4":
                     System.out.println("-----Regresar al Menú Principal-----");
-                    Menu();
+                    flag = false;
                     break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
@@ -258,7 +258,7 @@ public class Main implements Serializable {
                     break;
                 case "4":
                     System.out.println("-----Regresar al Menú Principal-----");
-                    Menu();
+                    flag = false;
                     break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
@@ -307,7 +307,7 @@ public class Main implements Serializable {
                     break;
                 case "4":
                     System.out.println("-----Regresar al Menú Principal-----");
-                    Menu();
+                    flag = false;
                     break;
                default:
                     System.out.println("ERROR: OPCION INVALIDA ");
@@ -366,7 +366,7 @@ public class Main implements Serializable {
                     break;
                 case "3":
                     System.out.println("-----Regresar al Menú Principal-----");
-                    Menu();
+                    flag = false;
                     break;
                 default:
                     System.out.println("ERROR: OPCION INVALIDA ");
