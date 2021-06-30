@@ -16,6 +16,10 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
     public CRUD_Productos() {
         this.setTitle("-- Productos --");
         Tabla();
+        JButton Add= new JButton("add Item");
+        Add.setBounds(30,600,150,150);
+        Add.setVisible(true);
+        this.add(Add);
 
         this.setLayout(null);
         this.setSize(1200, 850);

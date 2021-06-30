@@ -4,17 +4,28 @@ package Grupo1.com;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class CRUD_Clientes extends JFrame implements ActionListener, MouseListener {
+    JButton clientenuevo;
+    public CrearCliente nuevocliente;
     public CRUD_Clientes() {
         this.setTitle("-- Clientes --");
         TablaClientes();
-
+        clientenuevo= new JButton("Crear Cliente");
+        clientenuevo.setBounds(30,600,150,150);
+        clientenuevo.setVisible(true);
+        //Dando acción al botón para crear un cliente nuevo
+        clientenuevo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nuevocliente = new CrearCliente();
+            }
+        });
+        this.add(clientenuevo);
         this.setLayout(null);
         this.setSize(1200, 850);
         this.setLocationRelativeTo(null);
@@ -24,10 +35,12 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+
     JFrame Usuarios;
     public static JTable TablaClientes;
     public static JScrollPane sp;
     //Contrullendo Tabla de Alumnos
+
     public void TablaClientes() {
         //Se va a Crear un Objero con los datos
         //ver Metodo  para guardar los Datos en el Arreglo
@@ -72,8 +85,9 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
     }
+
+
 
     @Override
     //Metodo para la acciona del los Botones detro de la tabla
@@ -147,6 +161,7 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
 
             }
         }
+
 
     }
 

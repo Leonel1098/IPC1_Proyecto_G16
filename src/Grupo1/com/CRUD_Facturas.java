@@ -17,6 +17,10 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
     public CRUD_Facturas() {
         this.setTitle("-- Facturas --");
         Tabla();
+        JButton Add= new JButton("add Item");
+        Add.setBounds(30,600,150,150);
+        Add.setVisible(true);
+        this.add(Add);
 
         this.setLayout(null);
         this.setSize(1200, 850);
@@ -39,6 +43,7 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
         String[] columnas = {"Id Factura", " Cliente  ", "Date ", "Product ","Monto","Editar","Borra"};
         //Se Crea la Tabla
         Tabla = new JTable();
+
         //Guardando los datos a ala taba
         DefaultTableModel d = new DefaultTableModel(datos, columnas) {
             public boolean isCellEditable(int row, int column) {

@@ -12,7 +12,10 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
     public CRUD_Users() {
         this.setTitle("-- Users --");
         TablaUsuarios();
-
+        JButton Add= new JButton("add Item");
+        Add.setBounds(30,600,150,150);
+        Add.setVisible(true);
+        this.add(Add);
         this.setLayout(null);
         this.setSize(850, 850);
         this.setLocationRelativeTo(null);

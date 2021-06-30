@@ -39,8 +39,10 @@ public class Main {
         }
 
         CargaConfig();
-        Error.vericador();
-        Login();
+        Login login = new Login();
+
+        //Error.vericador();
+       //Login();
     }
 
         public static void Login() {
