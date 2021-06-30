@@ -66,7 +66,7 @@ public class Archivos {
             objectOutputStream.writeObject(object);
             objectOutputStream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -77,7 +77,7 @@ public class Archivos {
             objectInputStream.close();
             return data;
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+         ;
         }
         return null;
     }

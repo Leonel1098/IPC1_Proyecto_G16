@@ -48,4 +48,18 @@ import java.io.Serializable;
         public void setProducts(ArrayList<ProductoF> products) {
             this.products = products;
         }
+        public  String  NombreProducto(){
+            String Productos="";
+        for (int i=0; i<products.size();i++){
+            Productos += products.get(i).getName()+" ,";
+        }
+        return Productos;
+        }
+        public int Precio(){
+        int Costo=0;
+            for (int i=0; i<products.size();i++){
+                Costo += products.get(i).getPrice();
+            }
+            return Costo;
+        }
     }

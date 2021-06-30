@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import com.google.gson.*;
+import com.jtattoo.plaf.noire.NoireLookAndFeel;
+import com.jtattoo.plaf.texture.TextureLookAndFeel;
+
+import javax.swing.*;
 
 public class Main {
 
@@ -22,8 +26,20 @@ public class Main {
     static int ContadorInvoices = 0;
 
     public static void main(String[] args) {
-        Error.vericador();
+
+        JFrame.setDefaultLookAndFeelDecorated(true);
+
+        try {
+            // COMANDO PARA AGREGAR UN LOOK AND FEEL
+
+            UIManager.setLookAndFeel(new NoireLookAndFeel());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         CargaConfig();
+        Error.vericador();
         Login();
     }
 
@@ -213,15 +229,19 @@ public class Main {
                 op = readNum.nextInt();
                 switch (op) {
                     case 1:
+                        CRUD_Users cu= new CRUD_Users();
                         MenuUsuarios();
                         break;
                     case 2:
+                        CRUD_Productos Cp= new CRUD_Productos();
                         MenuProductos();
                         break;
                     case 3:
+                        CRUD_Clientes cc = new CRUD_Clientes();
                         MenuClientes();
                         break;
                     case 4:
+                        CRUD_Facturas cf = new CRUD_Facturas();
                         MenuFacturas();
                         break;
                     case 5:
@@ -609,4 +629,139 @@ public class Main {
             Archivos.serialize("./Serealizables/products.ipcrm", products);
             Archivos.serialize("./Serealizables/invoices.ipcrm", invoices);
         }
+        //Tablas
+    //Users
+
+
+        public static Object[][] DatosUsuarios(){
+            Object[][] arreglo= new Object[users.size()][4];
+
+            for (int i =0 ; i< users.size(); i++){
+                arreglo [i][0]=users.get(i).getUsername();
+                arreglo[i][1]=users.get(i).getPassword();
+                JButton edit = new JButton("Edit");
+                edit.setName(users.get(i).getUsername());
+                arreglo[i][2]=edit;
+                JButton delete = new JButton("Delete");
+                delete.setName(users.get(i).getUsername());
+                arreglo[i][3]=delete;
+
+
+            }
+            return arreglo;
+        }
+        //Clientes
+    public static Object [][]DatosClientes(){
+        Object [][] arreglo = new Object[clients.size()][7];
+        for (int i =0 ; i<clients.size();i++){
+            arreglo[i][0]=clients.get(i).getId();
+            arreglo[i][1]=clients.get(i).getName();
+            arreglo[i][2]=clients.get(i).getAddress();
+            arreglo[i][3]=clients.get(i).getNit();
+            arreglo [i][4]=clients.get(i).getPhone();
+            JButton edit = new JButton("Edit");
+            edit.setName(clients.get(i).getId()+"");
+            arreglo[i][5]=edit;
+            JButton delete = new JButton("Delete");
+            delete.setName(clients.get(i).getId()+"");
+            arreglo[i][6]=delete;
+
+
+        }
+        return  arreglo;
+    }
+
+    //Productos
+    public static Object [][]DatosProductos(){
+
+        Object  [][] arreglo = new Object [products.size()][8];
+        for (int i =0 ; i<products.size();i++){
+            arreglo[i][0]=products.get(i).getId();
+            arreglo[i][1]=products.get(i).getName();
+            arreglo[i][2]=products.get(i).getCost();
+            arreglo[i][3]=products.get(i).getPrice();
+            arreglo[i][4]=products.get(i).getDescription();
+            arreglo[i][5]=products.get(i).Ingredietes();
+            JButton edit = new JButton("Edit");
+            edit.setName(""+products.get(i).getId());
+            arreglo[i][6]=edit;
+            JButton delete = new JButton("Delete");
+            delete.setName(""+products.get(i).getId());
+            arreglo[i][7]=delete;
+
+        }
+     return  arreglo;
+    }
+    //Facturas
+    public static Object [][]DatosFacturas(){
+        Object  [][] arreglo = new Object [invoices.size()][7];
+        for (int i =0 ; i<invoices.size();i++){
+            arreglo[i][0]=invoices.get(i).getId();
+            //
+            arreglo[i][1]=ClienteId(invoices.get(i).getClient());
+
+            arreglo[i][2]=invoices.get(i).getDate();
+            arreglo[i][3]=invoices.get(i).NombreProducto();
+            arreglo[i][4]=invoices.get(i).Precio();
+            JButton edit = new JButton("Edit");
+            edit.setName(invoices.get(i).getId()+"");
+            arreglo[i][5]=edit;
+            JButton delete = new JButton("Delete");
+            delete.setName(invoices.get(i).getId()+"");
+            arreglo[i][6]=delete;
+
+        }
+        return arreglo;
+
+    }
+    //Buscar Producto por idde factura
+    public static String ProductosIdFactura(int idFactura){
+        for (int i =0; i<invoices.size();i++){
+            if (invoices.get(i).getId()==idFactura){
+                return invoices.get(i).NombreProducto();
+            }
+        }
+        return "";
+    }
+    public static String ClienteId(int idCliente){
+        for (int i=0; i<clients.size();i++){
+            if (clients.get(i).getId()==idCliente){
+                return clients.get(i).getName();
+            }
+        }
+        return "";
+    }
+    public static void BotonEliminarUsuario(String username) {
+
+        for (int i = 0; i < users.size(); i++) {
+            if (username.equals(users.get(i).getUsername())) {
+                users.remove(i);
+            }
+        }
+    }
+    public static void BotonEliminarClientes(int idcliente) {
+
+        for (int i = 0; i < clients.size(); i++) {
+            if (idcliente == clients.get(i).getId()) {
+                clients.remove(i);
+            }
+        }
+    }
+    public static void BotonEliminarProducto(int iidproducto ) {
+
+        for (int i = 0; i < products.size(); i++) {
+            if (iidproducto == products.get(i).getId()) {
+                products.remove(i);
+            }
+        }
+    }
+    public static void BotonEliminarFacturas(int idFactura) {
+
+        for (int i = 0; i < invoices.size(); i++) {
+            if (idFactura == invoices.get(i).getId()) {
+                invoices.remove(i);
+            }
+        }
+    }
+
 }

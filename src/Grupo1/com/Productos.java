@@ -67,4 +67,11 @@ public class Productos implements Serializable{
     public void setIngredients(ArrayList<Ingredientes> ingredients) {
         this.ingredients = ingredients;
     }
+    public String  Ingredietes(){
+        String Ingredientes="";
+        for (int i =0 ; i< ingredients.size();i++){
+            Ingredientes+=ingredients.get(i).getName()+",";
+        }
+        return  Ingredientes;
+    }
 }

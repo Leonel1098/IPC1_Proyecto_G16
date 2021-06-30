@@ -40,13 +40,13 @@ public class Error {
             bfwriter.close();
 
         } catch (IOException e) {
-            e.printStackTrace();
+
         } finally {
             if (flwriter != null) {
                 try {
                     flwriter.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+
                 }
             }
         }
