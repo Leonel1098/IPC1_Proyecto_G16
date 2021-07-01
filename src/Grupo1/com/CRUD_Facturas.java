@@ -1,10 +1,5 @@
 package Grupo1.com;
 
-
-
-
-
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -14,14 +9,38 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class CRUD_Facturas extends JFrame implements ActionListener, MouseListener {
+    JButton facturanueva,btnatras;
+    public CrearFactura nuevafactura;
+    public Menu menu;
+
     public CRUD_Facturas() {
         this.setTitle("-- Facturas --");
         Tabla();
-        JButton Add= new JButton("add Item");
-        Add.setBounds(30,600,150,150);
-        Add.setVisible(true);
-        this.add(Add);
+        facturanueva= new JButton("Crear Factura");
+        facturanueva.setBounds(30,600,150,150);
+        facturanueva.setVisible(true);
+        //Dando acción al botón para crear un cliente nuevo
+        facturanueva.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nuevafactura = new CrearFactura();
+            }
+        });
+        //Botón para regresar al Login
+        btnatras = new JButton ("Atras");
+        btnatras.setBounds(200,600,120,20);
+        btnatras.setVisible(true);
+        this.add(btnatras);
+        //Acciones del boton regresar
+        btnatras.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
 
+                menu = new Menu();
+
+            }
+        });
+        this.add(facturanueva);
         this.setLayout(null);
         this.setSize(1200, 850);
         this.setLocationRelativeTo(null);

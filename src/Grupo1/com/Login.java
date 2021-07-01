@@ -86,9 +86,10 @@ public class Login {
                         if (usuario.equals(Main.users.get(i).getUsername()) && contraseña.equals(Main.users.get(i).getPassword())){
                             menu = new Menu();
                             login.setVisible(false);
+                        }else if (i==Main.users.size()-1){
+                            JOptionPane.showMessageDialog(null,"Datos Incorrectos");
                         }
                     }
-                    JOptionPane.showMessageDialog(null,"Datos Incorrectos");
                 }
 
             }

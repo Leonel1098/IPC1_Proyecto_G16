@@ -1,9 +1,5 @@
 package Grupo1.com;
 
-
-
-
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -13,14 +9,38 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class CRUD_Productos extends JFrame implements ActionListener, MouseListener {
+    JButton productonuevo,btnatras;
+    public CrearProducto nuevoproducto;
+    public Menu menu;
     public CRUD_Productos() {
         this.setTitle("-- Productos --");
         Tabla();
-        JButton Add= new JButton("add Item");
-        Add.setBounds(30,600,150,150);
-        Add.setVisible(true);
-        this.add(Add);
+        productonuevo= new JButton("Crear Producto");
+        productonuevo.setBounds(30,600,150,150);
+        productonuevo.setVisible(true);
+        //Dando acción al botón para crear un cliente nuevo
+        productonuevo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                nuevoproducto = new CrearProducto();
+            }
+        });
+        //Botón para regresar al Login
+        btnatras = new JButton ("Atras");
+        btnatras.setBounds(200,600,120,20);
+        btnatras.setVisible(true);
+        this.add(btnatras);
+        //Acciones del boton regresar
+        btnatras.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+
+                menu = new Menu();
+
+            }
+        });
+        this.add(productonuevo);
         this.setLayout(null);
         this.setSize(1200, 850);
         this.setLocationRelativeTo(null);

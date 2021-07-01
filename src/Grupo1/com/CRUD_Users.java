@@ -9,13 +9,40 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class CRUD_Users extends JFrame implements ActionListener, MouseListener {
+    JButton usernuevo,btnatras;
+    public CrearUsuario nuevouser;
+    public Menu menu;
     public CRUD_Users() {
         this.setTitle("-- Users --");
         TablaUsuarios();
-        JButton Add= new JButton("add Item");
-        Add.setBounds(30,600,150,150);
-        Add.setVisible(true);
-        this.add(Add);
+        usernuevo= new JButton("Crear Usuario");
+        usernuevo.setBounds(30,600,150,150);
+        usernuevo.setVisible(true);
+        //Dando acción al botón para crear un cliente nuevo
+        usernuevo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nuevouser = new CrearUsuario();
+
+            }
+        });
+
+        //Botón para regresar al Login
+        btnatras = new JButton ("Atras");
+        btnatras.setBounds(200,600,120,20);
+        btnatras.setVisible(true);
+        this.add(btnatras);
+        //Acciones del boton regresar
+        btnatras.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+
+                menu = new Menu();
+
+            }
+        });
+
+        this.add(usernuevo);
         this.setLayout(null);
         this.setSize(850, 850);
         this.setLocationRelativeTo(null);

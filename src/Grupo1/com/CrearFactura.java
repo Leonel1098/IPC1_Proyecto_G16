@@ -5,14 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CrearCliente {
+public class CrearFactura {
     JFrame ventanacrear;
     JPanel panelcrear;
     JButton btnregistro, btnatras;
-    JLabel lblidcliente,lblnombrecliente,lblciudadcliente,lblnitcliente,lbltelefonocliente;
-    JTextField txtusuario,txtnombre,txtcontraseña,txtconfcontra, txttelefono;
+    JLabel lblidfactura,lblnombrecliente,lblfecha,lblproducto,lblmonto;
+    JTextField txtfactura,txtcliente,txtfecha,txtproducto, txtmonto;
     public Menu menu;
-    public CRUD_Clientes clientes;
+    public CRUD_Facturas facturas;
     //Variables utilizadas para guardas los datos ingresados en los jtextfield
     public String nombre, username, password,confpassword;
     // Arreglos con los que trabajaremos dentro de esta ventana.
@@ -21,9 +21,9 @@ public class CrearCliente {
     //public static NewUser[] usuarios;
 
 
-    public CrearCliente(){
+    public CrearFactura(){
         // Creo la venta para registrar un nuevo usuario
-        ventanacrear = new JFrame("Registrar Cliente");
+        ventanacrear = new JFrame("Registrar Factura");
         ventanacrear.setVisible(true);
         ventanacrear.setSize(350,300);
         ventanacrear.setLayout(null);
@@ -43,11 +43,11 @@ public class CrearCliente {
     }
     public void Componentes(){
         //Defino los label y se agrega al panel
-        lblidcliente = new JLabel("ID del Cliente");
-        lblidcliente.setBounds(10,20,150,20);
-        lblidcliente.setVisible(true);
-        lblidcliente.setLayout(null);
-        panelcrear.add(lblidcliente);
+        lblidfactura = new JLabel("ID de la Factura");
+        lblidfactura.setBounds(10,20,150,20);
+        lblidfactura.setVisible(true);
+        lblidfactura.setLayout(null);
+        panelcrear.add(lblidfactura);
 
         lblnombrecliente = new JLabel ("Nombre del Cliente");
         lblnombrecliente.setBounds(10,50,150,20);
@@ -55,50 +55,50 @@ public class CrearCliente {
         lblnombrecliente.setLayout(null);
         panelcrear.add(lblnombrecliente);
 
-        lblciudadcliente = new JLabel("Ciudad del Cliente");
-        lblciudadcliente.setBounds(10,80,150,20);
-        lblciudadcliente.setVisible(true);
-        lblciudadcliente.setLayout(null);
-        panelcrear.add(lblciudadcliente);
+        lblfecha = new JLabel("Fecha");
+        lblfecha.setBounds(10,80,150,20);
+        lblfecha.setVisible(true);
+        lblfecha.setLayout(null);
+        panelcrear.add(lblfecha);
 
-        lblnitcliente = new JLabel("Nit del Cliente");
-        lblnitcliente.setBounds(10,110,150,20);
-        lblnitcliente.setVisible(true);
-        lblnitcliente.setLayout(null);
-        panelcrear.add(lblnitcliente);
+        lblproducto = new JLabel("Producto");
+        lblproducto.setBounds(10,110,150,20);
+        lblproducto.setVisible(true);
+        lblproducto.setLayout(null);
+        panelcrear.add(lblproducto);
 
-        lbltelefonocliente = new JLabel("Telefóno del Cliente");
-        lbltelefonocliente.setBounds(10,140,150,20);
-        lbltelefonocliente.setVisible(true);
-        lbltelefonocliente.setLayout(null);
-        panelcrear.add(lbltelefonocliente);
+        lblmonto = new JLabel("Monto");
+        lblmonto.setBounds(10,140,150,20);
+        lblmonto.setVisible(true);
+        lblmonto.setLayout(null);
+        panelcrear.add(lblmonto);
 
 
         //Defino los textfield y los agrego al panel
-        txtusuario = new JTextField("");
-        txtusuario.setBounds(140,20,180,20);
-        txtusuario.setVisible(true);
-        panelcrear.add(txtusuario);
+        txtfactura = new JTextField("");
+        txtfactura.setBounds(140,20,180,20);
+        txtfactura.setVisible(true);
+        panelcrear.add(txtfactura);
 
-        txtnombre = new JTextField("");
-        txtnombre.setBounds(140,50,180,20);
-        txtnombre.setVisible(true);
-        panelcrear.add(txtnombre);
+        txtcliente = new JTextField("");
+        txtcliente.setBounds(140,50,180,20);
+        txtcliente.setVisible(true);
+        panelcrear.add(txtcliente);
 
-        txtcontraseña = new JTextField("");
-        txtcontraseña.setBounds(140,80,180,20);
-        txtcontraseña.setVisible(true);
-        panelcrear.add(txtcontraseña);
+        txtfecha = new JTextField("");
+        txtfecha.setBounds(140,80,180,20);
+        txtfecha.setVisible(true);
+        panelcrear.add(txtfecha);
 
-        txtconfcontra = new JTextField("");
-        txtconfcontra.setBounds(140,110,180,20);
-        txtconfcontra.setVisible(true);
-        panelcrear.add(txtconfcontra);
+        txtproducto = new JTextField("");
+        txtproducto.setBounds(140,110,180,20);
+        txtproducto.setVisible(true);
+        panelcrear.add(txtproducto);
 
-        txttelefono = new JTextField("");
-        txttelefono.setBounds(140,140,180,20);
-        txttelefono.setVisible(true);
-        panelcrear.add(txttelefono);
+        txtmonto = new JTextField("");
+        txtmonto.setBounds(140,140,180,20);
+        txtmonto.setVisible(true);
+        panelcrear.add(txtmonto);
 
         //Creo boton de registro y lo  agrego al panel
         btnregistro = new JButton ("Registrar");
@@ -110,12 +110,7 @@ public class CrearCliente {
         btnregistro.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                username = txtusuario.getText();
-                nombre = txtnombre.getText();
-                password = txtcontraseña.getText();
-                confpassword = txtconfcontra.getText();
-                //usuarios[contador] = new NewUser(username,nombre,password,confpassword);
-                ventanacrear.setVisible(false);
+
             }
         });
         //Botón para regresar al Login
@@ -128,9 +123,9 @@ public class CrearCliente {
             @Override
             public void actionPerformed(ActionEvent ae) {
 
-                menu = new Menu();
                 ventanacrear.setVisible(false);
             }
         });
     }
 }
+
