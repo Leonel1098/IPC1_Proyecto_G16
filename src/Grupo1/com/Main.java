@@ -742,6 +742,7 @@ public class Main {
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
                 logAcciones+=HoraFecha()+"\t Se Eliminoel Usuario "+users.get(i).getUsername()+"\n";
+
                 users.remove(i);
 
             }
@@ -751,7 +752,8 @@ public class Main {
 
         for (int i = 0; i < clients.size(); i++) {
             if (idcliente == clients.get(i).getId()) {
-                logAcciones+= HoraFecha()+ "\tSe Elimino el Cliente "+clients.get(i).getName()+"\n";
+                logAcciones+= HoraFecha()+ "\tSe Elimino el Cliente "+clients.get(i).getName()+", id:" +clients.get(i).getId()+"\n";
+                logAcciones();
                 clients.remove(i);
 
 
@@ -762,7 +764,8 @@ public class Main {
 
         for (int i = 0; i < products.size(); i++) {
             if (iidproducto == products.get(i).getId()) {
-                logAcciones+=HoraFecha()+"\tSe Elimino el Producto "+products.get(i).getName()+"\n";
+                logAcciones+=HoraFecha()+"\tSe Elimino el Producto "+products.get(i).getName()+", id:"+products.get(i).getId()+"\n";
+                logAcciones();
                 products.remove(i);
 
             }
@@ -772,7 +775,8 @@ public class Main {
 
         for (int i = 0; i < invoices.size(); i++) {
             if (idFactura == invoices.get(i).getId()) {
-                logAcciones+=HoraFecha()+"\t Se Elimino la Factura"+invoices.get(i).getId()+"\n";
+                logAcciones+=HoraFecha()+"\t Se Elimino la Factura"+invoices.get(i).getId()+", id :"+invoices.get(i).getId()+"\n";
+                logAcciones();
                 invoices.remove(i);
 
             }
