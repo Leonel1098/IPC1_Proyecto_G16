@@ -3,10 +3,8 @@ package Grupo1.com;
 import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Scanner;
+import java.util.*;
+
 import com.google.gson.*;
 import com.jtattoo.plaf.noire.NoireLookAndFeel;
 import com.jtattoo.plaf.texture.TextureLookAndFeel;
@@ -109,6 +107,7 @@ public class Main {
         public static void AgregaUsuario(String username, String password){
             Usuarios UsuriosAgregados = new Usuarios(username, password);
             users.add(UsuriosAgregados);
+            logAcciones+=HoraFecha()+" Se Agrego al usuario  :"+username+"\n";
         }
 
         public static void EditarUsuario(String user, String username, String password){
@@ -742,7 +741,7 @@ public class Main {
 
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
-                logAcciones+="Se Eliminoel Usuario "+users.get(i).getUsername()+"\n";
+                logAcciones+=HoraFecha()+"  Se Eliminoel Usuario "+users.get(i).getUsername()+"\n";
                 users.remove(i);
 
             }
@@ -752,7 +751,7 @@ public class Main {
 
         for (int i = 0; i < clients.size(); i++) {
             if (idcliente == clients.get(i).getId()) {
-                logAcciones+=  " Se Elimino el Cliente "+clients.get(i).getName()+"\n";
+                logAcciones+= HoraFecha()+ " Se Elimino el Cliente "+clients.get(i).getName()+"\n";
                 clients.remove(i);
 
 
@@ -763,7 +762,7 @@ public class Main {
 
         for (int i = 0; i < products.size(); i++) {
             if (iidproducto == products.get(i).getId()) {
-                logAcciones+="Se Elimino el Producto "+products.get(i).getName()+"\n";
+                logAcciones+=HoraFecha()+"  Se Elimino el Producto "+products.get(i).getName()+"\n";
                 products.remove(i);
 
             }
@@ -773,7 +772,7 @@ public class Main {
 
         for (int i = 0; i < invoices.size(); i++) {
             if (idFactura == invoices.get(i).getId()) {
-                logAcciones+=" Se Elimino la Factura"+invoices.get(i).getId()+"\n";
+                logAcciones+=HoraFecha()+" Se Elimino la Factura"+invoices.get(i).getId()+"\n";
                 invoices.remove(i);
 
             }
@@ -781,8 +780,12 @@ public class Main {
     }
     //----------------------------------------------Log de Acciones-----------------------------------
 
+
+
     public static String logAcciones ="Log Acciones \n";
     public static void logAcciones(){
+
+
 
         try {
 
@@ -798,4 +801,12 @@ public class Main {
         }
     }
 
+    public static String HoraFecha() {
+        Date date = new Date();
+        //Caso 1: obtener la hora y salida por pantalla con formato:
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
+        String d = String.format(dateFormat.format(date))+" "+ String.format(hourFormat.format(date));
+        return d;
+    }
 }
