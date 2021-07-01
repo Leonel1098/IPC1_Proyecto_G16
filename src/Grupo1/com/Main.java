@@ -742,7 +742,7 @@ public class Main {
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
                 logAcciones+=HoraFecha()+"\t Se Eliminoel Usuario "+users.get(i).getUsername()+"\n";
-
+                logAcciones();
                 users.remove(i);
 
             }
