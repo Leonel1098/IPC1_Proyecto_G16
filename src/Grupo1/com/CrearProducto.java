@@ -4,21 +4,20 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-public class CrearProducto {
-    JFrame ventanacrear;
-    JPanel panelcrear;
-    JButton btnregistro, btnatras;
-    JLabel lblnombreproducto, lblidproducto, lblcostoproducto, lblprecioproducto, lbldescripcionprod, lblingredienteproducto;
-    JTextField txtnombre,txtidproducto, txtcosto,txtprecio, txtdescripcion, txtingredientes;
+public class CrearProducto extends CRUD_Productos {
+    JFrame ventanacrear,ventanaingrediente;
+    JPanel panelcrear,panelingrediente;
+    JButton btnregistro, btnatras,btningredientes;
+    JLabel lblnombreproducto, lblidproducto, lblcostoproducto, lblprecioproducto, lbldescripcionprod, lblingredienteproducto,lblcantidad,lblunidad,lblnombre;
+    JTextField txtnombre,txtidproducto, txtcosto,txtprecio, txtdescripcion, txtingredientes,txtcantidad,txtunidad;
     public Menu menu;
     public CRUD_Productos producto;
     //Variables utilizadas para guardas los datos ingresados en los jtextfield
-    public String nombre, username, password,confpassword;
-    // Arreglos con los que trabajaremos dentro de esta ventana.
-    public String[] arreglo;
-    public int contador;
-    //public static NewUser[] usuarios;
+    public String nombre,descripcion,name,units;
+    public int id,costo,precio,quantity;
+
 
 
     public CrearProducto(){
@@ -107,10 +106,17 @@ public class CrearProducto {
         txtdescripcion.setVisible(true);
         panelcrear.add(txtdescripcion);
 
-        txtingredientes = new JTextField("");
-        txtingredientes.setBounds(160,170,180,20);
-        txtingredientes.setVisible(true);
-        panelcrear.add(txtingredientes);
+        btningredientes = new JButton("Agregar Ingredientes");
+        btningredientes.setBounds(160,170,180,20);
+        btningredientes.setVisible(true);
+        panelcrear.add(btningredientes);
+        //Accion del boton para agregar los ingredientes al producto
+        btningredientes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Ingredientes();
+            }
+        });
 
         //Creo boton de registro y lo  agrego al panel
         btnregistro = new JButton ("Registrar");
@@ -122,11 +128,14 @@ public class CrearProducto {
         btnregistro.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                // username = txtusuario.getText();
-                //nombre = txtnombre.getText();
-               // password = txtcontraseña.getText();
-                //confpassword = txtconfcontra.getText();
-                //usuarios[contador] = new NewUser(username,nombre,password,confpassword);
+                id = Integer.parseInt(txtidproducto.getText());
+                nombre = txtnombre.getText();
+                costo = Integer.parseInt(txtcosto.getText());
+                precio = Integer.parseInt((txtprecio.getText()));
+                descripcion = txtdescripcion.getText();
+                Main.AgregaProducto(id,nombre,descripcion,costo,precio,Main.temp);
+                CrearProducto.super.dispose();
+                CRUD_Productos up= new CRUD_Productos();
                 ventanacrear.setVisible(false);
             }
         });
@@ -144,5 +153,76 @@ public class CrearProducto {
             }
 
         });
+
     }
+    public void Ingredientes (){
+        ventanaingrediente = new JFrame("Agregar Ingredientes");
+        ventanaingrediente.setVisible(true);
+        ventanaingrediente.setSize(380,300);
+        ventanaingrediente.setLayout(null);
+        ventanaingrediente.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        ventanaingrediente.setLocationRelativeTo(null);
+        //Creo el panel y lo agrego a la ventana
+        panelingrediente = new JPanel();
+        panelingrediente.setLayout(null);
+        panelingrediente.setSize(380,300);
+        panelingrediente.setVisible(true);
+        panelingrediente.setBackground(Color.GRAY);
+        ventanaingrediente.add(panelingrediente);
+        this.ComponentesIngrediente();
+        panelingrediente.repaint();
+    }
+    public void ComponentesIngrediente(){
+        lblnombre = new JLabel("Nombre del Ingrediente");
+        lblnombre.setBounds(10,20,150,20);
+        lblnombre.setVisible(true);
+        lblnombre.setLayout(null);
+        panelingrediente.add(lblnombre);
+
+        lblcantidad = new JLabel ("Cantidad");
+        lblcantidad.setBounds(10,50,150,20);
+        lblcantidad.setVisible(true);
+        lblcantidad.setLayout(null);
+        panelingrediente.add(lblcantidad);
+
+        lblunidad = new JLabel("Unidades");
+        lblunidad.setBounds(10,80,150,20);
+        lblunidad.setVisible(true);
+        lblunidad.setLayout(null);
+        panelingrediente.add(lblunidad);
+
+        txtingredientes = new JTextField("");
+        txtingredientes.setBounds(160,20,180,20);
+        txtingredientes.setVisible(true);
+        panelingrediente.add(txtingredientes);
+
+        txtcantidad = new JTextField("");
+        txtcantidad.setBounds(160,50,180,20);
+        txtcantidad.setVisible(true);
+        panelingrediente.add(txtcantidad);
+
+        txtunidad = new JTextField("");
+        txtunidad.setBounds(160,80,180,20);
+        txtunidad.setVisible(true);
+        panelingrediente.add(txtunidad);
+
+        btningredientes = new JButton("Agregar");
+        btningredientes.setBounds(160,170,180,20);
+        btningredientes.setVisible(true);
+        panelingrediente.add(btningredientes);
+        //Accion del boton para agregar los ingredientes al producto
+        btningredientes.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+             name = txtingredientes.getText();
+             quantity = Integer.parseInt(txtcantidad.getText());
+             units = txtunidad.getText();
+
+             Main.AgregarIngrediente(name,quantity,units);
+             ventanaingrediente.setVisible(false);
+
+            }
+        });
+    }
+
 }

@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class CRUD_Clientes extends JFrame implements ActionListener, MouseListener {
-    JButton clientenuevo,btnatras;
+    JButton clientenuevo;
     public CrearCliente nuevocliente;
     public Menu menu;
     public CRUD_Clientes() {
@@ -23,32 +23,12 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         clientenuevo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                salir();
                 nuevocliente = new CrearCliente();
             }
         });
 
-        //Botón para regresar al Login
-        btnatras = new JButton ("Atras");
-        btnatras.setBounds(200,600,120,20);
-        btnatras.setVisible(true);
-
-        //Acciones del boton regresar
-        btnatras.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-
-                menu = new Menu();
-
-            }
-        });
-        this.add(btnatras);
         this.add(clientenuevo);
-
-        JButton Add= new JButton("add Item");
-        Add.setBounds(30,600,150,150);
-        Add.setVisible(true);
-        this.add(Add);
-
         this.setLayout(null);
         this.setSize(1200, 850);
         this.setLocationRelativeTo(null);
@@ -206,6 +186,9 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+    public void salir(){
+        this.dispose();
     }
 }
 

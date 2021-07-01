@@ -26,7 +26,6 @@ public class Menu {
         panelmenu.setLayout(null);
         panelmenu.setSize(350,350);
         panelmenu.setVisible(true);
-        panelmenu.setBackground(Color.GRAY);
         menu.add(panelmenu);
         this.Components();
 

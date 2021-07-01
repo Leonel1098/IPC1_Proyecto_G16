@@ -24,7 +24,7 @@ public class Login {
     public Login(){
         Main.logAcciones();
         //Creo la ventana principal
-        login = new JFrame("Login Calculadora");
+        login = new JFrame("Login");
         login.setSize(350,300);
         login.setLayout(null);
         login.setVisible(true);
@@ -35,7 +35,6 @@ public class Login {
         panel.setLayout(null);
         panel.setSize(350,300);
         panel.setVisible(true);
-        panel.setBackground(Color.GRAY);
         login.add(panel);
         this.Componentes();
         panel.repaint();

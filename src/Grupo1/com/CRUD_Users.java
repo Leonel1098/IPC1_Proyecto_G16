@@ -25,8 +25,6 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
                 salir();
                 nuevouser = new CrearUsuario();
 
-
-
             }
         });
 

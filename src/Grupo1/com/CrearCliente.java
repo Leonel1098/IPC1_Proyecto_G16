@@ -5,20 +5,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CrearCliente {
+public class CrearCliente extends CRUD_Clientes {
     JFrame ventanacrear;
     JPanel panelcrear;
     JButton btnregistro, btnatras;
     JLabel lblidcliente,lblnombrecliente,lblciudadcliente,lblnitcliente,lbltelefonocliente;
-    JTextField txtusuario,txtnombre,txtcontraseña,txtconfcontra, txttelefono;
+    JTextField txtusuario,txtnombre,txtciudad,txtnitcliente, txttelefono;
     public Menu menu;
-    public CRUD_Clientes clientes;
     //Variables utilizadas para guardas los datos ingresados en los jtextfield
-    public String nombre, username, password,confpassword;
-    // Arreglos con los que trabajaremos dentro de esta ventana.
-    public String[] arreglo;
-    public int contador;
-    //public static NewUser[] usuarios;
+    public String nombre, ciudad,nit;
+    public int id,telefono;
+
+
 
 
     public CrearCliente(){
@@ -85,15 +83,15 @@ public class CrearCliente {
         txtnombre.setVisible(true);
         panelcrear.add(txtnombre);
 
-        txtcontraseña = new JTextField("");
-        txtcontraseña.setBounds(140,80,180,20);
-        txtcontraseña.setVisible(true);
-        panelcrear.add(txtcontraseña);
+        txtciudad = new JTextField("");
+        txtciudad.setBounds(140,80,180,20);
+        txtciudad.setVisible(true);
+        panelcrear.add(txtciudad);
 
-        txtconfcontra = new JTextField("");
-        txtconfcontra.setBounds(140,110,180,20);
-        txtconfcontra.setVisible(true);
-        panelcrear.add(txtconfcontra);
+        txtnitcliente = new JTextField("");
+        txtnitcliente.setBounds(140,110,180,20);
+        txtnitcliente.setVisible(true);
+        panelcrear.add(txtnitcliente);
 
         txttelefono = new JTextField("");
         txttelefono.setBounds(140,140,180,20);
@@ -110,12 +108,17 @@ public class CrearCliente {
         btnregistro.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                username = txtusuario.getText();
+                id = Integer.parseInt(txtusuario.getText());
                 nombre = txtnombre.getText();
-                password = txtcontraseña.getText();
-                confpassword = txtconfcontra.getText();
-                //usuarios[contador] = new NewUser(username,nombre,password,confpassword);
+                ciudad = txtciudad.getText();
+                nit = txtnitcliente.getText();
+                telefono = Integer.parseInt(txttelefono.getText());
                 ventanacrear.setVisible(false);
+                Main.AgregaCliente(id,nombre,ciudad,nit,telefono);
+                ventanacrear.dispose();
+                CrearCliente.super.dispose();
+                CRUD_Clientes uc= new CRUD_Clientes();
+
             }
         });
         //Botón para regresar al Login
@@ -128,7 +131,6 @@ public class CrearCliente {
             @Override
             public void actionPerformed(ActionEvent ae) {
 
-                menu = new Menu();
                 ventanacrear.setVisible(false);
             }
         });

@@ -133,7 +133,7 @@ public class Main {
             //Object UserS = Archivos.deserialize("./Serealizables/users.ipcrm");
         }
 
-        public static void AgregaCliente(int id, String name, String address, int phone, String nit){
+        public static void AgregaCliente(int id, String name, String address,String nit, int phone ){
         Clientes ClientesAgregados = new Clientes(id, name, address, phone, nit);
         clients.add(ClientesAgregados);
         }

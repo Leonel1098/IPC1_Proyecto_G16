@@ -15,11 +15,9 @@ public class CrearUsuario extends CRUD_Users{
     public Menu menu;
     public CRUD_Users usuario;
     //Variables utilizadas para guardas los datos ingresados en los jtextfield
-    public String nombre, username, password,confpassword;
-    // Arreglos con los que trabajaremos dentro de esta ventana.
-    public String[] arreglo;
-    public int contador;
-    //public static NewUser[] usuarios;
+    public String nombre, password;
+
+
 
 
 
@@ -80,17 +78,15 @@ public class CrearUsuario extends CRUD_Users{
         btnregistro.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-               // username = txtusuario.getText();
                 nombre = txtnombre.getText();
                 password = txtcontraseña.getText();
-                //confpassword = txtconfcontra.getText();
-                //usuarios[contador] = new NewUser(username,nombre,password,confpassword);
-                ventanacrear.setVisible(false);
+
                 Main.AgregaUsuario(nombre,password);
                 
                ventanacrear.dispose();
                 CrearUsuario.super.dispose();
                 CRUD_Users cu = new CRUD_Users();
+                ventanacrear.setVisible(false);
 
             }
         });

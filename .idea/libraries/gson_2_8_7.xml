@@ -1,7 +1,8 @@
 <component name="libraryTable">
   <library name="gson-2.8.7">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../Libs/gson-2.8.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/gson-2.8.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/JTattoo-1.6.13.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
