@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
 
 public class Login {
 
@@ -86,16 +87,23 @@ public class Login {
                         if (usuario.equals(Main.users.get(i).getUsername()) && contraseña.equals(Main.users.get(i).getPassword())){
                             menu = new Menu();
                             login.setVisible(false);
-                        }else if (i==Main.users.size()-1){
+
+                        } else if (i==Main.users.size()-1){
                             JOptionPane.showMessageDialog(null,"Datos Incorrectos");
                         }
+
                     }
+
+
+
+
                 }
 
             }
 
         });
     }
+
 
 
 }

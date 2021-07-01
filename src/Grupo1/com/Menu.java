@@ -13,6 +13,7 @@ public class Menu {
 
 
     public Menu(){
+        Main.logAcciones();
         //Ventana que mostrara el menu de las opciones
         menu = new JFrame("Menú");
         menu.setSize(350,350);
@@ -46,7 +47,8 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                      CRUD_Users usuariosframe = new CRUD_Users();
-                     menu.setVisible(false);
+
+                     //menu.setVisible(false);
             }
         });
 
@@ -59,7 +61,7 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CRUD_Clientes clientesframe = new CRUD_Clientes();
-                menu.setVisible(false);
+               // menu.setVisible(false);
             }
         });
 
@@ -72,7 +74,7 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CRUD_Productos productosframe = new CRUD_Productos();
-                menu.setVisible(false);
+               // menu.setVisible(false);
             }
         });
 
@@ -85,7 +87,7 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                CRUD_Facturas facturasframe = new CRUD_Facturas();
-                menu.setVisible(false);
+              //  menu.setVisible(false);
             }
         });
 
@@ -97,7 +99,7 @@ public class Menu {
         btn7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                menu.setVisible(false);
+                Main.logAcciones();
             }
         });
 

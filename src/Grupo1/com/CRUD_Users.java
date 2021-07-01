@@ -22,7 +22,9 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
         usernuevo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                salir();
                 nuevouser = new CrearUsuario();
+
 
             }
         });
@@ -49,7 +51,7 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
         this.setVisible(true);
         this.setResizable(false);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     JFrame Usuarios;
@@ -130,6 +132,7 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
 
 
 
+
                     //se tendra que refresacar la tabala con los datos actualizados
 
                     //this.dispose();
@@ -190,6 +193,9 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+    public  void salir(){
+        this.dispose();
     }
 }
 

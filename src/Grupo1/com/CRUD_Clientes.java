@@ -43,13 +43,19 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         });
         this.add(btnatras);
         this.add(clientenuevo);
+
+        JButton Add= new JButton("add Item");
+        Add.setBounds(30,600,150,150);
+        Add.setVisible(true);
+        this.add(Add);
+
         this.setLayout(null);
         this.setSize(1200, 850);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
 
@@ -160,7 +166,7 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
                         System.out.println("Eliminado");
                         int id = Integer.parseInt(boton.getName());
                         Main.BotonEliminarClientes(id);
-                        this.remove(TablaClientes);
+
                         this.dispose();
                         CRUD_Clientes uc = new CRUD_Clientes();
 

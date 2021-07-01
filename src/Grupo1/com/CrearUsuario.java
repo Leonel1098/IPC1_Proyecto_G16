@@ -5,7 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CrearUsuario {
+
+public class CrearUsuario extends CRUD_Users{
     JFrame ventanacrear;
     JPanel panelcrear;
     JButton btnregistro, btnatras;
@@ -19,6 +20,7 @@ public class CrearUsuario {
     public String[] arreglo;
     public int contador;
     //public static NewUser[] usuarios;
+
 
 
     public CrearUsuario(){
@@ -36,8 +38,7 @@ public class CrearUsuario {
         panelcrear.setVisible(true);
         panelcrear.setBackground(Color.GRAY);
         ventanacrear.add(panelcrear);
-        this.Componentes();
-        panelcrear.repaint();
+        Componentes();
         //Pasar los datos a las variables de los arreglos para no perder los datos entre las ventanas
 
     }
@@ -85,6 +86,11 @@ public class CrearUsuario {
                 //confpassword = txtconfcontra.getText();
                 //usuarios[contador] = new NewUser(username,nombre,password,confpassword);
                 ventanacrear.setVisible(false);
+                Main.AgregaUsuario(nombre,password);
+               ventanacrear.dispose();
+                CrearUsuario.super.dispose();
+                CRUD_Users cu = new CRUD_Users();
+
             }
         });
         //Botón para regresar al Login

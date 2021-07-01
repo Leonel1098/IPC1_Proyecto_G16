@@ -47,7 +47,7 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
         this.setVisible(true);
         this.setResizable(false);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     JFrame Usuarios;
@@ -155,7 +155,7 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
                         System.out.println("Eliminado");
                         int id = Integer.parseInt(boton.getName());
                         Main.BotonEliminarFacturas(id);
-                        this.remove(Tabla);
+
                         this.dispose();
                         CRUD_Facturas uc = new CRUD_Facturas();
 

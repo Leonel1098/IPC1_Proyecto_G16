@@ -47,7 +47,7 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
         this.setVisible(true);
         this.setResizable(false);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     JFrame Usuarios;
@@ -155,6 +155,7 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
                         System.out.println("Eliminado");
                         int id = Integer.parseInt(boton.getName());
                         Main.BotonEliminarProducto(id);
+
                         this.remove(Tabla);
                         this.dispose();
                         CRUD_Productos up= new CRUD_Productos();

@@ -1,7 +1,11 @@
 package Grupo1.com;
 
+import java.io.FileWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Scanner;
 import com.google.gson.*;
 import com.jtattoo.plaf.noire.NoireLookAndFeel;
@@ -39,6 +43,7 @@ public class Main {
         }
 
         CargaConfig();
+      ;
         Login login = new Login();
 
         //Error.vericador();
@@ -737,7 +742,9 @@ public class Main {
 
         for (int i = 0; i < users.size(); i++) {
             if (username.equals(users.get(i).getUsername())) {
+                logAcciones+="Se Eliminoel Usuario "+users.get(i).getUsername()+"\n";
                 users.remove(i);
+
             }
         }
     }
@@ -745,7 +752,10 @@ public class Main {
 
         for (int i = 0; i < clients.size(); i++) {
             if (idcliente == clients.get(i).getId()) {
+                logAcciones+=  " Se Elimino el Cliente "+clients.get(i).getName()+"\n";
                 clients.remove(i);
+
+
             }
         }
     }
@@ -753,7 +763,9 @@ public class Main {
 
         for (int i = 0; i < products.size(); i++) {
             if (iidproducto == products.get(i).getId()) {
+                logAcciones+="Se Elimino el Producto "+products.get(i).getName()+"\n";
                 products.remove(i);
+
             }
         }
     }
@@ -761,8 +773,28 @@ public class Main {
 
         for (int i = 0; i < invoices.size(); i++) {
             if (idFactura == invoices.get(i).getId()) {
+                logAcciones+=" Se Elimino la Factura"+invoices.get(i).getId()+"\n";
                 invoices.remove(i);
+
             }
+        }
+    }
+    //----------------------------------------------Log de Acciones-----------------------------------
+
+    public static String logAcciones ="Log Acciones \n";
+    public static void logAcciones(){
+
+        try {
+
+            FileWriter archivo = new FileWriter("logAcciones.log");
+
+            archivo.write(logAcciones + "\n");
+
+
+            archivo.close();
+
+        } catch (Exception e) {
+
         }
     }
 
