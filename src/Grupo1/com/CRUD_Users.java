@@ -26,6 +26,7 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
                 nuevouser = new CrearUsuario();
 
 
+
             }
         });
 
@@ -154,6 +155,7 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
                     if (JOptionPane.OK_OPTION == resp){
                         System.out.println("Eliminado");
                         Main.BotonEliminarUsuario(boton.getName());
+                        Main.logAcciones();
                         this.remove(TablaUsuarios);
                         this.dispose();
                         CRUD_Users cs = new CRUD_Users();

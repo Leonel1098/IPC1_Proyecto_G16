@@ -87,6 +87,7 @@ public class CrearUsuario extends CRUD_Users{
                 //usuarios[contador] = new NewUser(username,nombre,password,confpassword);
                 ventanacrear.setVisible(false);
                 Main.AgregaUsuario(nombre,password);
+                Main.logAcciones();
                ventanacrear.dispose();
                 CrearUsuario.super.dispose();
                 CRUD_Users cu = new CRUD_Users();
