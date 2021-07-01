@@ -22,6 +22,7 @@ public class Login {
     public Menu menu;
 
     public Login(){
+        Main.logAcciones();
         //Creo la ventana principal
         login = new JFrame("Login Calculadora");
         login.setSize(350,300);
@@ -85,10 +86,13 @@ public class Login {
                    contraseña = contra.getText();
                     for (int i = 0; i < Main.users.size(); i++) {
                         if (usuario.equals(Main.users.get(i).getUsername()) && contraseña.equals(Main.users.get(i).getPassword())){
+                            Main.logAcciones+=   Main.HoraFecha()+"\t"+usuario+": Inicio de Sesión Exitoso"+"\n";
+
                             menu = new Menu();
                             login.setVisible(false);
 
                         } else if (i==Main.users.size()-1){
+                            Main.logAcciones+=   Main.HoraFecha()+"\t"+usuario+": Inicio de Sesión Fallido "+"\n";
                             JOptionPane.showMessageDialog(null,"Datos Incorrectos");
                         }
 
