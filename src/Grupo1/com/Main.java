@@ -182,11 +182,17 @@ public class Main {
         }
 
 
-        public static void EditarIngrediente(String name, int quantity, String units, int cont){
-        for (int i=0; i< products.get(cont).ingredients.size(); i++){
-            products.get(cont).ingredients.get(i).setName(name);
-            products.get(cont).ingredients.get(i).setQuantity(quantity);
-            products.get(cont).ingredients.get(i).setUnits(units);
+    public static void EditarIngrediente(String index, String name, int quantity, String units, int cont){
+        for (int i=0; i<Main.products.size(); i++){
+            if (cont == Main.products.get(i).getId()) {
+                for (int j = 0; j < Main.products.get(i).getIngredients().size(); j++) {
+                    if (Main.products.get(i).getIngredients().get(j).getName().equals(index)){
+                        Main.products.get(i).getIngredients().get(j).setName(name);
+                        Main.products.get(i).getIngredients().get(j).setQuantity(quantity);
+                        Main.products.get(i).getIngredients().get(j).setUnits(units);
+                    }
+                }
+            }
         }
     }
 
