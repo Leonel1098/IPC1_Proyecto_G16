@@ -3,6 +3,8 @@ package com.company;
 import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import com.google.gson.*;
@@ -889,5 +891,116 @@ public class Main {
                 t=true;
 
         return t;
+    }
+    /////////LOG ERRORES
+    public static String logErrores ="";
+    public static void logErrores(){
+
+        try {
+            FileWriter archivo = new FileWriter("Errores.log");
+
+            archivo.write(logErrores + "\n");
+
+
+            archivo.close();
+
+        } catch (Exception e) {
+
+        }
+    }
+
+    public static void  RevisionUsers(){
+
+        int cont=0;
+        for (Usuarios p: users)
+        {
+            for(Usuarios j: users)
+            {
+                if(p.getUsername().equals(j.getUsername())) {
+                    cont++;
+                    if (cont > 1) {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                        String HoraFecha=dtf.format(LocalDateTime.now());
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase users:  "+"Se repitió el nombre de usuario:  " + p.getUsername()+"\n";
+                        logErrores();
+
+                        users.remove(j);
+                    }
+                }
+            }
+            cont=0;
+        }
+
+
+
+    }
+    public static void RevisionProducts(){
+        int cont=0;
+        for (Productos p: products)
+        {
+            for(Productos j : products)
+            {
+                if(p.getId()==j.getId()) {
+                    cont++;
+                    if (cont > 1) {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                        String HoraFecha=dtf.format(LocalDateTime.now());
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Productos:  "+"Se repitió el ID:  " + p.getId()+"\n";
+                        logErrores();
+                        System.out.println();
+                        users.remove(j);
+                    }
+                }
+            }
+            cont=0;
+        }
+
+    }
+    public static void RevisionInvoices(){
+        int cont=0;
+        for (Facturas p: invoices)
+        {
+            for(Facturas j: invoices)
+            {
+                if(p.getId()==(j.getId())) {
+                    cont++;
+                    if (cont > 1) {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                        String HoraFecha=dtf.format(LocalDateTime.now());
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Facturas:  "+"Se repitió el ID:  " + p.getId()+"\n";
+                        logErrores();
+
+                        invoices.remove(j);
+                    }
+                }
+            }
+            cont=0;
+        }
+
+    }
+    public static void RevisionClients(){
+        int cont=0;
+        for (Clientes p: clients)
+        {
+            for(Clientes j : clients)
+            {
+                if(p.getId()==(j.getId())) {
+                    cont++;
+                    if (cont > 1) {
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+                        String HoraFecha=dtf.format(LocalDateTime.now());
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Clientes:  "+"Se repitió el ID:  " + p.getId()+"\n";
+                        logErrores();
+                        clients.remove(j);
+                    }
+                }
+            }
+            cont=0;
+        }
+
     }
 }
