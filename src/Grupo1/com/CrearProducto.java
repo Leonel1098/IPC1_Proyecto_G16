@@ -128,6 +128,7 @@ public class CrearProducto extends CRUD_Productos {
         btnregistro.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
+
                 id = Integer.parseInt(txtidproducto.getText());
                 nombre = txtnombre.getText();
                 costo = Integer.parseInt(txtcosto.getText());

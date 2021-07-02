@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class CRUD_Productos extends JFrame implements ActionListener, MouseListener {
-    JButton productonuevo,btnatras;
+    JButton productonuevo;
     public CrearProducto nuevoproducto;
     public Menu menu;
     public CRUD_Productos() {
@@ -22,22 +22,8 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
         productonuevo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                salir();
                 nuevoproducto = new CrearProducto();
-            }
-        });
-        //Botón para regresar al Login
-        btnatras = new JButton ("Atras");
-        btnatras.setBounds(200,600,120,20);
-        btnatras.setVisible(true);
-        this.add(btnatras);
-        //Acciones del boton regresar
-        btnatras.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-
-                menu = new Menu();
-
             }
         });
         this.add(productonuevo);
@@ -195,6 +181,9 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+    public void salir(){
+        this.dispose();
     }
 }
 

@@ -5,20 +5,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CrearFactura {
-    JFrame ventanacrear;
-    JPanel panelcrear;
-    JButton btnregistro, btnatras;
-    JLabel lblidfactura,lblnombrecliente,lblfecha,lblproducto,lblmonto;
-    JTextField txtfactura,txtcliente,txtfecha,txtproducto, txtmonto;
+public class CrearFactura extends CRUD_Facturas {
+    JFrame ventanacrear,ventanafactura;
+    JPanel panelcrear,panelfactura;
+    JButton btnregistro, btnatras,btnproductos,btnagregarfactura;
+    JLabel lblidfactura,lblnombrecliente,lblfecha,lblproducto,lblmonto,lblprecio,lblnombre;
+    JTextField txtfactura,txtcliente,txtfecha,txtproducto, txtmonto,txtnombre,txtprecio;
     public Menu menu;
     public CRUD_Facturas facturas;
     //Variables utilizadas para guardas los datos ingresados en los jtextfield
-    public String nombre, username, password,confpassword;
-    // Arreglos con los que trabajaremos dentro de esta ventana.
-    public String[] arreglo;
-    public int contador;
-    //public static NewUser[] usuarios;
+    public String nombreproducto,fecha;
+    public int precio,idfactura,idcliente;
+
 
 
     public CrearFactura(){
@@ -49,7 +47,7 @@ public class CrearFactura {
         lblidfactura.setLayout(null);
         panelcrear.add(lblidfactura);
 
-        lblnombrecliente = new JLabel ("Nombre del Cliente");
+        lblnombrecliente = new JLabel ("ID del Cliente");
         lblnombrecliente.setBounds(10,50,150,20);
         lblnombrecliente.setVisible(true);
         lblnombrecliente.setLayout(null);
@@ -66,12 +64,6 @@ public class CrearFactura {
         lblproducto.setVisible(true);
         lblproducto.setLayout(null);
         panelcrear.add(lblproducto);
-
-        lblmonto = new JLabel("Monto");
-        lblmonto.setBounds(10,140,150,20);
-        lblmonto.setVisible(true);
-        lblmonto.setLayout(null);
-        panelcrear.add(lblmonto);
 
 
         //Defino los textfield y los agrego al panel
@@ -90,15 +82,18 @@ public class CrearFactura {
         txtfecha.setVisible(true);
         panelcrear.add(txtfecha);
 
-        txtproducto = new JTextField("");
-        txtproducto.setBounds(140,110,180,20);
-        txtproducto.setVisible(true);
-        panelcrear.add(txtproducto);
 
-        txtmonto = new JTextField("");
-        txtmonto.setBounds(140,140,180,20);
-        txtmonto.setVisible(true);
-        panelcrear.add(txtmonto);
+        btnagregarfactura = new JButton ("Registrar");
+        btnagregarfactura.setBounds(140,110,100,20);
+        btnagregarfactura.setVisible(true);
+        panelcrear.add(btnagregarfactura);
+
+        btnagregarfactura.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ProductosFactura();
+            }
+        });
 
         //Creo boton de registro y lo  agrego al panel
         btnregistro = new JButton ("Registrar");
@@ -110,7 +105,13 @@ public class CrearFactura {
         btnregistro.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-
+                idfactura = Integer.parseInt(txtfactura.getText());
+                idcliente = Integer.parseInt(txtcliente.getText());
+                fecha = txtfecha.getText();
+                Main.AgregaFactura(idfactura,idcliente,fecha,Main.temp2);
+                CrearFactura.super.dispose();
+                CRUD_Facturas uc= new CRUD_Facturas();
+                ventanacrear.setVisible(false);
             }
         });
         //Botón para regresar al Login
@@ -124,6 +125,65 @@ public class CrearFactura {
             public void actionPerformed(ActionEvent ae) {
 
                 ventanacrear.setVisible(false);
+            }
+        });
+    }
+    public void ProductosFactura (){
+        ventanafactura = new JFrame("Agregar Ingredientes");
+        ventanafactura.setVisible(true);
+        ventanafactura.setSize(380,300);
+        ventanafactura.setLayout(null);
+        ventanafactura.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        ventanafactura.setLocationRelativeTo(null);
+        //Creo el panel y lo agrego a la ventana
+        panelfactura = new JPanel();
+        panelfactura.setLayout(null);
+        panelfactura.setSize(380,300);
+        panelfactura.setVisible(true);
+        panelfactura.setBackground(Color.GRAY);
+        ventanafactura.add(panelfactura);
+        this.ComponentesProductos();
+        panelfactura.repaint();
+    }
+    public void ComponentesProductos(){
+        lblnombre = new JLabel("Nombre del Producto");
+        lblnombre.setBounds(10,20,150,20);
+        lblnombre.setVisible(true);
+        lblnombre.setLayout(null);
+        panelfactura.add(lblnombre);
+
+        lblprecio = new JLabel ("Precio del Producto");
+        lblprecio.setBounds(10,50,150,20);
+        lblprecio.setVisible(true);
+        lblprecio.setLayout(null);
+        panelfactura.add(lblprecio);
+
+        txtnombre = new JTextField("");
+        txtnombre.setBounds(160,20,180,20);
+        txtnombre.setVisible(true);
+        panelfactura.add(txtnombre);
+
+        txtprecio = new JTextField("");
+        txtprecio.setBounds(160,50,180,20);
+        txtprecio.setVisible(true);
+        panelfactura.add(txtprecio);
+
+
+
+        btnproductos = new JButton("Agregar");
+        btnproductos.setBounds(160,170,180,20);
+        btnproductos.setVisible(true);
+        panelfactura.add(btnproductos);
+        //Accion del boton para agregar los ingredientes al producto
+        btnproductos.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                nombreproducto= txtnombre.getText();
+                precio = Integer.parseInt(txtprecio.getText());
+
+                Main.AgregarProductoF(nombreproducto,precio);
+                ventanafactura.setVisible(false);
+
             }
         });
     }

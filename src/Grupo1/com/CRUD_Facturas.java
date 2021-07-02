@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class CRUD_Facturas extends JFrame implements ActionListener, MouseListener {
-    JButton facturanueva,btnatras;
+    JButton facturanueva;
     public CrearFactura nuevafactura;
     public Menu menu;
 
@@ -23,23 +23,11 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
         facturanueva.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Salir();
                 nuevafactura = new CrearFactura();
             }
         });
-        //Botón para regresar al Login
-        btnatras = new JButton ("Atras");
-        btnatras.setBounds(200,600,120,20);
-        btnatras.setVisible(true);
-        this.add(btnatras);
-        //Acciones del boton regresar
-        btnatras.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent ae) {
 
-                menu = new Menu();
-
-            }
-        });
         this.add(facturanueva);
         this.setLayout(null);
         this.setSize(1200, 850);
@@ -59,7 +47,7 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
         //ver Metodo para guardar los Datos en el Arreglo
         Object datos[][] = Main.DatosFacturas();
         //Encabezado del la tabla a ausa r
-        String[] columnas = {"Id Factura", " Cliente  ", "Date ", "Product ","Monto","Editar","Borra"};
+        String[] columnas = {"Id Factura", " ID Cliente  ", "Date ", "Product ","Monto","Editar","Borra"};
         //Se Crea la Tabla
         Tabla = new JTable();
 
@@ -194,6 +182,9 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+    public void Salir(){
+        this.dispose();
     }
 }
 

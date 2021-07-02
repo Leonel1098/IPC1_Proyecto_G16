@@ -29,8 +29,6 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
-
     JFrame Usuarios;
     public static JTable TablaClientes;
     public static JScrollPane sp;
@@ -115,7 +113,7 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
                     JButton boton = (JButton) value;
                     int IdCliente = Integer.parseInt(boton.getName());
                     System.out.println(IdCliente);
-                    EditarCliente Ec = new EditarCliente(IdCliente);
+                    //EditarCliente Ec = new EditarCliente(IdCliente);
                     this.dispose();
                     //this.dispose();
                     //se tendra que refresacar la tabala con los datos actualizados
