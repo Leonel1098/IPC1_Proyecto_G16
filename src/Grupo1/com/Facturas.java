@@ -55,8 +55,8 @@ import java.io.Serializable;
         }
         return Productos;
         }
-        public int Precio(){
-        int Costo=0;
+        public double Precio(){
+        double Costo=0;
             for (int i=0; i<products.size();i++){
                 Costo += products.get(i).getPrice();
             }
