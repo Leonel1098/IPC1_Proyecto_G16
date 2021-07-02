@@ -19,12 +19,7 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         clientenuevo.setBounds(30,580,150,50);
         clientenuevo.setVisible(true);
         //Dando acción al botón para crear un cliente nuevo
-        clientenuevo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                nuevocliente = new CrearCliente();
-            }
-        });
+        clientenuevo.addActionListener(this);
         this.add(clientenuevo);
         this.setLayout(null);
         this.setSize(1170, 700);
@@ -66,7 +61,6 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         TablaClientes.getColumnModel().getColumn(3).setPreferredWidth(10);
         TablaClientes.getColumnModel().getColumn(4).setPreferredWidth(10);
         TablaClientes.getColumnModel().getColumn(5).setPreferredWidth(100);
-
         TablaClientes.getColumnModel().getColumn(6).setPreferredWidth(100);
 
         // METODO PARA RENDERIZAR LOS DATOS
@@ -85,6 +79,8 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        this.dispose();
+        nuevocliente = new CrearCliente();
     }
 
 

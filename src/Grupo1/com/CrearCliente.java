@@ -118,6 +118,7 @@ public class CrearCliente {
                 nit = txttelefono.getText();
                 Main.AgregaCliente(IdCl, nombre, direccion,nit, phone);
                 ventanacrear.setVisible(false);
+                CRUD_Clientes CC = new CRUD_Clientes();
             }
         });
         //Botón para regresar al Login
