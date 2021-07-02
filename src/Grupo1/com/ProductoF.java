@@ -1,11 +1,11 @@
-package Grupo1.com;
+package com.company;
 import java.io.Serializable;
 
 public class ProductoF implements Serializable {
     private String name;
-    private int price;
+    private double price;
 
-    public ProductoF(String name, int price) {
+    public ProductoF(String name, double price) {
         this.name = name;
         this.price = price;
     }
@@ -18,11 +18,11 @@ public class ProductoF implements Serializable {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }
