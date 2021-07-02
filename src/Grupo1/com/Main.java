@@ -203,7 +203,7 @@ public class Main {
         products.add(ProductosAgregados);
         }
 
-        public static void EditarProducto(int id, String name, String description, int cost, int price){
+        public static void EditarProducto(int id, String name, String description, double cost, double price){
         for (int i=0; i< products.size(); i++){
             if(products.get(i).getId() == id) {
                 products.get(i).setName(name);
@@ -763,7 +763,7 @@ public class Main {
                     arreglo[j][1] = products.get(i).getIngredients().get(j).getQuantity();
                     arreglo[j][2] = products.get(i).getIngredients().get(j).getUnits();
                     JButton edit = new JButton("Edit");
-                    edit.setName("" + products.get(i).getId());
+                    edit.setName("" + products.get(i).getIngredients().get(j).getName());
                     arreglo[j][3] = edit;
                     JButton delete = new JButton("Delete");
                     delete.setName("" + products.get(i).getIngredients().get(j).getName());

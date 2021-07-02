@@ -14,7 +14,7 @@ public class EditarProductos extends JFrame implements ActionListener, MouseList
     JLabel lblnombre, lbldescripcion, lblcost, lblprice;
     JTextField txtnombre, txtdescripcion, txtcost, txtprice;
     String nombre, descripcion;
-    int cost, price;
+    double cost, price;
     public Menu menu;
     public static int IDPR;
 
@@ -43,8 +43,8 @@ public class EditarProductos extends JFrame implements ActionListener, MouseList
             public void actionPerformed(ActionEvent ae) {
                 nombre = txtnombre.getText();
                 descripcion = txtdescripcion.getText();
-                cost = Integer.parseInt(txtcost.getText());
-                price = Integer.parseInt(txtprice.getText());
+                cost = Double.parseDouble(txtcost.getText());
+                price = Double.parseDouble(txtprice.getText());
                 for (int i=0; i<Main.products.size(); i++) {
                     if (Main.products.get(i).getId()== IdPr) {
                         Main.EditarProducto(IdPr, nombre, descripcion, cost, price);
@@ -178,7 +178,7 @@ public class EditarProductos extends JFrame implements ActionListener, MouseList
             // Obtenemos el objeto que esta dentro de la tabla, tomando en cuenta la fila y columna
             System.out.println("valido click");
             //Aqui se va a poner un mini frame para Mostrar y Editar  la Infomacion
-            if (columna == 4) {
+            if (columna == 3) {
                 System.out.println("Editar -----");
                 Object value = Tabla.getValueAt(fila, columna);
                 // TABLA DEVOLVEME EL OBJETO QUE TENES EN [FILA][COLUMNA]
@@ -188,6 +188,8 @@ public class EditarProductos extends JFrame implements ActionListener, MouseList
                     System.out.println("OBTENIENDO EL ID POR EL NOMBRE");
                     JButton boton = (JButton) value;
                     String NP = boton.getName();
+                    EditarIngrediente EI = new EditarIngrediente(IDPR,NP);
+                    this.dispose();
                     //AgregarIngrediente AI = new AgregarIngrediente(IDPR, NP);
 
                     //se tendra que refresacar la tabala con los datos actualizados
