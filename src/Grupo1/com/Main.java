@@ -26,6 +26,7 @@ public class Main {
     static int ContadorClients = 0;
     static int ContadorProducts = 0;
     static int ContadorInvoices = 0;
+    static Object  [][] arreglo;
 
     public static void main(String[] args) {
 
@@ -161,10 +162,13 @@ public class Main {
             //Archivos.serialize("./Serealizables/products.ipcrm", products);
         }
 
-        public static void AgregarIngrediente(String name, int quantity, String units){
-            Ingredientes IngredientesP = new Ingredientes(name, quantity, units);
-            temp.add(IngredientesP);
-
+         public static void AgregarIngredienteI(int Index, String name, int quantity, String units){
+        Ingredientes IngredientesP = new Ingredientes(name, quantity, units);
+        for (int i=0; i<products.size();i++) {
+            if (products.get(i).getId() == Index) {
+                products.get(i).ingredients.add(IngredientesP);
+             }
+            }
         }
 
 
@@ -183,10 +187,12 @@ public class Main {
 
         public static void EditarProducto(int id, String name, String description, int cost, int price){
         for (int i=0; i< products.size(); i++){
-            products.get(i).setName(name);
-            products.get(i).setDescription(description);
-            products.get(i).setCost(cost);
-            products.get(i).setPrice(price);
+            if(products.get(i).getId() == id) {
+                products.get(i).setName(name);
+                products.get(i).setDescription(description);
+                products.get(i).setCost(cost);
+                products.get(i).setPrice(price);
+            }
         }
     }
 
@@ -721,6 +727,32 @@ public class Main {
         return arreglo;
 
     }
+
+    public static Object [][]DatosIngredientes(int IdPr){
+        for (int k = 0; k<products.size(); k++) {
+            if (products.get(k).getId() == IdPr) {
+                arreglo = new Object[products.get(k).getIngredients().size()][5];
+            }
+        }
+        for (int i=0; i<products.size(); i++) {
+            if (products.get(i).getId() == IdPr){
+                for (int j = 0; j < products.get(i).getIngredients().size(); j++) {
+                    arreglo[j][0] = products.get(i).getIngredients().get(j).getName();
+                    arreglo[j][1] = products.get(i).getIngredients().get(j).getQuantity();
+                    arreglo[j][2] = products.get(i).getIngredients().get(j).getUnits();
+                    JButton edit = new JButton("Edit");
+                    edit.setName("" + products.get(i).getId());
+                    arreglo[j][3] = edit;
+                    JButton delete = new JButton("Delete");
+                    delete.setName("" + products.get(i).getIngredients().get(j).getName());
+                    arreglo[j][4] = delete;
+                }
+
+            }
+        }
+        return arreglo;
+    }
+
     //Buscar Producto por idde factura
     public static String ProductosIdFactura(int idFactura){
         for (int i =0; i<invoices.size();i++){
@@ -772,6 +804,21 @@ public class Main {
             }
         }
     }
+
+    public static void BotonEliminarIngrediente(int IdProd, String Nombre){
+        for (int i=0; i<products.size();i++){
+            if (IdProd == products.get(i).getId()){
+                for (int j=0; j<products.get(i).getIngredients().size();j++){
+                    if (Nombre.equals(products.get(i).getIngredients().get(j).getName())){
+                        logAcciones+=HoraFecha()+"\tSe Elimino el Ingrediente "+products.get(i).getIngredients().get(j).getName() +", id:"+products.get(i).getId()+"\n";
+                        logAcciones();
+                        products.get(i).getIngredients().remove(j);
+                    }
+                }
+            }
+        }
+    }
+
     public static void BotonEliminarFacturas(int idFactura) {
 
         for (int i = 0; i < invoices.size(); i++) {

@@ -110,6 +110,9 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
 
                     System.out.println("OBTENIENDO EL ID POR EL NOMBRE");
                     JButton boton = (JButton) value;
+                    String user = boton.getName();
+                    EditarUsuario EU = new EditarUsuario(user);
+                    this.dispose();
 
 
 

@@ -110,7 +110,8 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
 
                     JButton boton = (JButton) value;
                     int IdCliente = Integer.parseInt(boton.getName());
-                    System.out.println(IdCliente);
+                    EditarCliente Ec = new EditarCliente(IdCliente);
+                    this.dispose();
 
                     //EditarCliente Ec = new EditarCliente(IdCliente);
 

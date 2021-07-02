@@ -114,6 +114,9 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
 
                     System.out.println("OBTENIENDO EL ID POR EL NOMBRE");
                     JButton boton = (JButton) value;
+                    int idP = Integer.parseInt(boton.getName());
+                    EditarProductos EP = new EditarProductos(idP);
+                    this.dispose();
 
 
 
