@@ -1,4 +1,4 @@
-package Grupo1.com;
+package com.company;
 
 import java.io.FileWriter;
 import java.text.DateFormat;
@@ -860,5 +860,34 @@ public class Main {
         DateFormat hourFormat = new SimpleDateFormat("HH:mm:ss");
         String d = String.format(dateFormat.format(date))+" "+ String.format(hourFormat.format(date));
         return d;
+    }
+    ////REVISION DE ID REPETIDO
+
+    public static boolean g(ArrayList<Productos> j, int ID)
+    {
+        boolean t = false;
+        for (Productos p: j)
+            if (p.getId()==ID)
+                t=true;
+
+        return t;
+    }
+    public static boolean f(ArrayList<Facturas> j, int ID)
+    {
+        boolean t = false;
+        for (Facturas p: j)
+            if (p.getId()==ID)
+                t=true;
+
+        return t;
+    }
+    public static boolean q(ArrayList<Clientes> j, int ID)
+    {
+        boolean t = false;
+        for (Clientes p: j)
+            if (p.getId()==ID)
+                t=true;
+
+        return t;
     }
 }
