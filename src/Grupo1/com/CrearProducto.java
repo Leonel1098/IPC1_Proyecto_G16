@@ -23,7 +23,7 @@ public class CrearProducto extends CRUD_Productos {
     public CrearProducto(){
         // Creo la venta para registrar un nuevo usuario
         ventanacrear = new JFrame("Registrar Producto");
-        ventanacrear.setVisible(true);
+
         ventanacrear.setSize(380,300);
         ventanacrear.setLayout(null);
         ventanacrear.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,6 +37,7 @@ public class CrearProducto extends CRUD_Productos {
         ventanacrear.add(panelcrear);
         this.Componentes();
         panelcrear.repaint();
+        ventanacrear.setVisible(true);
         //Pasar los datos a las variables de los arreglos para no perder los datos entre las ventanas
 
     }
@@ -134,10 +135,15 @@ public class CrearProducto extends CRUD_Productos {
                 costo = Integer.parseInt(txtcosto.getText());
                 precio = Integer.parseInt((txtprecio.getText()));
                 descripcion = txtdescripcion.getText();
-                Main.AgregaProducto(id,nombre,descripcion,costo,precio,Main.temp);
+
+                Main.AgregaProducto(id,nombre,descripcion,costo,precio,addIngre());
+
                 CrearProducto.super.dispose();
+
                 CRUD_Productos up= new CRUD_Productos();
+
                 ventanacrear.setVisible(false);
+
             }
         });
         //Botón para regresar al Login
@@ -212,18 +218,40 @@ public class CrearProducto extends CRUD_Productos {
         btningredientes.setVisible(true);
         panelingrediente.add(btningredientes);
         //Accion del boton para agregar los ingredientes al producto
+
+
         btningredientes.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
              name = txtingredientes.getText();
              quantity = Integer.parseInt(txtcantidad.getText());
              units = txtunidad.getText();
+             Ingredientes nuevo= new Ingredientes(name,quantity,units);
+            ingredientesTemp.add(nuevo);
 
-             Main.AgregarIngrediente(name,quantity,units);
-             ventanaingrediente.setVisible(false);
+
+
+             ventanaingrediente.dispose();
+
 
             }
         });
     }
+    public static ArrayList<Ingredientes> ingredientesTemp  = new ArrayList<>();
+    public static  ArrayList addIngre(){
+        ArrayList<Ingredientes> ingrediente = new ArrayList<>();
+        for (int i =0; i<ingredientesTemp.size();i++){
+
+            ingrediente.add(ingredientesTemp.get(i));
+
+
+
+        }
+        ingredientesTemp.clear();
+
+        return ingrediente;
+    }
+
+
 
 }

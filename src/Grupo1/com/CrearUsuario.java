@@ -18,6 +18,10 @@ public class CrearUsuario extends CRUD_Users{
     public String nombre, password;
 
 
+    public static  String  username,confpassword;
+    // Arreglos con los que trabajaremos dentro de esta ventana.
+    public String[] arreglo;
+    public int contador;
 
 
 
@@ -82,7 +86,7 @@ public class CrearUsuario extends CRUD_Users{
                 password = txtcontraseña.getText();
 
                 Main.AgregaUsuario(nombre,password);
-                
+
                ventanacrear.dispose();
                 CrearUsuario.super.dispose();
                 CRUD_Users cu = new CRUD_Users();

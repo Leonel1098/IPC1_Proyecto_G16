@@ -113,7 +113,11 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
                     JButton boton = (JButton) value;
                     int IdCliente = Integer.parseInt(boton.getName());
                     System.out.println(IdCliente);
+<<<<<<< Updated upstream
                     //EditarCliente Ec = new EditarCliente(IdCliente);
+=======
+                   // EditarCliente Ec = new EditarCliente(IdCliente);
+>>>>>>> Stashed changes
                     this.dispose();
                     //this.dispose();
                     //se tendra que refresacar la tabala con los datos actualizados

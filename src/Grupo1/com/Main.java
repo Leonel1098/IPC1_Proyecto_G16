@@ -164,7 +164,9 @@ public class Main {
         public static void AgregarIngrediente(String name, int quantity, String units){
             Ingredientes IngredientesP = new Ingredientes(name, quantity, units);
             temp.add(IngredientesP);
+
         }
+
 
         public static void EditarIngrediente(String name, int quantity, String units, int cont){
         for (int i=0; i< products.get(cont).ingredients.size(); i++){

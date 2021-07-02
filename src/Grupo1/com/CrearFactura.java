@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+<<<<<<< Updated upstream
 public class CrearFactura extends CRUD_Facturas {
     JFrame ventanacrear,ventanafactura;
     JPanel panelcrear,panelfactura;
@@ -18,6 +19,24 @@ public class CrearFactura extends CRUD_Facturas {
     public int precio,idfactura,idcliente;
 
 
+=======
+public class CrearFactura {
+    public static JFrame ventanacrear,productFrame;
+    public static JPanel panelcrear;
+    public static JButton btnregistro, btnatras,bproduct,addproduct;
+   public static  JLabel lblidfactura,lblnombrecliente,lblfecha,lblproducto,lblprice;
+    public static JTextField txtfactura,txtcliente,txtfecha,txtproducto, txtprice;
+    public Menu menu;
+    public CRUD_Facturas facturas;
+    //Variables utilizadas para guardas los datos ingresados en los jtextfield
+    public String nombre, username, password,confpassword;
+    // Arreglos con los que trabajaremos dentro de esta ventana.
+    public String[] arreglo;
+    public int contador;
+    //public static NewUser[] usuarios;
+    public static String InicioJson="{";
+    public static String CerrarJson="}";
+>>>>>>> Stashed changes
 
     public CrearFactura(){
         // Creo la venta para registrar un nuevo usuario
@@ -59,12 +78,11 @@ public class CrearFactura extends CRUD_Facturas {
         lblfecha.setLayout(null);
         panelcrear.add(lblfecha);
 
-        lblproducto = new JLabel("Producto");
-        lblproducto.setBounds(10,110,150,20);
-        lblproducto.setVisible(true);
-        lblproducto.setLayout(null);
-        panelcrear.add(lblproducto);
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
         //Defino los textfield y los agrego al panel
         txtfactura = new JTextField("");
@@ -81,8 +99,22 @@ public class CrearFactura extends CRUD_Facturas {
         txtfecha.setBounds(140,80,180,20);
         txtfecha.setVisible(true);
         panelcrear.add(txtfecha);
+        //Boton para Agregar Producto
+        bproduct = new JButton("Add Product");
+        bproduct.setBounds(30,110,150,25);
+        bproduct.setVisible(true);
+        panelcrear.add(bproduct);
+        bproduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ProductosFactura();
+            }
+        });
 
 
+
+
+<<<<<<< Updated upstream
         btnagregarfactura = new JButton ("Registrar");
         btnagregarfactura.setBounds(140,110,100,20);
         btnagregarfactura.setVisible(true);
@@ -94,12 +126,15 @@ public class CrearFactura extends CRUD_Facturas {
                 ProductosFactura();
             }
         });
+=======
+>>>>>>> Stashed changes
 
         //Creo boton de registro y lo  agrego al panel
         btnregistro = new JButton ("Registrar");
         btnregistro.setBounds(200,220,100,20);
         btnregistro.setVisible(true);
         panelcrear.add(btnregistro);
+
 
         //Acciones del boton registro
         btnregistro.addActionListener(new ActionListener(){
@@ -128,6 +163,7 @@ public class CrearFactura extends CRUD_Facturas {
             }
         });
     }
+<<<<<<< Updated upstream
     public void ProductosFactura (){
         ventanafactura = new JFrame("Agregar Ingredientes");
         ventanafactura.setVisible(true);
@@ -186,6 +222,46 @@ public class CrearFactura extends CRUD_Facturas {
 
             }
         });
+=======
+    public static void ProductosFactura(){
+        productFrame = new JFrame("Products");
+        lblproducto = new JLabel("name");
+        lblproducto.setBounds(10,110,150,20);
+        lblproducto.setVisible(true);
+        lblproducto.setLayout(null);
+        productFrame.add(lblproducto);
+
+        lblprice = new JLabel("Price");
+        lblprice.setBounds(10,140,150,20);
+        lblprice.setVisible(true);
+        lblprice.setLayout(null);
+        productFrame.add(lblprice);
+        txtproducto = new JTextField("");
+        txtproducto.setBounds(140,110,180,20);
+        txtproducto.setVisible(true);
+        productFrame.add(txtproducto);
+
+        txtprice = new JTextField("");
+        txtprice.setBounds(140,140,180,20);
+        txtprice.setVisible(true);
+        productFrame.add(txtprice);
+        //Boton agregar Producto
+        addproduct= new JButton("Add");
+        addproduct.setBounds(10,110,150,20);
+        addproduct.setVisible(true);
+        addproduct.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        productFrame.setSize(350,300);
+        productFrame.setLayout(null);
+        productFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        productFrame.setLocationRelativeTo(null);
+        productFrame.setVisible(true);
+>>>>>>> Stashed changes
     }
 }
 
