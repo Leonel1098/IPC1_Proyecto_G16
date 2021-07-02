@@ -1,4 +1,4 @@
-package com.company;
+package Grupo1.com;
 
 import java.util.ArrayList;
 import java.io.Serializable;
@@ -7,13 +7,13 @@ public class Productos implements Serializable{
     private int id;
     private String name;
     private String description;
-    private int cost;
+    private double cost;
     private double price;
     ArrayList<Ingredientes>ingredients;
     public Productos(){
 
     }
-    public Productos(int id, String name, String description, int cost, double price, ArrayList<Ingredientes>ingredients) {
+    public Productos(int id, String name, String description, double cost, double price, ArrayList<Ingredientes>ingredients) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -46,11 +46,11 @@ public class Productos implements Serializable{
         this.description = description;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 

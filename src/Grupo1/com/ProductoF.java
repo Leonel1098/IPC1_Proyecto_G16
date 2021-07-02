@@ -1,4 +1,4 @@
-package com.company;
+package Grupo1.com;
 import java.io.Serializable;
 
 public class ProductoF implements Serializable {
