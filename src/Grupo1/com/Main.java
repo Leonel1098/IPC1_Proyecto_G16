@@ -1,4 +1,4 @@
-package com.company;
+package Grupo1.com;
 
 import java.io.FileWriter;
 import java.text.DateFormat;
@@ -108,6 +108,8 @@ public class Main {
             Usuarios UsuriosAgregados = new Usuarios(username, password);
             users.add(UsuriosAgregados);
             logAcciones+=HoraFecha()+" Se Agrego al usuario  :"+username+"\n";
+
+            logAcciones();
         }
 
         public static void EditarUsuario(String user, String username, String password){
@@ -115,6 +117,8 @@ public class Main {
             if(users.get(i).getUsername().equals(user)){
                 users.get(i).setUsername(username);
                 users.get(i).setPassword(password);
+                logAcciones+=HoraFecha()+"\t Se Edito el Usuario "+user+", id :"+username+"\n";
+                logAcciones();
             }
         }
         }
@@ -135,6 +139,8 @@ public class Main {
 
         public static void AgregaCliente(int id, String name, String address,String nit, String phone ){
         Clientes ClientesAgregados = new Clientes(id, name, address, phone, nit);
+            logAcciones+=HoraFecha()+"\t Se Agrego el Cliente "+name+", id :"+id+"\n";
+            logAcciones();
         clients.add(ClientesAgregados);
         }
 
@@ -145,6 +151,8 @@ public class Main {
                 clients.get(i).setAddress(address);
                 clients.get(i).setPhone(phone);
                 clients.get(i).setNit(nit);
+                logAcciones+=HoraFecha()+"\t Se Edito el Cliente "+name+", id :"+id+"\n";
+                logAcciones();
             }
         }
     }
@@ -166,6 +174,8 @@ public class Main {
         Ingredientes IngredientesP = new Ingredientes(name, quantity, units);
         for (int i=0; i<products.size();i++) {
             if (products.get(i).getId() == Index) {
+                logAcciones+=HoraFecha()+"\t Se Agrego el ingrediente "+name+", id :"+Index+"\n";
+                logAcciones();
                 products.get(i).ingredients.add(IngredientesP);
              }
             }
@@ -182,6 +192,8 @@ public class Main {
 
         public static void AgregaProducto(int id, String name, String description, int cost, int price, ArrayList<Ingredientes>ig){
         Productos ProductosAgregados = new Productos(id,name,description,cost,price, ig);
+            logAcciones+=HoraFecha()+"\t SeAgrego El Producto  "+name+", id :"+id+"\n";
+            logAcciones();
         products.add(ProductosAgregados);
         }
 
@@ -192,6 +204,8 @@ public class Main {
                 products.get(i).setDescription(description);
                 products.get(i).setCost(cost);
                 products.get(i).setPrice(price);
+                logAcciones+=HoraFecha()+"\t Se Edito el Producto  "+name+", id :"+id+"\n";
+                logAcciones();
             }
         }
     }
@@ -223,6 +237,8 @@ public class Main {
 
         public static void AgregaFactura(int id, int user, String date, ArrayList<ProductoF>PF){
         Facturas FacturasAgregadas = new Facturas(id, user,date,PF);
+        logAcciones+=HoraFecha()+"\t  Se Agrego la Factura "+", id :"+id+"\n";
+        logAcciones();
         invoices.add(FacturasAgregadas);
         }
 
@@ -823,7 +839,7 @@ public class Main {
 
         for (int i = 0; i < invoices.size(); i++) {
             if (idFactura == invoices.get(i).getId()) {
-                logAcciones+=HoraFecha()+"\t Se Elimino la Factura"+invoices.get(i).getId()+", id :"+invoices.get(i).getId()+"\n";
+                logAcciones+=HoraFecha()+"\t Se Elimino la Factura  "+invoices.get(i).getId()+", id :"+invoices.get(i).getId()+"\n";
                 logAcciones();
                 invoices.remove(i);
 
@@ -861,6 +877,7 @@ public class Main {
         String d = String.format(dateFormat.format(date))+" "+ String.format(hourFormat.format(date));
         return d;
     }
+
     ////REVISION DE ID REPETIDO
 
     public static boolean g(ArrayList<Productos> j, int ID)
@@ -890,4 +907,39 @@ public class Main {
 
         return t;
     }
+
+    public static  boolean idCliente(int id ){
+        for (int i =0 ; i<clients.size();i++){
+            if (id == clients.get(i).getId()){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static  boolean idusuario(String username){
+        for (int i =0 ; i<users.size();i++){
+            if (username.equals(users.get(i).getUsername()) ){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static  boolean idfacturas(int  id ){
+        for (int i =0 ; i<invoices.size();i++){
+            if (id == invoices.get(i).getId()){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static boolean idProducts(int  id ){
+        for (int i =0 ; i<products.size();i++){
+            if (id == products.get(i).getId()){
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 }

@@ -83,13 +83,19 @@ public class CrearUsuario extends CRUD_Users{
             public void actionPerformed(ActionEvent ae) {
                 nombre = txtnombre.getText();
                 password = txtcontraseña.getText();
+                String username = nombre;
+                boolean flag =Main.idusuario(username);
+                if (flag) {
+                    Main.AgregaUsuario(nombre,password);
 
-                Main.AgregaUsuario(nombre,password);
+                    ventanacrear.dispose();
+                    CrearUsuario.super.dispose();
+                    CRUD_Users cu = new CRUD_Users();
+                    ventanacrear.setVisible(false);
+                }else{
+                    JOptionPane.showMessageDialog(null, "El Username Ya Existe Cambiarlo ");
+                }
 
-               ventanacrear.dispose();
-                CrearUsuario.super.dispose();
-                CRUD_Users cu = new CRUD_Users();
-                ventanacrear.setVisible(false);
 
             }
         });

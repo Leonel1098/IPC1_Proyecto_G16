@@ -107,10 +107,16 @@ public class CrearFactura extends CRUD_Facturas {
                 idfactura = Integer.parseInt(txtfactura.getText());
                 idcliente = Integer.parseInt(txtcliente.getText());
                 fecha = txtfecha.getText();
-                Main.AgregaFactura(idfactura, idcliente, fecha, addFactura());
-                CrearFactura.super.dispose();
-                CRUD_Facturas uc = new CRUD_Facturas();
-                ventanacrear.setVisible(false);
+                boolean flag = Main.idfacturas(idfactura);
+                if (flag){
+                    Main.AgregaFactura(idfactura, idcliente, fecha, addFactura());
+                    CrearFactura.super.dispose();
+                    CRUD_Facturas uc = new CRUD_Facturas();
+                    ventanacrear.setVisible(false);
+                }else {
+                    JOptionPane.showMessageDialog(null, "El id Ya Existe Cambiarlo ");
+                }
+
             }
         });
         //Botón para regresar al Login

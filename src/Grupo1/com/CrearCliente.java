@@ -110,9 +110,15 @@ public class CrearCliente {
                 direccion = txtcontraseña.getText();
                 phone = txtconfcontra.getText();
                 nit = txttelefono.getText();
-                Main.AgregaCliente(IdCl, nombre, direccion,nit, phone);
-                ventanacrear.setVisible(false);
-                CRUD_Clientes CC = new CRUD_Clientes();
+                boolean flag =Main.idCliente(IdCl);
+                if (flag){
+                    Main.AgregaCliente(IdCl, nombre, direccion,nit, phone);
+                    ventanacrear.setVisible(false);
+                    CRUD_Clientes CC = new CRUD_Clientes();
+                }else{
+
+                JOptionPane.showMessageDialog(null, "El id Ya Existe Cambiarlo ");
+                }
             }
         });
         //Botón para regresar al Login

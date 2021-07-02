@@ -133,14 +133,20 @@ public class CrearProducto extends CRUD_Productos {
                 costo = Integer.parseInt(txtcosto.getText());
                 precio = Integer.parseInt((txtprecio.getText()));
                 descripcion = txtdescripcion.getText();
+                boolean flag = Main.idProducts(id);
+                if (flag){
+                    Main.AgregaProducto(id,nombre,descripcion,costo,precio,addIngre());
 
-                Main.AgregaProducto(id,nombre,descripcion,costo,precio,addIngre());
+                    CrearProducto.super.dispose();
 
-                CrearProducto.super.dispose();
+                    CRUD_Productos up= new CRUD_Productos();
 
-                CRUD_Productos up= new CRUD_Productos();
+                    ventanacrear.setVisible(false);
+                }else {
+                    JOptionPane.showMessageDialog(null, "El id Ya Existe Cambiarlo ");
+                }
 
-                ventanacrear.setVisible(false);
+
 
             }
         });
