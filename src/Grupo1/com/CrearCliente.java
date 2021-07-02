@@ -16,11 +16,6 @@ public class CrearCliente {
     //Variables utilizadas para guardas los datos ingresados en los jtextfield
     public String nombre, direccion, phone,nit;
     public int IdCl;
-    // Arreglos con los que trabajaremos dentro de esta ventana.
-    public String[] arreglo;
-    public int contador;
-    //public static NewUser[] usuarios;
-    public int IdClientes;
 
     public CrearCliente(){
         // Creo la venta para registrar un nuevo usuario
@@ -28,14 +23,13 @@ public class CrearCliente {
         ventanacrear.setVisible(true);
         ventanacrear.setSize(350,300);
         ventanacrear.setLayout(null);
-        //ventanacrear.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventanacrear.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanacrear.setLocationRelativeTo(null);
         //Creo el panel y lo agrego a la ventana
         panelcrear = new JPanel();
         panelcrear.setLayout(null);
         panelcrear.setSize(350,300);
         panelcrear.setVisible(true);
-        panelcrear.setBackground(Color.GRAY);
         ventanacrear.add(panelcrear);
         this.Componentes();
         panelcrear.repaint();

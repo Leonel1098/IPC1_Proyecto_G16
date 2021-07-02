@@ -19,21 +19,19 @@ public class CrearProducto extends CRUD_Productos {
     public int id,costo,precio,quantity;
 
 
-
     public CrearProducto(){
         // Creo la venta para registrar un nuevo usuario
         ventanacrear = new JFrame("Registrar Producto");
 
         ventanacrear.setSize(380,300);
         ventanacrear.setLayout(null);
-        ventanacrear.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventanacrear.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanacrear.setLocationRelativeTo(null);
         //Creo el panel y lo agrego a la ventana
         panelcrear = new JPanel();
         panelcrear.setLayout(null);
         panelcrear.setSize(380,300);
         panelcrear.setVisible(true);
-        panelcrear.setBackground(Color.GRAY);
         ventanacrear.add(panelcrear);
         this.Componentes();
         panelcrear.repaint();
@@ -174,7 +172,6 @@ public class CrearProducto extends CRUD_Productos {
         panelingrediente.setLayout(null);
         panelingrediente.setSize(380,300);
         panelingrediente.setVisible(true);
-        panelingrediente.setBackground(Color.GRAY);
         ventanaingrediente.add(panelingrediente);
         this.ComponentesIngrediente();
         panelingrediente.repaint();
@@ -229,10 +226,7 @@ public class CrearProducto extends CRUD_Productos {
              Ingredientes nuevo= new Ingredientes(name,quantity,units);
             ingredientesTemp.add(nuevo);
 
-
-
              ventanaingrediente.dispose();
-
 
             }
         });
@@ -243,15 +237,8 @@ public class CrearProducto extends CRUD_Productos {
         for (int i =0; i<ingredientesTemp.size();i++){
 
             ingrediente.add(ingredientesTemp.get(i));
-
-
-
         }
         ingredientesTemp.clear();
-
         return ingrediente;
     }
-
-
-
 }

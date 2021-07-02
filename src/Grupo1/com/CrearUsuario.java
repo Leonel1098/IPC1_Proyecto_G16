@@ -31,14 +31,13 @@ public class CrearUsuario extends CRUD_Users{
         ventanacrear.setVisible(true);
         ventanacrear.setSize(350,300);
         ventanacrear.setLayout(null);
-        ventanacrear.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventanacrear.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanacrear.setLocationRelativeTo(null);
         //Creo el panel y lo agrego a la ventana
         panelcrear = new JPanel();
         panelcrear.setLayout(null);
         panelcrear.setSize(350,300);
         panelcrear.setVisible(true);
-        panelcrear.setBackground(Color.GRAY);
         ventanacrear.add(panelcrear);
         Componentes();
         //Pasar los datos a las variables de los arreglos para no perder los datos entre las ventanas

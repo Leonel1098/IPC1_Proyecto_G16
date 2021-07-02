@@ -1,7 +1,5 @@
 package Grupo1.com;
 
-
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
@@ -27,7 +25,7 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         this.setVisible(true);
         this.setResizable(false);
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
     JFrame Usuarios;
     public static JTable TablaClientes;
@@ -113,11 +111,11 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
                     JButton boton = (JButton) value;
                     int IdCliente = Integer.parseInt(boton.getName());
                     System.out.println(IdCliente);
-<<<<<<< Updated upstream
+
                     //EditarCliente Ec = new EditarCliente(IdCliente);
-=======
+
                    // EditarCliente Ec = new EditarCliente(IdCliente);
->>>>>>> Stashed changes
+
                     this.dispose();
                     //this.dispose();
                     //se tendra que refresacar la tabala con los datos actualizados

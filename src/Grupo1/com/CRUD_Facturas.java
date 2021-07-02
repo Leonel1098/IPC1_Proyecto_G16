@@ -47,7 +47,7 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
         //ver Metodo para guardar los Datos en el Arreglo
         Object datos[][] = Main.DatosFacturas();
         //Encabezado del la tabla a ausa r
-        String[] columnas = {"Id Factura", " ID Cliente  ", "Date ", "Product ","Monto","Editar","Borra"};
+        String[] columnas = {"Id Factura", " Cliente  ", "Date ", "Product ","Monto","Editar","Borra"};
         //Se Crea la Tabla
         Tabla = new JTable();
 
