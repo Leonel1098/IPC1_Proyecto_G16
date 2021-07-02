@@ -16,7 +16,7 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
         this.setTitle("-- Productos --");
         Tabla();
         productonuevo= new JButton("Crear Producto");
-        productonuevo.setBounds(30,600,150,150);
+        productonuevo.setBounds(30,560,150,30);
         productonuevo.setVisible(true);
         //Dando acción al botón para crear un cliente nuevo
         productonuevo.addActionListener(new ActionListener() {
@@ -28,7 +28,7 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
         });
         this.add(productonuevo);
         this.setLayout(null);
-        this.setSize(1200, 850);
+        this.setSize(1170, 650);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
@@ -61,12 +61,12 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
         //Renderizando al informacion en la tabala para que se vea Bonito
         Tabla.getColumnModel().getColumn(0).setPreferredWidth(5);
         Tabla.getColumnModel().getColumn(1).setPreferredWidth(10);
-        Tabla.getColumnModel().getColumn(2).setPreferredWidth(10);
-        Tabla.getColumnModel().getColumn(3).setPreferredWidth(10 );
-        Tabla.getColumnModel().getColumn(4).setPreferredWidth(100);
-        Tabla.getColumnModel().getColumn(5).setPreferredWidth(100);
-
-        Tabla.getColumnModel().getColumn(6).setPreferredWidth(100);
+        Tabla.getColumnModel().getColumn(2).setPreferredWidth(5);
+        Tabla.getColumnModel().getColumn(3).setPreferredWidth(5);
+        Tabla.getColumnModel().getColumn(4).setPreferredWidth(150);
+        Tabla.getColumnModel().getColumn(5).setPreferredWidth(150);
+        Tabla.getColumnModel().getColumn(6).setPreferredWidth(10);
+        Tabla.getColumnModel().getColumn(7).setPreferredWidth(10);
 
         // METODO PARA RENDERIZAR LOS DATOS
         // La tabla ahora tiene un Renderizado en especifico que nosotros asignamos, ver la clase Render
@@ -74,7 +74,7 @@ public class CRUD_Productos extends JFrame implements ActionListener, MouseListe
         Tabla.setDefaultRenderer(Object.class, new Render());
 
         sp = new JScrollPane(Tabla);
-        sp.setBounds(30, 50, 1100, 500);
+        sp.setBounds(30, 30, 1100, 500);
         sp.setVisible(true);
 
         this.add(sp);

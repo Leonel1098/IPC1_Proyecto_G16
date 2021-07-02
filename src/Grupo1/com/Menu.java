@@ -108,11 +108,12 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.GuardarJson();
+                JOptionPane.showMessageDialog(null, "Datos Guardados");
             }
         });
 
-        btn5 = new JButton("Atras");
-        btn5.setBounds(10,270,120,20);
+        btn5 = new JButton("Cerrar Sesión");
+        btn5.setBounds(20,270,120,20);
         btn5.setVisible(true);
         panelmenu.add(btn5);
 
@@ -128,7 +129,7 @@ public class Menu {
     }
     public void InfoRestaurante (){
         menu = new JFrame("Información del Restaurante");
-        menu.setSize(450,350);
+        menu.setSize(440,270);
         menu.setLayout(null);
         menu.setVisible(true);
         menu.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -196,14 +197,19 @@ public class Menu {
         }
 
         btneditar = new JButton("Editar");
-        btneditar.setBounds(280,270,80,20);
+        btneditar.setBounds(180,190,80,30);
         btneditar.setVisible(true);
         panelmenu.add(btneditar);
 
         btneditar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                for (int i=0; i<Main.configs.size(); i++){
+                    Main.configs.get(i).setName(txtnombre.getText());
+                    Main.configs.get(i).setAddress(txtdireccion.getText());
+                    Main.configs.get(i).setPhone(Integer.parseInt(txtphone.getText()));
+                    Main.configs.get(i).setLoad(txtload.getText());
+                }
             }
         });
     }

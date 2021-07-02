@@ -24,7 +24,7 @@ public class CrearFactura extends CRUD_Facturas {
         // Creo la venta para registrar un nuevo usuario
         ventanacrear = new JFrame("Registrar Factura");
         ventanacrear.setVisible(true);
-        ventanacrear.setSize(350, 300);
+        ventanacrear.setSize(350, 250);
         ventanacrear.setLayout(null);
         ventanacrear.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanacrear.setLocationRelativeTo(null);
@@ -95,7 +95,7 @@ public class CrearFactura extends CRUD_Facturas {
 
         //Creo boton de registro y lo  agrego al panel
         btnregistro = new JButton("Registrar");
-        btnregistro.setBounds(200, 220, 100, 20);
+        btnregistro.setBounds(190, 170, 120, 20);
         btnregistro.setVisible(true);
         panelcrear.add(btnregistro);
 
@@ -121,7 +121,7 @@ public class CrearFactura extends CRUD_Facturas {
         });
         //Botón para regresar al Login
         btnatras = new JButton("Atras");
-        btnatras.setBounds(10, 220, 120, 20);
+        btnatras.setBounds(20, 170, 120, 20);
         btnatras.setVisible(true);
         panelcrear.add(btnatras);
         //Acciones del boton regresar
@@ -137,7 +137,7 @@ public class CrearFactura extends CRUD_Facturas {
     public void ProductosFactura() {
         ventanafactura = new JFrame("Agregar Ingredientes");
         ventanafactura.setVisible(true);
-        ventanafactura.setSize(380, 300);
+        ventanafactura.setSize(380, 170);
         ventanafactura.setLayout(null);
         ventanafactura.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanafactura.setLocationRelativeTo(null);
@@ -176,7 +176,7 @@ public class CrearFactura extends CRUD_Facturas {
 
 
         btnproductos = new JButton("Agregar");
-        btnproductos.setBounds(160, 170, 180, 20);
+        btnproductos.setBounds(100, 100, 180, 20);
         btnproductos.setVisible(true);
         panelfactura.add(btnproductos);
         //Accion del boton para agregar los ingredientes al producto

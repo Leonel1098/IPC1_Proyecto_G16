@@ -29,7 +29,7 @@ public class CrearUsuario extends CRUD_Users{
         // Creo la venta para registrar un nuevo usuario
         ventanacrear = new JFrame("Registrar Usuario");
         ventanacrear.setVisible(true);
-        ventanacrear.setSize(350,300);
+        ventanacrear.setSize(350,210);
         ventanacrear.setLayout(null);
         ventanacrear.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanacrear.setLocationRelativeTo(null);
@@ -46,14 +46,14 @@ public class CrearUsuario extends CRUD_Users{
     public void Componentes(){
         //Defino los label y se agrega al panel
         lblnombreusuario = new JLabel ("Nombre del Usuario");
-        lblnombreusuario.setBounds(10,50,150,20);
+        lblnombreusuario.setBounds(10,30,150,20);
         lblnombreusuario.setVisible(true);
         lblnombreusuario.setLayout(null);
         panelcrear.add(lblnombreusuario);
 
 
         lblcontrausuario = new JLabel("Contraseña");
-        lblcontrausuario.setBounds(10,110,150,20);
+        lblcontrausuario.setBounds(10,70,150,20);
         lblcontrausuario.setVisible(true);
         lblcontrausuario.setLayout(null);
         panelcrear.add(lblcontrausuario);
@@ -62,18 +62,18 @@ public class CrearUsuario extends CRUD_Users{
         //Defino los textfield y los agrego al panel
 
         txtnombre = new JTextField("");
-        txtnombre.setBounds(140,50,180,20);
+        txtnombre.setBounds(140,30,180,20);
         txtnombre.setVisible(true);
         panelcrear.add(txtnombre);
 
         txtcontraseña = new JTextField("");
-        txtcontraseña.setBounds(140,110,180,20);
+        txtcontraseña.setBounds(140,70,180,20);
         txtcontraseña.setVisible(true);
         panelcrear.add(txtcontraseña);
 
         //Creo boton de registro y lo  agrego al panel
         btnregistro = new JButton ("Registrar");
-        btnregistro.setBounds(200,220,100,20);
+        btnregistro.setBounds(190,130,120,20);
         btnregistro.setVisible(true);
         panelcrear.add(btnregistro);
 
@@ -101,7 +101,7 @@ public class CrearUsuario extends CRUD_Users{
         });
         //Botón para regresar al Login
         btnatras = new JButton ("Atras");
-        btnatras.setBounds(10,220,120,20);
+        btnatras.setBounds(20,130,120,20);
         btnatras.setVisible(true);
         panelcrear.add(btnatras);
         //Acciones del boton regresar

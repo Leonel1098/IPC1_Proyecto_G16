@@ -23,7 +23,7 @@ public class CrearProducto extends CRUD_Productos {
         // Creo la venta para registrar un nuevo usuario
         ventanacrear = new JFrame("Registrar Producto");
 
-        ventanacrear.setSize(380,300);
+        ventanacrear.setSize(365,300);
         ventanacrear.setLayout(null);
         ventanacrear.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanacrear.setLocationRelativeTo(null);
@@ -119,7 +119,7 @@ public class CrearProducto extends CRUD_Productos {
 
         //Creo boton de registro y lo  agrego al panel
         btnregistro = new JButton ("Registrar");
-        btnregistro.setBounds(200,220,100,20);
+        btnregistro.setBounds(195,220,120,20);
         btnregistro.setVisible(true);
         panelcrear.add(btnregistro);
 
@@ -152,7 +152,7 @@ public class CrearProducto extends CRUD_Productos {
         });
         //Botón para regresar al Login
         btnatras = new JButton ("Atras");
-        btnatras.setBounds(10,220,120,20);
+        btnatras.setBounds(30,220,120,20);
         btnatras.setVisible(true);
         panelcrear.add(btnatras);
         //Acciones del boton regresar
@@ -169,7 +169,7 @@ public class CrearProducto extends CRUD_Productos {
     public void Ingredientes (){
         ventanaingrediente = new JFrame("Agregar Ingredientes");
         ventanaingrediente.setVisible(true);
-        ventanaingrediente.setSize(380,300);
+        ventanaingrediente.setSize(380,210);
         ventanaingrediente.setLayout(null);
         ventanaingrediente.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanaingrediente.setLocationRelativeTo(null);
@@ -184,40 +184,40 @@ public class CrearProducto extends CRUD_Productos {
     }
     public void ComponentesIngrediente(){
         lblnombre = new JLabel("Nombre del Ingrediente");
-        lblnombre.setBounds(10,20,150,20);
+        lblnombre.setBounds(20,20,150,20);
         lblnombre.setVisible(true);
         lblnombre.setLayout(null);
         panelingrediente.add(lblnombre);
 
         lblcantidad = new JLabel ("Cantidad");
-        lblcantidad.setBounds(10,50,150,20);
+        lblcantidad.setBounds(20,50,150,20);
         lblcantidad.setVisible(true);
         lblcantidad.setLayout(null);
         panelingrediente.add(lblcantidad);
 
         lblunidad = new JLabel("Unidades");
-        lblunidad.setBounds(10,80,150,20);
+        lblunidad.setBounds(20,80,150,20);
         lblunidad.setVisible(true);
         lblunidad.setLayout(null);
         panelingrediente.add(lblunidad);
 
         txtingredientes = new JTextField("");
-        txtingredientes.setBounds(160,20,180,20);
+        txtingredientes.setBounds(170,20,180,20);
         txtingredientes.setVisible(true);
         panelingrediente.add(txtingredientes);
 
         txtcantidad = new JTextField("");
-        txtcantidad.setBounds(160,50,180,20);
+        txtcantidad.setBounds(170,50,180,20);
         txtcantidad.setVisible(true);
         panelingrediente.add(txtcantidad);
 
         txtunidad = new JTextField("");
-        txtunidad.setBounds(160,80,180,20);
+        txtunidad.setBounds(170,80,180,20);
         txtunidad.setVisible(true);
         panelingrediente.add(txtunidad);
 
         btningredientes = new JButton("Agregar");
-        btningredientes.setBounds(160,170,180,20);
+        btningredientes.setBounds(100,130,180,20);
         btningredientes.setVisible(true);
         panelingrediente.add(btningredientes);
         //Accion del boton para agregar los ingredientes al producto

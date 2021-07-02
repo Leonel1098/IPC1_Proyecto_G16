@@ -14,13 +14,13 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         this.setTitle("-- Clientes --");
         TablaClientes();
         clientenuevo= new JButton("Crear Cliente");
-        clientenuevo.setBounds(30,580,150,50);
+        clientenuevo.setBounds(30,560,150,30);
         clientenuevo.setVisible(true);
         //Dando acción al botón para crear un cliente nuevo
         clientenuevo.addActionListener(this);
         this.add(clientenuevo);
         this.setLayout(null);
-        this.setSize(1170, 700);
+        this.setSize(1165, 640);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
@@ -37,7 +37,7 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         //ver Metodo  para guardar los Datos en el Arreglo
         Object datos[][] = Main.DatosClientes();
         //Encabezado del la tabla a ausa r
-        String[] columnas = {"Id Cliente", "Nombre  ", "Ciudad ", "Nit","Telefono","Editar","Borra"};
+        String[] columnas = {"Id Cliente", "Nombre  ", "Dirección", "Nit","Telefono","Editar","Borra"};
         //Se Crea la Tabla
         TablaClientes = new JTable();
         //Guardando los datos a ala taba
@@ -52,12 +52,12 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         TablaClientes.addMouseListener(this);
         //Renderizando al informacion en la tabala para que se vea Bonito
         TablaClientes.getColumnModel().getColumn(0).setPreferredWidth(5);
-        TablaClientes.getColumnModel().getColumn(1).setPreferredWidth(30);
-        TablaClientes.getColumnModel().getColumn(2).setPreferredWidth(30);
+        TablaClientes.getColumnModel().getColumn(1).setPreferredWidth(100);
+        TablaClientes.getColumnModel().getColumn(2).setPreferredWidth(150);
         TablaClientes.getColumnModel().getColumn(3).setPreferredWidth(10);
         TablaClientes.getColumnModel().getColumn(4).setPreferredWidth(10);
-        TablaClientes.getColumnModel().getColumn(5).setPreferredWidth(100);
-        TablaClientes.getColumnModel().getColumn(6).setPreferredWidth(100);
+        TablaClientes.getColumnModel().getColumn(5).setPreferredWidth(5);
+        TablaClientes.getColumnModel().getColumn(6).setPreferredWidth(5);
 
         // METODO PARA RENDERIZAR LOS DATOS
         // La tabla ahora tiene un Renderizado en especifico que nosotros asignamos, ver la clase Render
@@ -65,7 +65,7 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
         TablaClientes.setDefaultRenderer(Object.class, new Render());
 
         sp = new JScrollPane(TablaClientes);
-        sp.setBounds(30, 50, 1100, 500);
+        sp.setBounds(30, 30, 1100, 500);
         sp.setVisible(true);
 
         this.add(sp);

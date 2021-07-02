@@ -63,7 +63,7 @@ public class EditarCliente extends JFrame implements ActionListener{
         this.add(Editar);
 
         this.setTitle("Actualizar Clientes");
-        this.setSize(350, 300);
+        this.setSize(350, 185);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

@@ -17,7 +17,7 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
         this.setTitle("-- Facturas --");
         Tabla();
         facturanueva= new JButton("Crear Factura");
-        facturanueva.setBounds(30,600,150,150);
+        facturanueva.setBounds(30,560,150,30);
         facturanueva.setVisible(true);
         //Dando acción al botón para crear un cliente nuevo
         facturanueva.addActionListener(new ActionListener() {
@@ -30,7 +30,7 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
 
         this.add(facturanueva);
         this.setLayout(null);
-        this.setSize(1200, 850);
+        this.setSize(1065, 650);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
@@ -65,10 +65,10 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
         Tabla.getColumnModel().getColumn(0).setPreferredWidth(5);
         Tabla.getColumnModel().getColumn(1).setPreferredWidth(10);
         Tabla.getColumnModel().getColumn(2).setPreferredWidth(10);
-        Tabla.getColumnModel().getColumn(3).setPreferredWidth(10 );
-        Tabla.getColumnModel().getColumn(4).setPreferredWidth(50);
-        Tabla.getColumnModel().getColumn(5).setPreferredWidth(100);
-        Tabla.getColumnModel().getColumn(5).setPreferredWidth(100);
+        Tabla.getColumnModel().getColumn(3).setPreferredWidth(200);
+        Tabla.getColumnModel().getColumn(4).setPreferredWidth(5);
+        Tabla.getColumnModel().getColumn(5).setPreferredWidth(10);
+        Tabla.getColumnModel().getColumn(6).setPreferredWidth(10);
 
 
         // METODO PARA RENDERIZAR LOS DATOS
@@ -77,7 +77,7 @@ public class CRUD_Facturas extends JFrame implements ActionListener, MouseListen
         Tabla.setDefaultRenderer(Object.class, new Render());
 
         sp = new JScrollPane(Tabla);
-        sp.setBounds(30, 50, 1000, 500);
+        sp.setBounds(30, 30, 1000, 500);
         sp.setVisible(true);
 
         this.add(sp);

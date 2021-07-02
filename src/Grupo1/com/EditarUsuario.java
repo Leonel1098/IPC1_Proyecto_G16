@@ -36,14 +36,13 @@ public class EditarUsuario extends JFrame implements ActionListener {
         this.add(txtpassword);
 
         Editar = new JButton("Actualizar");
-        Editar.setBounds(120, 150, 100, 30);
+        Editar.setBounds(120, 100, 100, 30);
         Editar.setVisible(true);
         Editar.addActionListener(this);
         this.add(Editar);
 
         this.setTitle("Actualizar Usuario");
-        this.setSize(350, 300);
-        this.getContentPane().setBackground(Color.gray);
+        this.setSize(350, 180);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

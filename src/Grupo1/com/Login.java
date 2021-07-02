@@ -11,7 +11,7 @@ public class Login {
     JFrame login;
     JPanel panel;
     JButton btningresar;
-    JLabel lblusuario,lblcontraseña;
+    JLabel lblusuario,lblcontraseña, lbllogo;
     JTextField txtusuario,txtcontraseña;
     JPasswordField contra;
     public String usuario, contraseña;
@@ -20,6 +20,7 @@ public class Login {
     //public NewUser[] usuarios;
     //public NuevoUsuario ventanacrear;
     public Menu menu;
+    ImageIcon Ilogo;
 
     public Login(){
         Main.logAcciones();
@@ -33,7 +34,7 @@ public class Login {
         //Creo el panel y lo agrego a la ventana
         panel = new JPanel();
         panel.setLayout(null);
-        panel.setSize(350,300);
+        panel.setSize(350,310);
         panel.setVisible(true);
         login.add(panel);
         this.Componentes();
@@ -41,27 +42,34 @@ public class Login {
     }
 
     public void Componentes() {
+
+        Ilogo = new ImageIcon("./src/logo/user.png");
+        lbllogo = new JLabel(Ilogo);
+        lbllogo.setBounds(95,20,150,106);
+        lbllogo.setVisible(true);
+        panel.add(lbllogo);
+
         //Defino los label y se agrega al panel
         lblusuario = new JLabel("Usuario");
-        lblusuario.setBounds(10, 20, 50, 20);
+        lblusuario.setBounds(20, 146, 50, 20);
         lblusuario.setVisible(true);
         lblusuario.setLayout(null);
         panel.add(lblusuario);
 
         lblcontraseña = new JLabel("Contraseña");
-        lblcontraseña.setBounds(10, 55, 80, 20);
+        lblcontraseña.setBounds(20, 175, 80, 20);
         lblcontraseña.setVisible(true);
         lblcontraseña.setLayout(null);
         panel.add(lblcontraseña);
 
         //Defino los textfield y los agrego al panel
         txtusuario = new JTextField("");
-        txtusuario.setBounds(80, 20, 200, 20);
+        txtusuario.setBounds(110, 146, 200, 20);
         txtusuario.setVisible(true);
         panel.add(txtusuario);
 
         contra = new JPasswordField();
-        contra.setBounds(80,55,200,20);
+        contra.setBounds(110,175,200,20);
         contra.setVisible(true);
         panel.add(contra);
 
@@ -72,7 +80,7 @@ public class Login {
 
         //Creo boton de ingreso y lo  agrego al panel
         btningresar = new JButton("Ingresar");
-        btningresar.setBounds(110, 110, 100, 20);
+        btningresar.setBounds(120, 225, 100, 30);
         btningresar.setVisible(true);
         panel.add(btningresar);
 
@@ -86,7 +94,6 @@ public class Login {
                     for (int i = 0; i < Main.users.size(); i++) {
                         if (usuario.equals(Main.users.get(i).getUsername()) && contraseña.equals(Main.users.get(i).getPassword())){
                             Main.logAcciones+=   Main.HoraFecha()+"\t"+usuario+": Inicio de Sesión Exitoso"+"\n";
-
                             menu = new Menu();
                             login.setVisible(false);
 

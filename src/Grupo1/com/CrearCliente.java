@@ -21,7 +21,7 @@ public class CrearCliente {
         // Creo la venta para registrar un nuevo usuario
         ventanacrear = new JFrame("Registrar Usuario");
         ventanacrear.setVisible(true);
-        ventanacrear.setSize(350,300);
+        ventanacrear.setSize(350,270);
         ventanacrear.setLayout(null);
         ventanacrear.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         ventanacrear.setLocationRelativeTo(null);
@@ -97,7 +97,7 @@ public class CrearCliente {
 
         //Creo boton de registro y lo  agrego al panel
         btnregistro = new JButton ("Registrar");
-        btnregistro.setBounds(200,220,100,20);
+        btnregistro.setBounds(190,200,120,20);
         btnregistro.setVisible(true);
         panelcrear.add(btnregistro);
 
@@ -123,7 +123,7 @@ public class CrearCliente {
         });
         //Botón para regresar al Login
         btnatras = new JButton ("Atras");
-        btnatras.setBounds(10,220,120,20);
+        btnatras.setBounds(20,200,120,20);
         btnatras.setVisible(true);
         panelcrear.add(btnatras);
         //Acciones del boton regresar
@@ -131,7 +131,7 @@ public class CrearCliente {
             @Override
             public void actionPerformed(ActionEvent ae) {
 
-                login = new Login();
+                CRUD_Clientes CC = new CRUD_Clientes();
                 ventanacrear.setVisible(false);
             }
         });

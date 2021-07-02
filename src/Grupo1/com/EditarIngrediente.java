@@ -46,13 +46,13 @@ public class EditarIngrediente extends JFrame implements ActionListener {
         this.add(txtunit);
 
         Agregar = new JButton("Actualizar");
-        Agregar.setBounds(120, 150, 100, 30);
+        Agregar.setBounds(120, 130, 100, 30);
         Agregar.setVisible(true);
         Agregar.addActionListener(this);
         this.add(Agregar);
 
         this.setTitle("Editar Ingrediente");
-        this.setSize(350, 300);
+        this.setSize(350, 210);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

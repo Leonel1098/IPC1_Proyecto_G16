@@ -16,7 +16,7 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
         this.setTitle("-- Users --");
         TablaUsuarios();
         usernuevo= new JButton("Crear Usuario");
-        usernuevo.setBounds(30,600,150,150);
+        usernuevo.setBounds(30,550,150,30);
         usernuevo.setVisible(true);
         //Dando acción al botón para crear un cliente nuevo
         usernuevo.addActionListener(new ActionListener() {
@@ -28,7 +28,7 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
         });
         this.add(usernuevo);
         this.setLayout(null);
-        this.setSize(850, 850);
+        this.setSize(715, 635);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
@@ -61,8 +61,8 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
         //Renderizando al informacion en la tabala para que se vea Bonito
         TablaUsuarios.getColumnModel().getColumn(0).setPreferredWidth(10);
         TablaUsuarios.getColumnModel().getColumn(1).setPreferredWidth(10);
-        TablaUsuarios.getColumnModel().getColumn(2).setPreferredWidth(10);
-        TablaUsuarios.getColumnModel().getColumn(3).setPreferredWidth(100);
+        TablaUsuarios.getColumnModel().getColumn(2).setPreferredWidth(5);
+        TablaUsuarios.getColumnModel().getColumn(3).setPreferredWidth(5);
 
         // METODO PARA RENDERIZAR LOS DATOS
         // La tabla ahora tiene un Renderizado en especifico que nosotros asignamos, ver la clase Render
@@ -70,7 +70,7 @@ public class CRUD_Users extends JFrame implements ActionListener, MouseListener 
         TablaUsuarios.setDefaultRenderer(Object.class, new Render());
 
         sp = new JScrollPane(TablaUsuarios);
-        sp.setBounds(30, 50, 650, 500);
+        sp.setBounds(30, 30, 650, 500);
         sp.setVisible(true);
 
         this.add(sp);
