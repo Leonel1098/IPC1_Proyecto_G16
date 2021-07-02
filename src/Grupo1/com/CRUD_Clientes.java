@@ -12,30 +12,27 @@ import java.awt.event.MouseListener;
 public class CRUD_Clientes extends JFrame implements ActionListener, MouseListener {
     JButton clientenuevo;
     public CrearCliente nuevocliente;
-    public Menu menu;
     public CRUD_Clientes() {
         this.setTitle("-- Clientes --");
         TablaClientes();
         clientenuevo= new JButton("Crear Cliente");
-        clientenuevo.setBounds(30,600,150,150);
+        clientenuevo.setBounds(30,580,150,50);
         clientenuevo.setVisible(true);
         //Dando acción al botón para crear un cliente nuevo
         clientenuevo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                salir();
                 nuevocliente = new CrearCliente();
             }
         });
-
         this.add(clientenuevo);
         this.setLayout(null);
-        this.setSize(1200, 850);
+        this.setSize(1170, 700);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         this.setResizable(false);
 
-        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 
@@ -113,16 +110,18 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
             if (columna == 5) {
                 System.out.println("Editar -----");
                 Object value = TablaClientes.getValueAt(fila, columna);
+
                 // TABLA DEVOLVEME EL OBJETO QUE TENES EN [FILA][COLUMNA]
 
                 if (value instanceof JButton) {
 
-                    System.out.println("OBTENIENDO EL ID POR EL NOMBRE");
+
                     JButton boton = (JButton) value;
-
-
-
-
+                    int IdCliente = Integer.parseInt(boton.getName());
+                    System.out.println(IdCliente);
+                    EditarCliente Ec = new EditarCliente(IdCliente);
+                    this.dispose();
+                    //this.dispose();
                     //se tendra que refresacar la tabala con los datos actualizados
 
                     //this.dispose();
@@ -146,7 +145,7 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
                         System.out.println("Eliminado");
                         int id = Integer.parseInt(boton.getName());
                         Main.BotonEliminarClientes(id);
-
+                        this.remove(TablaClientes);
                         this.dispose();
                         CRUD_Clientes uc = new CRUD_Clientes();
 
@@ -186,9 +185,6 @@ public class CRUD_Clientes extends JFrame implements ActionListener, MouseListen
     @Override
     public void mouseExited(MouseEvent e) {
 
-    }
-    public void salir(){
-        this.dispose();
     }
 }
 

@@ -133,12 +133,12 @@ public class Main {
             //Object UserS = Archivos.deserialize("./Serealizables/users.ipcrm");
         }
 
-        public static void AgregaCliente(int id, String name, String address,String nit, int phone ){
+        public static void AgregaCliente(int id, String name, String address,String nit, String phone ){
         Clientes ClientesAgregados = new Clientes(id, name, address, phone, nit);
         clients.add(ClientesAgregados);
         }
 
-        public static void EditarCliente(int id, String name, String address, int phone, String nit){
+        public static void EditarCliente(int id, String name, String address, String phone, String nit){
         for (int i=0; i<clients.size(); i++){
             if(clients.get(i).getId() == id){
                 clients.get(i).setName(name);

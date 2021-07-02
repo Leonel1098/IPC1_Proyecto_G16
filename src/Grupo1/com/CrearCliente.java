@@ -5,27 +5,30 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CrearCliente extends CRUD_Clientes {
+public class CrearCliente {
     JFrame ventanacrear;
     JPanel panelcrear;
     JButton btnregistro, btnatras;
     JLabel lblidcliente,lblnombrecliente,lblciudadcliente,lblnitcliente,lbltelefonocliente;
-    JTextField txtusuario,txtnombre,txtciudad,txtnitcliente, txttelefono;
-    public Menu menu;
+    JTextField txtusuario,txtnombre,txtcontraseña,txtconfcontra, txttelefono;
+    public Login login;
+    public CRUD_Clientes clientes;
     //Variables utilizadas para guardas los datos ingresados en los jtextfield
-    public String nombre, ciudad,nit;
-    public int id,telefono;
-
-
-
+    public String nombre, direccion, phone,nit;
+    public int IdCl;
+    // Arreglos con los que trabajaremos dentro de esta ventana.
+    public String[] arreglo;
+    public int contador;
+    //public static NewUser[] usuarios;
+    public int IdClientes;
 
     public CrearCliente(){
         // Creo la venta para registrar un nuevo usuario
-        ventanacrear = new JFrame("Registrar Cliente");
+        ventanacrear = new JFrame("Registrar Usuario");
         ventanacrear.setVisible(true);
         ventanacrear.setSize(350,300);
         ventanacrear.setLayout(null);
-        ventanacrear.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //ventanacrear.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventanacrear.setLocationRelativeTo(null);
         //Creo el panel y lo agrego a la ventana
         panelcrear = new JPanel();
@@ -73,27 +76,27 @@ public class CrearCliente extends CRUD_Clientes {
 
 
         //Defino los textfield y los agrego al panel
-        txtusuario = new JTextField("");
+        txtusuario = new JTextField();
         txtusuario.setBounds(140,20,180,20);
         txtusuario.setVisible(true);
         panelcrear.add(txtusuario);
 
-        txtnombre = new JTextField("");
+        txtnombre = new JTextField();
         txtnombre.setBounds(140,50,180,20);
         txtnombre.setVisible(true);
         panelcrear.add(txtnombre);
 
-        txtciudad = new JTextField("");
-        txtciudad.setBounds(140,80,180,20);
-        txtciudad.setVisible(true);
-        panelcrear.add(txtciudad);
+        txtcontraseña = new JTextField();
+        txtcontraseña.setBounds(140,80,180,20);
+        txtcontraseña.setVisible(true);
+        panelcrear.add(txtcontraseña);
 
-        txtnitcliente = new JTextField("");
-        txtnitcliente.setBounds(140,110,180,20);
-        txtnitcliente.setVisible(true);
-        panelcrear.add(txtnitcliente);
+        txtconfcontra = new JTextField();
+        txtconfcontra.setBounds(140,110,180,20);
+        txtconfcontra.setVisible(true);
+        panelcrear.add(txtconfcontra);
 
-        txttelefono = new JTextField("");
+        txttelefono = new JTextField();
         txttelefono.setBounds(140,140,180,20);
         txttelefono.setVisible(true);
         panelcrear.add(txttelefono);
@@ -108,17 +111,13 @@ public class CrearCliente extends CRUD_Clientes {
         btnregistro.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent ae) {
-                id = Integer.parseInt(txtusuario.getText());
+                IdCl = Integer.parseInt(txtusuario.getText());
                 nombre = txtnombre.getText();
-                ciudad = txtciudad.getText();
-                nit = txtnitcliente.getText();
-                telefono = Integer.parseInt(txttelefono.getText());
+                direccion = txtcontraseña.getText();
+                phone = txtconfcontra.getText();
+                nit = txttelefono.getText();
+                Main.AgregaCliente(IdCl, nombre, direccion,nit, phone);
                 ventanacrear.setVisible(false);
-                Main.AgregaCliente(id,nombre,ciudad,nit,telefono);
-                ventanacrear.dispose();
-                CrearCliente.super.dispose();
-                CRUD_Clientes uc= new CRUD_Clientes();
-
             }
         });
         //Botón para regresar al Login
@@ -131,6 +130,7 @@ public class CrearCliente extends CRUD_Clientes {
             @Override
             public void actionPerformed(ActionEvent ae) {
 
+                login = new Login();
                 ventanacrear.setVisible(false);
             }
         });

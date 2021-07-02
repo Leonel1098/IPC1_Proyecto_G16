@@ -5,10 +5,10 @@ public class Clientes implements Serializable {
     private int id;
     private String name;
     private String address;
-    private int phone;
+    private String phone;
     private String nit;
 
-    public Clientes(int id, String name, String address, int phone, String nit) {
+    public Clientes(int id, String name, String address, String phone, String nit) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -40,11 +40,11 @@ public class Clientes implements Serializable {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
