@@ -886,6 +886,16 @@ public class Main {
 
     ////REVISION DE ID REPETIDO
 
+
+    public static boolean g(ArrayList<Productos> j, int ID)
+    {
+        boolean t = false;
+        for (Productos p: j)
+            if (p.getId()==ID)
+                t=true;
+
+        return t;
+    }
     public static boolean g(ArrayList<Productos> j, int ID)
     {
         boolean t = false;
@@ -901,7 +911,6 @@ public class Main {
         for (Usuarios p: j)
             if (p.getUsername()==nombre)
                 t=true;
-
         return t;
     }
     public static boolean f(ArrayList<Facturas> j, int ID)
