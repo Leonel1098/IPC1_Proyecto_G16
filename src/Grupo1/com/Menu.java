@@ -122,7 +122,7 @@ public class Menu {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 login = new Login();
-                menu.setVisible(false);
+                menu.dispose();
             }
         });
 
@@ -213,6 +213,7 @@ public class Menu {
             }
         });
     }
+
 }
 
 
