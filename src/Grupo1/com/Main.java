@@ -895,6 +895,15 @@ public class Main {
 
         return t;
     }
+    public static boolean n(ArrayList<Usuarios> j, String nombre)
+    {
+        boolean t = false;
+        for (Usuarios p: j)
+            if (p.getUsername()==nombre)
+                t=true;
+
+        return t;
+    }
     public static boolean f(ArrayList<Facturas> j, int ID)
     {
         boolean t = false;
