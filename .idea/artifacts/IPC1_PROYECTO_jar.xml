@@ -3,6 +3,8 @@
     <output-path>$PROJECT_DIR$</output-path>
     <root id="archive" name="IPC1_PROYECTO.jar">
       <element id="module-output" name="IPC1_PROYECTO" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/JTattoo-1.6.13.jar" path-in-jar="/" />
+      <element id="library" level="project" name="java" />
       <element id="extracted-dir" path="$USER_HOME$/Downloads/gson-2.8.7.jar" path-in-jar="/" />
     </root>
   </artifact>

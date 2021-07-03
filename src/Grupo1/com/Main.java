@@ -119,16 +119,6 @@ public class Main {
             logAcciones();
         }
 
-        public static void EditarUsuario(String user, String username, String password){
-        for (int i=0; i<users.size(); i++){
-            if(users.get(i).getUsername().equals(user)){
-                users.get(i).setUsername(username);
-                users.get(i).setPassword(password);
-                logAcciones+=HoraFecha()+"\t Se Edito el Usuario "+user+", id :"+username+"\n";
-                logAcciones();
-            }
-        }
-        }
 
         public static void CargaClientes(){
         String ContenidoClientes = Archivos.getContentOfFile("./JPruebas/clients.json");
@@ -159,6 +149,17 @@ public class Main {
                 clients.get(i).setPhone(phone);
                 clients.get(i).setNit(nit);
                 logAcciones+=HoraFecha()+"\t Se Edito el Cliente "+name+", id :"+id+"\n";
+                logAcciones();
+            }
+        }
+    }
+
+    public static void EditarUsuario(String user, String username, String password){
+        for (int i=0; i<users.size(); i++){
+            if(users.get(i).getUsername().equals(user)){
+                users.get(i).setUsername(username);
+                users.get(i).setPassword(password);
+                logAcciones+=HoraFecha()+"\t Se Edito el Usuario "+user+", id :"+username+"\n";
                 logAcciones();
             }
         }
@@ -817,8 +818,6 @@ public class Main {
                 logAcciones+= HoraFecha()+ "\tSe Elimino el Cliente "+clients.get(i).getName()+", id:" +clients.get(i).getId()+"\n";
                 logAcciones();
                 clients.remove(i);
-
-
             }
         }
     }
