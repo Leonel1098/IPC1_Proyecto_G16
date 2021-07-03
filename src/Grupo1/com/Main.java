@@ -3,6 +3,8 @@ package Grupo1.com;
 import java.io.FileWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import com.google.gson.*;
@@ -43,6 +45,10 @@ public class Main {
 
         CargaConfig();
         Login login = new Login();
+        RevisionProducts();
+        RevisionInvoices();
+        RevisionClients();
+        RevisionUsers();
 
         //Error.vericador();
        //Login();
@@ -90,6 +96,7 @@ public class Main {
             CargaProductos();
             CargaClientes();
             CargaFacturas();
+
         }
     }
 
@@ -887,6 +894,7 @@ public class Main {
     ////REVISION DE ID REPETIDO
 
 
+
     public static boolean g(ArrayList<Productos> j, int ID)
     {
         boolean t = false;
@@ -955,8 +963,9 @@ public class Main {
         }
         return true;
     }
-///////////////////////////////////////////REVISION//////////////LOGERRORES
-public static String logErrores ="";
+
+
+    public static String logErrores ="";
     public static void logErrores(){
 
         try {
@@ -971,20 +980,21 @@ public static String logErrores ="";
 
         }
     }
+
     public static void  RevisionUsers(){
 
         int cont=0;
-        for (Usuarios p: users)
+        for (int i = 0;i<users.size();i++)
         {
-            for(Usuarios j: users)
+            for(int j=0;j<users.size();j++)
             {
-                if(p.getUsername().equals(j.getUsername())) {
+                if(users.get(i).getUsername().equals(users.get(j).getUsername())) {
                     cont++;
                     if (cont > 1) {
                         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                         String HoraFecha=dtf.format(LocalDateTime.now());
-                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase users:  "+"Se repitió el nombre de usuario:  " + j.getUsername()+"\n";
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Usuarios:  "+"Se repitió el nombre de usuario:  " + users.get(i).getUsername()+"\n";
                         logErrores();
 
                         users.remove(j);
@@ -997,19 +1007,20 @@ public static String logErrores ="";
 
 
     }
+
     public static void RevisionProducts(){
         int cont=0;
-        for (Productos p: products)
+        for (int i = 0;i<products.size();i++)
         {
-            for(Productos j: products)
+            for(int j=0;j<products.size();j++)
             {
-                if(p.getId()==j.getId()) {
+                if(products.get(i).getId()==(products.get(j).getId())) {
                     cont++;
                     if (cont > 1) {
                         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                         String HoraFecha=dtf.format(LocalDateTime.now());
-                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Productos:  "+"Se repitió el ID:  " + p.getId()+"\n";
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Productos:  "+"Se repitió el ID:  " + products.get(i).getId()+"\n";
                         logErrores();
                         System.out.println();
                         products.remove(j);
@@ -1022,17 +1033,17 @@ public static String logErrores ="";
     }
     public static void RevisionInvoices(){
         int cont=0;
-        for (Facturas p: invoices)
+        for (int i = 0;i<invoices.size();i++)
         {
-            for(Facturas j: invoices)
+            for(int j=0;j<invoices.size();j++)
             {
-                if(p.getId()==j.getId()) {
+                if(invoices.get(i).getId()==(invoices.get(j).getId())) {
                     cont++;
                     if (cont > 1) {
                         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                         String HoraFecha=dtf.format(LocalDateTime.now());
-                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Facturas:  "+"Se repitió el ID:  " + p.getId()+"\n";
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Facturas:  "+"Se repitió el ID:  " + invoices.get(i).getId()+"\n";
                         logErrores();
 
                         invoices.remove(j);
@@ -1043,19 +1054,20 @@ public static String logErrores ="";
         }
 
     }
+
     public static void RevisionClients(){
         int cont=0;
-        for (Clientes p: clients)
+        for (int i = 0;i<clients.size();i++)
         {
-            for(Clientes j: clients)
+            for(int j=0;j<clients.size();j++)
             {
-                if(p.getId()==(j.getId())) {
+                if(clients.get(i).getId()==(clients.get(j).getId())) {
                     cont++;
                     if (cont > 1) {
                         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
                         String HoraFecha=dtf.format(LocalDateTime.now());
-                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Clientes:  "+"Se repitió el ID:  " + p.getId()+"\n";
+                        logErrores+="\n"+HoraFecha+" \t"+" :"+ "Clase Clientes:  "+"Se repitió el ID:  " + clients.get(i).getId()+"\n";
                         logErrores();
                         clients.remove(j);
                     }
@@ -1065,6 +1077,5 @@ public static String logErrores ="";
         }
 
     }
-    //pepito
 
 }
