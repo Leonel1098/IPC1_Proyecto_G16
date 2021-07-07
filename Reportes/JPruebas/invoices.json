@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "client": 2,
+        "date": "2020-06-13",
+        "products": [
+            {
+                "name": "Pizza",
+                "price": 50.0
+            },
+            {
+                "name": "Pastel",
+                "price": 20.0
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "client": 1,
+        "date": "2021-06-13",
+        "products": [
+            {
+                "name": "Pizza",
+                "price": 50.0
+            },
+            {
+                "name": "Coca-Cola",
+                "price": 7.0
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "client": 1,
+        "date": "2019-06-13",
+        "products": [
+            {
+                "name": "Hamburguesa",
+                "price": 50.0
+            },
+            {
+                "name": "Pizza",
+                "price": 100.0
+            },
+            {
+                "name": "Coca-Cola",
+                "price": 20.0
+            }
+        ]
+    }
+]

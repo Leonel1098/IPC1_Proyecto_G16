@@ -1,0 +1,88 @@
+[
+    {
+        "id": 1,
+        "name": "Pizza",
+        "description": "Pizza Hawaiana con queso",
+        "cost": 40.0,
+        "price": 50.0,
+        "ingredients": [
+            {
+                "name": "Piña",
+                "quantity": 1,
+                "units": "Unidades"
+            },
+            {
+                "name": "queso",
+                "quantity": 2,
+                "units": "Unidades"
+            },
+            {
+                "name": "queso",
+                "quantity": 2,
+                "units": "Unidades"
+            },
+            {
+                "name": "queso",
+                "quantity": 2,
+                "units": "Unidades"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Pizza",
+        "description": "Pizza Champiñones con queso",
+        "cost": 50.0,
+        "price": 60.0,
+        "ingredients": [
+            {
+                "name": "Champiñones",
+                "quantity": 2,
+                "units": "Unidades"
+            },
+            {
+                "name": "Queso",
+                "quantity": 1,
+                "units": "Unidades"
+            },
+            {
+                "name": "queso",
+                "quantity": 2,
+                "units": "Unidades"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Pizza",
+        "description": "Pizza Champiñones con queso",
+        "cost": 50.0,
+        "price": 60.0,
+        "ingredients": [
+            {
+                "name": "Champiñones",
+                "quantity": 2,
+                "units": "Unidades"
+            },
+            {
+                "name": "Queso",
+                "quantity": 1,
+                "units": "Unidades"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Pizza",
+        "description": "Pizza Carne con queso",
+        "cost": 40.0,
+        "price": 50.0,
+        "ingredients": [
+            {
+                "name": "Carne",
+                "quantity": 1,
+                "units": "Unidades"
+            }
+        ]
+    }
+]

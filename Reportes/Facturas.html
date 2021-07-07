@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reportes</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/estilo.css">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimum-scale=1.0">
+</head>
+
+<body>
+  <div class="contenedor">
+    <header id="hd">
+      <input id="inputJson" type="file" />
+      <img src="img/reporte.png" id="logo">
+    </header>
+    <header id="hhd">
+      <ul class="menu">
+        <li class="boton"><a href="Usuarios.html">Usuarios</a></li>
+        <li class="boton"><a href="Clientes.html">Clientes</a></li>
+        <li class="boton"><a href="Productos.html">Productos</a></li>
+        <li class="boton"><a href="Facturas.html">Facturas</a></li>
+        <li class="boton"><a href="FacturasRango.html">Facturas-Rango</a></li>
+        <li class="boton"><a href="Ventas.html">Ventas</a></li>
+        <li class="boton"><a href="Top 5.html">Top 5</a></li>
+       </ul>
+    </header>
+    <section class="mn">
+      <div>
+        <div>
+          <label   for="staticEmail2" class="visually-hidden">Fecha de Inicio</label>
+                  
+          <div >
+            <form  class="row g-3">
+            
+                <div class="col-auto" style="contain: layout;">
+                 <label  style="width: min-content" for="staticEmail2" class="visually-hidden">dia</label>
+                  <input style="height: 30px; width:100px;" type="text" class="form-control" id="d" placeholder="dia">                                </div>
+              
+                  <div class="col-auto">
+                    <label  style="width: min-content" for="staticEmail2" class="visually-hidden">mes</label>
+                    <input style="height: 30px; width:100px;" type="text" class="form-control" id="m" placeholder="mes">                                </div>
+                
+                
+                    <div class="col-auto">
+                  <label  style="width: min-content" for="staticEmail2" class="visually-hidden">year</label>
+                  <input style="height: 30px; width:100px;" type="text" class="form-control" id="a" placeholder="Año">                                </div>
+                    
+              
+              
+                </div>
+                
+               
+              </form>
+        </div>
+        </div>
+
+
+
+
+
+
+        <div class="mb-3">
+          <div>
+            <br>
+            <label   for="staticEmail2" class="visually-hidden">Fecha de Final</label>
+                    
+            <div >
+              <form  class="row g-3">
+              
+                  <div class="col-auto" style="contain: layout;">
+                   <label  style="width: min-content" for="staticEmail2" class="visually-hidden">dia</label>
+                    <input style="height: 30px; width:100px;" type="text" class="form-control" id="df" placeholder="dia">                                </div>
+                
+                    <div class="col-auto">
+                      <label  style="width: min-content" for="staticEmail2" class="visually-hidden">mes</label>
+                      <input style="height: 30px; width:100px;" type="text" class="form-control" id="mf" placeholder="mes">                                </div>
+                  
+                  
+                      <div class="col-auto">
+                    <label  style="width: min-content" for="staticEmail2" class="visually-hidden">year</label>
+                    <input style="height: 30px; width:100px;" type="text" class="form-control" id="af" placeholder="Año">                                </div>
+                      
+                
+                
+                  </div>
+                  <button id="bt" onclick="FacturasRangosFechas()" type="button" class="btn btn-primary">Buscar Facturas  </button>
+                        
+                 
+                </form>
+          </div>
+          </div>
+        
+    </div>
+      </div>
+    </section>
+    <section class="main">
+      <div id = "Invoi" class="d-flex justify-content-around flex-wrap">
+      </div>
+    </section>
+
+    <footer>
+      <p>
+      <h5>Grupo 16 &copy;</h5>
+      </p>
+    </footer>
+  </div>
+  <script src="js/appinvoice.js"></script>
+</body>
+
+</html>
